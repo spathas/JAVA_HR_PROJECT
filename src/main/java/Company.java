@@ -26,6 +26,31 @@ public class Company {
         this.address = map.get("address");
     }
 
+    ///////SETTERS/////////
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
     ///////GETTERS/////////
     public int getId() {
         return id;
@@ -54,7 +79,6 @@ public class Company {
     public HashMap<String,String> getCompanyMap() {
         HashMap<String,String> companyMap = new HashMap<>();
 
-        companyMap.put("id", Integer.toString(getId()));
         companyMap.put("name", getName());
         companyMap.put("country", getCountry());
         companyMap.put("email", getEmail());

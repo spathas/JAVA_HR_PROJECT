@@ -3,7 +3,7 @@ import java.sql.*;
 public class Server {
     Connection conn= null;
     Statement stmt=null;
-    PreparedStatement pstmp=null;
+    PreparedStatement pstmt=null;
 
     String driver;
     String url;
@@ -29,8 +29,8 @@ public class Server {
     }
 
     public void executeInsertQuery(String query) throws SQLException {
-        pstmp = conn.prepareStatement(query);
-        pstmp.execute();
+        pstmt = conn.prepareStatement(query);
+        pstmt.execute();
         System.out.println("Query: [ " + query + " ] executed.");
     }
 
@@ -46,7 +46,8 @@ public class Server {
     }
 
     public void connectionClose() throws SQLException {
-        stmt.close();
+        if(pstmt != null) pstmt.close();
+        if(stmt != null) stmt.close();
         conn.close();
 
         System.out.println("");

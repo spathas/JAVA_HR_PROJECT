@@ -1,11 +1,9 @@
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.HashMap;
 
 public class MainClass {
     // JDBC driver name and database URL
     static final String JDBC_DRIVER = "org.h2.Driver";
-    static final String DB_URL = "jdbc:h2:../resources/HR_DATABASE";
+    static final String DB_URL = "jdbc:h2:./src/main/resources/HR_DATABASE";
 
     //  Database credentials
     static final String USER = "spathas";
@@ -13,27 +11,47 @@ public class MainClass {
 
     public static void main(String[] args) {
 
-        //Server connection
-        Server h2 = new Server(JDBC_DRIVER, DB_URL, USER, PASS);
         UserController userController = new UserController();
+        CompanyController companyController = new CompanyController();
 
 
-//        Company c = new Company("Test", "test@example.com", "Greece", "2105566695", "Somewhere 1");
+        Company c = new Company("Test", "test@example.com", "Greece", "2105566695", "Somewhere 1");
+        Company c2 = new Company("Test2", "test2@example.com", "Greece", "2125566695", "Somewhere 1");
         User nick = new User("Nick", "Smith", "50", "nick@example.com", "6985544778", "Computer Science", false);
+        User john = new User("John", "Luck", "45", "john@example.com", "6985544779", "Computer Science", true);
 
 
-        try {
-            userController.createTableUser(h2);
+//        userController.drop();
+//        companyController.drop();
 
-            userController.insertUser(h2, nick);
+//        TEST FACTORY FUNC
+        try{
+            ///////USER/////////
+            userController.create();
+            userController.insert(nick);
+            userController.insert(john);
+            userController.getAll();
+            userController.getById(1);
 
-            userController.fetchUsers(h2);
+            User nickolas = userController.getById(1);
+            nickolas.setName("Nickolas");
+            nickolas.setAge("20");
+            userController.update(nickolas);
 
-            userController.fetchUserById(h2, "0");
+            userController.drop();
 
-            userController.dropTableUser(h2);
+            //////COMPANY///////
+            companyController.create();
+            companyController.insert(c);
+            companyController.insert(c2);
+            companyController.getAll();
+            companyController.getById(1);
 
+            Company c1 = companyController.getById(1);
+            c1.setName("Name Updated");
+            companyController.update(c1);
 
+            companyController.drop();
 
         } catch (SQLException se) {
             //Handle errors for JDBC

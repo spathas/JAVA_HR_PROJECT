@@ -3,8 +3,19 @@ import java.sql.SQLException;
 import java.util.HashMap;
 
 public interface FactoryHandler {
+    // JDBC driver name and database URL
+    String JDBC_DRIVER = MainClass.JDBC_DRIVER;
+    String DB_URL = MainClass.DB_URL;
 
-    static void createTable(Server server, String tableName, HashMap<String, String> values) throws SQLException, ClassNotFoundException {
+    //  Database credentials
+    String USER = MainClass.USER;
+    String PASS = MainClass.PASS;
+
+    //Server connection
+    Server server = new Server(JDBC_DRIVER, DB_URL, USER, PASS);
+
+    //Create a new table
+    static void create(String tableName, HashMap<String, String> values) throws SQLException, ClassNotFoundException {
         server.connectionOpen();
 
         String query = "CREATE TABLE " + tableName + " (";
@@ -17,10 +28,12 @@ public interface FactoryHandler {
         server.executeUpdateQuery(query);
 
         System.out.println("Table company completed.");
+
         server.connectionClose();
     }
 
-    static void insertTable(Server server, String tableName, HashMap<String, String> table) throws SQLException, ClassNotFoundException {
+    //Insert data to table
+    static void insert(String tableName, HashMap<String, String> table) throws SQLException, ClassNotFoundException {
         server.connectionOpen();
 
         // Create query string
@@ -47,7 +60,28 @@ public interface FactoryHandler {
         System.out.println("Insert 1 row");
     }
 
-    static HashMap<Integer, HashMap<String, String>> fetchObjects(Server server, String tableName, HashMap<String, String> table) throws SQLException, ClassNotFoundException {
+    //Update data table by id
+    static void update(String tableName, int id, HashMap<String, String> values) throws SQLException, ClassNotFoundException {
+
+        server.connectionOpen();
+
+        String query = "UPDATE " + tableName + " SET ";
+        for(String key : values.keySet()) {
+            query = query.concat(key + " = '" + values.get(key) + "', ");
+        }
+        query = query.substring(0, query.length()-2).concat(" WHERE ID = " + id + ";");
+
+        System.out.println(query);
+
+        server.executeUpdateQuery(query);
+        System.out.println("Update completed!");
+
+
+        server.connectionClose();
+    }
+
+    // Get all data from a table
+    static HashMap<Integer, HashMap<String, String>> getAll(String tableName, HashMap<String, String> table) throws SQLException, ClassNotFoundException {
 
         HashMap<Integer, HashMap<String, String>> objectsMap = new HashMap<>();
         server.connectionOpen();
@@ -81,8 +115,8 @@ public interface FactoryHandler {
         return objectsMap;
     }
 
-    //Overloads
-    static HashMap<Integer, HashMap<String, String>> fetchObjects(Server server, String tableName, HashMap<String, String> table, String filter) throws SQLException, ClassNotFoundException {
+    // Get a single row from table by id
+    static HashMap<Integer, HashMap<String, String>> getById(String tableName, HashMap<String, String> table, String filter) throws SQLException, ClassNotFoundException {
 
         HashMap<Integer, HashMap<String, String>> objectsMap = new HashMap<>();
         server.connectionOpen();
@@ -110,7 +144,8 @@ public interface FactoryHandler {
         return objectsMap;
     }
 
-    static void dropTable(Server server, String tableName) throws SQLException, ClassNotFoundException {
+    //Drop table
+    static void drop(String tableName) throws SQLException, ClassNotFoundException {
         server.connectionOpen();
 
         server.executeUpdateQuery("DROP TABLE " + tableName + ";");

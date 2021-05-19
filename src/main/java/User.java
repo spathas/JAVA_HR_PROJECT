@@ -26,17 +26,6 @@ public class User {
         this.works = works;
     }
 
-    public User(int id, String name, String surname, String age, String email, String phone, String education, boolean works) {
-        this.id = id;
-        this.name = name;
-        this.surname = surname;
-        this.age = age;
-        this.email = email;
-        this.phone = phone;
-        this.education = education;
-        this.works = works;
-    }
-
     public User(HashMap<String, String> map) {
         this.id = Integer.parseInt(map.get("id"));
         this.name = map.get("name");
@@ -47,7 +36,11 @@ public class User {
         this.works = Boolean.parseBoolean(map.get("works"));
     }
 
-    //////SETTERS///////
+    ////////SETTERS///////
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -110,7 +103,6 @@ public class User {
     public HashMap<String,String> getUserMap() {
         HashMap<String,String> userMap = new HashMap<>();
 
-        userMap.put("id", Integer.toString(getId()));
         userMap.put("name", getName());
         userMap.put("surname", getSurname());
         userMap.put("age", getAge());
