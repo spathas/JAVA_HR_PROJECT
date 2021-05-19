@@ -7,6 +7,7 @@ public class User {
     int id;
     String name;
     String surname;
+    String age;
     String email;
     String phone;
     String education;
@@ -15,10 +16,21 @@ public class User {
     public User() {
     }
 
-    public User(int id, String name, String surname, String email, String phone, String education, boolean works) {
+    public User(String name, String surname, String age, String email, String phone, String education, boolean works) {
+        this.name = name;
+        this.surname = surname;
+        this.age = age;
+        this.email = email;
+        this.phone = phone;
+        this.education = education;
+        this.works = works;
+    }
+
+    public User(int id, String name, String surname, String age, String email, String phone, String education, boolean works) {
         this.id = id;
         this.name = name;
         this.surname = surname;
+        this.age = age;
         this.email = email;
         this.phone = phone;
         this.education = education;
@@ -44,6 +56,10 @@ public class User {
         this.surname = surname;
     }
 
+    public void setAge(String age) {
+        this.age = age;
+    }
+
     public void setEmail(String email) {
         this.email = email;
     }
@@ -61,12 +77,18 @@ public class User {
     }
 
     ///////GETTERS///////
+    public int getId() { return id; }
+
     public String getName() {
         return name;
     }
 
     public String getSurname() {
         return surname;
+    }
+
+    public String getAge() {
+        return age;
     }
 
     public String getEmail() {
@@ -83,5 +105,26 @@ public class User {
 
     public boolean isWorks() {
         return works;
+    }
+
+    public HashMap<String,String> getUserMap() {
+        HashMap<String,String> userMap = new HashMap<>();
+
+        userMap.put("id", Integer.toString(getId()));
+        userMap.put("name", getName());
+        userMap.put("surname", getSurname());
+        userMap.put("age", getAge());
+        userMap.put("email", getEmail());
+        userMap.put("phone", getPhone());
+        userMap.put("education", getEducation());
+        userMap.put("works", Boolean.toString(isWorks()));
+
+        return userMap;
+    }
+
+    @Override
+    public String toString() {
+        return " || " + this.getName() + " | " + this.getSurname()+ " | " + this.getAge() + " | " + this.getEmail() + " | " +
+                this.getPhone() + " | " + this.getEducation() + " | " + this.isWorks();
     }
 }

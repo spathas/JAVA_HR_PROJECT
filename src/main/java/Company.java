@@ -1,5 +1,8 @@
-public class Company implements CompanyController {
+import java.util.HashMap;
 
+public class Company {
+
+    int id;
     String name;
     String email;
     String country;
@@ -14,36 +17,20 @@ public class Company implements CompanyController {
         this.address = address;
     }
 
-//    public static HashMap<Integer, Company> fetchCompanies(Server server) throws SQLException, ClassNotFoundException {
-//
-//        HashMap<Integer, Company> companies = new HashMap<Integer, Company>();
-//
-//        server.connectionOpen();
-//        ResultSet resultSet = server.executeQuery("SELECT id, name, email, country, phone, address FROM company");
-//
-//        String id = null;
-//        String name = null;
-//        String email = null;
-//        String country = null;
-//        String phone = null;
-//        String address = null;
-//
-//        while (resultSet.next()) {
-//            id = resultSet.getString("ID");
-//            name = resultSet.getString("name");
-//            email = resultSet.getString("email");
-//            country = resultSet.getString("country");
-//            phone = resultSet.getString("phone");
-//            address = resultSet.getString("address");
-//            System.out.println(id + " | " + name + " | " + email + " | " + country + " | " + phone + " | " + address + "\n");
-//            companies.put(Integer.parseInt(id), new Company(name, email, country, phone, address));
-//        }
-//
-//        server.connectionClose();
-//        return companies;
-//    }
+    public Company(HashMap<String, String> map) {
+        this.id = Integer.parseInt(map.get("id"));
+        this.name = map.get("name");
+        this.email = map.get("email");
+        this.country = map.get("country");
+        this.phone = map.get("phone");
+        this.address = map.get("address");
+    }
 
     ///////GETTERS/////////
+    public int getId() {
+        return id;
+    }
+
     public String getName() {
         return name;
     }
@@ -62,6 +49,19 @@ public class Company implements CompanyController {
 
     public String getAddress() {
         return address;
+    }
+
+    public HashMap<String,String> getCompanyMap() {
+        HashMap<String,String> companyMap = new HashMap<>();
+
+        companyMap.put("id", Integer.toString(getId()));
+        companyMap.put("name", getName());
+        companyMap.put("country", getCountry());
+        companyMap.put("email", getEmail());
+        companyMap.put("phone", getPhone());
+        companyMap.put("address", getAddress());
+
+        return companyMap;
     }
 
     @Override

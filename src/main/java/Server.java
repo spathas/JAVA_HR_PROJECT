@@ -24,7 +24,6 @@ public class Server {
 
         //Open a connection
 
-        System.out.println("Connecting to database...");
         System.out.println("");
         this.conn = DriverManager.getConnection(url,user,password);
     }
@@ -51,7 +50,7 @@ public class Server {
         conn.close();
 
         System.out.println("");
-        System.out.println("Goodbye!");
+
         try{
             if(stmt!=null) stmt.close();
         } catch(SQLException se2) {
