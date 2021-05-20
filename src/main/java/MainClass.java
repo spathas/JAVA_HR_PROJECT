@@ -17,33 +17,35 @@ public class MainClass {
 
         Company c = new Company("Test", "test@example.com", "Greece", "2105566695", "Somewhere 1");
         Company c2 = new Company("Test2", "test2@example.com", "Greece", "2125566695", "Somewhere 1");
-        User nick = new User("Nick", "Smith", "50", "nick@example.com", "6985544778", "Computer Science", false);
-        User john = new User("John", "Luck", "45", "john@example.com", "6985544779", "Computer Science", true);
+        User nick = new User("Nick", "Smith", 50, "nick@example.com", "6985544778", "Computer Science", false);
+        User john = new User("John", "Luck", 45, "john@example.com", "6985544779", "Computer Science", true);
 
 
-//        userController.drop();
-//        companyController.drop();
+        userController.drop();
+        companyController.drop();
 
 //        TEST FACTORY FUNC
         try{
             ///////USER/////////
             userController.create();
-            userController.insert(nick);
-            userController.insert(john);
+//            userController.insert(nick);
+//            userController.insert(john);
+            userController.mockData();
             userController.getAll();
             userController.getById(1);
 
             User nickolas = userController.getById(1);
             nickolas.setName("Nickolas");
-            nickolas.setAge("20");
+            nickolas.setAge(20);
             userController.update(nickolas);
 
-            userController.drop();
+//            userController.drop();
 
             //////COMPANY///////
             companyController.create();
-            companyController.insert(c);
-            companyController.insert(c2);
+//            companyController.insert(c);
+//            companyController.insert(c2);
+            companyController.mockData();
             companyController.getAll();
             companyController.getById(1);
 
@@ -51,15 +53,14 @@ public class MainClass {
             c1.setName("Name Updated");
             companyController.update(c1);
 
-            companyController.drop();
+//            companyController.drop();
 
-        } catch (SQLException se) {
+        } catch (Exception se) {
             //Handle errors for JDBC
             se.printStackTrace();
-        } catch (Exception e) {
-            //Handle errors for Class.forName
-            e.printStackTrace();
+        }//Handle errors for Class.forName
 
-        }
+
+//            userController.mockingUserData();
     }
 }

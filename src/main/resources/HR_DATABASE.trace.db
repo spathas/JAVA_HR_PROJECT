@@ -565,3 +565,271 @@ DROP TABLE company; [42102-200]
 2021-05-20 01:16:38 jdbc[10]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USER" not found; SQL statement:
 SELECT education, works, phone, surname, name, id, age, email FROM user where id = 1 [42102-200]
+2021-05-20 09:52:42 jdbc[3]: exception
+java.sql.SQLClientInfoException: Client info name 'ApplicationName' not supported.
+	at org.h2.jdbc.JdbcConnection.setClientInfo(JdbcConnection.java:1749)
+	at com.intellij.database.remote.jdbc.impl.RemoteConnectionImpl.setClientInfo(RemoteConnectionImpl.java:466)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at java.rmi/sun.rmi.server.UnicastServerRef.dispatch(UnicastServerRef.java:359)
+	at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:200)
+	at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:197)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.rmi/sun.rmi.transport.Transport.serviceCall(Transport.java:196)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport.handleMessages(TCPTransport.java:562)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(TCPTransport.java:796)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.lambda$run$0(TCPTransport.java:677)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(TCPTransport.java:676)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+2021-05-20 14:34:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USER" already exists; SQL statement:
+CREATE TABLE user (education VARCHAR2(50),works BOOLEAN,phone VARCHAR2(20) UNIQUE,surname VARCHAR2(50) NOT NULL,name VARCHAR2(50) NOT NULL,id INTEGER auto_increment PRIMARY KEY,age VARCHAR2(3) NOT NULL,email VARCHAR2(50) NOT NULL UNIQUE); [42101-200]
+2021-05-20 14:36:54 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USER" already exists; SQL statement:
+CREATE TABLE user (education VARCHAR2(50),works BOOLEAN,phone VARCHAR2(20) UNIQUE,surname VARCHAR2(50) NOT NULL,name VARCHAR2(50) NOT NULL,id INTEGER auto_increment PRIMARY KEY,age VARCHAR2(3) NOT NULL,email VARCHAR2(50) NOT NULL UNIQUE); [42101-200]
+2021-05-20 14:37:16 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE USER )[*];"; SQL statement:
+CREATE TABLE user ); [42000-200]
+2021-05-20 14:37:16 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USER" not found; SQL statement:
+INSERT INTO user (education,works,phone,surname,name,age,email) VALUES ('Computer Science' ,'false' ,'6985544778' ,'Smith' ,'Nick' ,'50' ,'nick@example.com'); [42102-200]
+2021-05-20 14:37:41 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE USER )[*];"; SQL statement:
+CREATE TABLE user ); [42000-200]
+2021-05-20 14:37:41 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USER" not found; SQL statement:
+INSERT INTO user (education,works,phone,surname,name,age,email) VALUES ('Computer Science' ,'false' ,'6985544778' ,'Smith' ,'Nick' ,'50' ,'nick@example.com'); [42102-200]
+2021-05-20 15:08:17 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USER" already exists; SQL statement:
+CREATE TABLE user (education VARCHAR2(50),works BOOLEAN,phone VARCHAR2(20) UNIQUE,surname VARCHAR2(50) NOT NULL,name VARCHAR2(50) NOT NULL,id INTEGER auto_increment PRIMARY KEY,age VARCHAR2(3) NOT NULL,email VARCHAR2(50) NOT NULL UNIQUE); [42101-200]
+2021-05-20 15:15:44 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USER" already exists; SQL statement:
+CREATE TABLE user (education VARCHAR2(50),works BOOLEAN,phone VARCHAR2(20) UNIQUE,surname VARCHAR2(50) NOT NULL,name VARCHAR2(50) NOT NULL,id INTEGER auto_increment PRIMARY KEY,age VARCHAR2(3) NOT NULL,email VARCHAR2(50) NOT NULL UNIQUE); [42101-200]
+2021-05-20 15:26:01 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USER" not found; SQL statement:
+DROP TABLE user; [42102-200]
+2021-05-20 15:39:11 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "COMPANY" already exists; SQL statement:
+CREATE TABLE company (country VARCHAR(20) NOT NULL,address VARCHAR(50),phone VARCHAR(20),name varchar(50) NOT NULL UNIQUE,id INTEGER auto_increment,email VARCHAR(50) NOT NULL UNIQUE); [42101-200]
+2021-05-20 15:39:11 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "COUNTRY VARCHAR(20)": "'info@softwarehouse.com' (22)"; SQL statement:
+INSERT INTO company (country,address,phone,name,email) VALUES ('info@softwarehouse.com' ,'Paleologou 5, Attiki' ,'2154555666' ,'Software House Company' ,'Greece'); [22001-200]
+2021-05-20 15:40:52 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "COMPANY" already exists; SQL statement:
+CREATE TABLE company (country VARCHAR(20) NOT NULL,address VARCHAR(50),phone VARCHAR(20),name varchar(50) NOT NULL UNIQUE,id INTEGER auto_increment,email VARCHAR(50) NOT NULL UNIQUE); [42101-200]
+2021-05-20 15:40:52 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "COUNTRY VARCHAR(20)": "'info@softwarehouse.com' (22)"; SQL statement:
+INSERT INTO company (country,address,phone,name,email) VALUES ('info@softwarehouse.com' ,'Paleologou 5, Attiki' ,'2154555666' ,'Software House Company' ,'Greece'); [22001-200]
+2021-05-20 15:41:05 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "COUNTRY VARCHAR(20)": "'info@softwarehouse.com' (22)"; SQL statement:
+INSERT INTO company (country,address,phone,name,email) VALUES ('info@softwarehouse.com' ,'Paleologou 5, Attiki' ,'2154555666' ,'Software House Company' ,'Greece'); [22001-200]
+2021-05-20 15:42:31 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "COMPANY" already exists; SQL statement:
+CREATE TABLE company (country VARCHAR(20) NOT NULL,address VARCHAR(50),phone VARCHAR(20),name varchar(50) NOT NULL UNIQUE,id INTEGER auto_increment,email VARCHAR(50) NOT NULL UNIQUE); [42101-200]
+2021-05-20 15:44:00 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "COUNTRY VARCHAR(20)": "'info@softwarehouse.com' (22)"; SQL statement:
+INSERT INTO company (country,address,phone,name,email) VALUES ('info@softwarehouse.com' ,'Paleologou 5, Attiki' ,'2154555666' ,'Software House Company' ,'Greece'); [22001-200]
+2021-05-20 15:44:03 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "COMPANY" already exists; SQL statement:
+CREATE TABLE company (country VARCHAR(20) NOT NULL,address VARCHAR(50),phone VARCHAR(20),name varchar(50) NOT NULL UNIQUE,id INTEGER auto_increment,email VARCHAR(50) NOT NULL UNIQUE); [42101-200]
+2021-05-20 15:44:19 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USER" not found; SQL statement:
+DROP TABLE user; [42102-200]
+2021-05-20 15:44:53 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USER" not found; SQL statement:
+DROP TABLE user; [42102-200]
+2021-05-20 15:46:33 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USER" not found; SQL statement:
+DROP TABLE user; [42102-200]
+2021-05-20 15:49:51 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USER" already exists; SQL statement:
+CREATE TABLE user (education VARCHAR2(50),works BOOLEAN,phone VARCHAR2(20) UNIQUE,surname VARCHAR2(50) NOT NULL,name VARCHAR2(50) NOT NULL,id INTEGER auto_increment PRIMARY KEY,age VARCHAR2(3) NOT NULL,email VARCHAR2(50) NOT NULL UNIQUE); [42101-200]
+2021-05-20 15:50:04 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "COMPANY" not found; SQL statement:
+DROP TABLE company; [42102-200]
+2021-05-20 15:50:17 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USER" not found; SQL statement:
+DROP TABLE user; [42102-200]
+2021-05-20 15:50:17 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "COMPANY" not found; SQL statement:
+DROP TABLE company; [42102-200]
+2021-05-20 15:50:55 jdbc[13]: null
+org.h2.message.DbException: The connection was not closed by the application and is garbage collected [90018-200]
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.message.DbException.get(DbException.java:170)
+	at org.h2.jdbc.JdbcConnection.closeOld(JdbcConnection.java:245)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:186)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:152)
+	at org.h2.Driver.connect(Driver.java:69)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
+	at Server.connectionOpen(Server.java:28)
+	at FactoryHandler.getFiltering(FactoryHandler.java:122)
+	at UserController.getById(UserController.java:64)
+	at MainClass.main(MainClass.java:37)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientConnectionException: The connection was not closed by the application and is garbage collected [90018-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:622)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 13 more
+2021-05-20 15:50:55 jdbc[13]: null
+org.h2.message.DbException: The connection was not closed by the application and is garbage collected [90018-200]
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.message.DbException.get(DbException.java:170)
+	at org.h2.jdbc.JdbcConnection.closeOld(JdbcConnection.java:245)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:186)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:152)
+	at org.h2.Driver.connect(Driver.java:69)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
+	at Server.connectionOpen(Server.java:28)
+	at FactoryHandler.getFiltering(FactoryHandler.java:122)
+	at UserController.getById(UserController.java:64)
+	at MainClass.main(MainClass.java:37)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientConnectionException: The connection was not closed by the application and is garbage collected [90018-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:622)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 13 more
+2021-05-20 15:54:37 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USER" not found; SQL statement:
+DROP TABLE user; [42102-200]
+2021-05-20 15:55:12 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USER" not found; SQL statement:
+DROP TABLE user; [42102-200]
+2021-05-20 15:55:12 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "COMPANY" not found; SQL statement:
+DROP TABLE company; [42102-200]
+2021-05-20 15:55:42 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USER" not found; SQL statement:
+DROP TABLE user; [42102-200]
+2021-05-20 15:55:42 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "COMPANY" not found; SQL statement:
+DROP TABLE company; [42102-200]
+2021-05-20 15:55:58 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USER" not found; SQL statement:
+DROP TABLE user; [42102-200]
+2021-05-20 15:55:58 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "COMPANY" not found; SQL statement:
+DROP TABLE company; [42102-200]
+2021-05-20 15:57:24 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USER" not found; SQL statement:
+DROP TABLE user; [42102-200]
+2021-05-20 15:57:24 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "COMPANY" not found; SQL statement:
+DROP TABLE company; [42102-200]
+2021-05-20 15:58:31 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USER" not found; SQL statement:
+DROP TABLE user; [42102-200]
+2021-05-20 15:58:31 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "COMPANY" not found; SQL statement:
+DROP TABLE company; [42102-200]
+2021-05-20 16:09:09 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USER" not found; SQL statement:
+DROP TABLE user; [42102-200]
+2021-05-20 16:09:09 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "COMPANY" not found; SQL statement:
+DROP TABLE company; [42102-200]
+2021-05-20 16:10:04 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USER" not found; SQL statement:
+DROP TABLE user; [42102-200]
+2021-05-20 16:10:04 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "COMPANY" not found; SQL statement:
+DROP TABLE company; [42102-200]
+2021-05-20 16:19:51 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USER" not found; SQL statement:
+DROP TABLE user; [42102-200]
+2021-05-20 16:19:51 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "COMPANY" not found; SQL statement:
+DROP TABLE company; [42102-200]
+2021-05-20 16:20:57 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USER" not found; SQL statement:
+DROP TABLE user; [42102-200]
+2021-05-20 16:21:13 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "COMPANY" not found; SQL statement:
+DROP TABLE company; [42102-200]
+2021-05-20 16:21:52 jdbc[13]: null
+org.h2.message.DbException: The connection was not closed by the application and is garbage collected [90018-200]
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.message.DbException.get(DbException.java:170)
+	at org.h2.jdbc.JdbcConnection.closeOld(JdbcConnection.java:245)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:186)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:152)
+	at org.h2.Driver.connect(Driver.java:69)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
+	at Server.connectionOpen(Server.java:26)
+	at FactoryHandler.getFiltering(FactoryHandler.java:125)
+	at UserController.getById(UserController.java:75)
+	at MainClass.main(MainClass.java:37)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientConnectionException: The connection was not closed by the application and is garbage collected [90018-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:622)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 13 more
+2021-05-20 16:21:52 jdbc[13]: null
+org.h2.message.DbException: The connection was not closed by the application and is garbage collected [90018-200]
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.message.DbException.get(DbException.java:170)
+	at org.h2.jdbc.JdbcConnection.closeOld(JdbcConnection.java:245)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:186)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:152)
+	at org.h2.Driver.connect(Driver.java:69)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
+	at Server.connectionOpen(Server.java:26)
+	at FactoryHandler.getFiltering(FactoryHandler.java:125)
+	at UserController.getById(UserController.java:75)
+	at MainClass.main(MainClass.java:37)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientConnectionException: The connection was not closed by the application and is garbage collected [90018-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:622)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 13 more
+2021-05-20 16:22:09 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "COMPANY" not found; SQL statement:
+DROP TABLE company; [42102-200]
+2021-05-20 16:22:22 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USER" not found; SQL statement:
+DROP TABLE user; [42102-200]
+2021-05-20 16:22:22 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "COMPANY" not found; SQL statement:
+DROP TABLE company; [42102-200]
+2021-05-20 16:23:22 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USER" not found; SQL statement:
+DROP TABLE user; [42102-200]
+2021-05-20 16:23:22 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "COMPANY" not found; SQL statement:
+DROP TABLE company; [42102-200]
+2021-05-20 16:23:28 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USER" not found; SQL statement:
+DROP TABLE user; [42102-200]
+2021-05-20 16:23:28 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "COMPANY" not found; SQL statement:
+DROP TABLE company; [42102-200]
+2021-05-20 16:23:35 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USER" not found; SQL statement:
+DROP TABLE user; [42102-200]
+2021-05-20 16:23:35 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "COMPANY" not found; SQL statement:
+DROP TABLE company; [42102-200]
+2021-05-20 16:23:53 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USER" not found; SQL statement:
+DROP TABLE user; [42102-200]
+2021-05-20 16:23:53 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "COMPANY" not found; SQL statement:
+DROP TABLE company; [42102-200]
+2021-05-20 16:24:27 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "COMPANY" not found; SQL statement:
+DROP TABLE company; [42102-200]
+2021-05-20 16:37:16 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USER" not found; SQL statement:
+DROP TABLE user; [42102-200]
+2021-05-20 16:37:16 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "COMPANY" not found; SQL statement:
+DROP TABLE company; [42102-200]

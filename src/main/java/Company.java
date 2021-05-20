@@ -2,12 +2,12 @@ import java.util.HashMap;
 
 public class Company {
 
-    int id;
-    String name;
-    String email;
-    String country;
-    String phone;
-    String address;
+    private int id;
+    private String name;
+    private String email;
+    private String country;
+    private String phone;
+    private String address;
 
     public Company(String name, String email, String country, String phone, String address) {
         this.name = name;

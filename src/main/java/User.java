@@ -1,22 +1,24 @@
+import org.json.simple.JSONObject;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
 
 public class User {
 
-    int id;
-    String name;
-    String surname;
-    String age;
-    String email;
-    String phone;
-    String education;
-    boolean works;
+    private int id;
+    private String name;
+    private String surname;
+    private int age;
+    private String email;
+    private String phone;
+    private String education;
+    private boolean works;
 
     public User() {
     }
 
-    public User(String name, String surname, String age, String email, String phone, String education, boolean works) {
+    public User(String name, String surname, int age, String email, String phone, String education, boolean works) {
         this.name = name;
         this.surname = surname;
         this.age = age;
@@ -30,6 +32,7 @@ public class User {
         this.id = Integer.parseInt(map.get("id"));
         this.name = map.get("name");
         this.surname = map.get("surname");
+        this.age = Integer.parseInt(map.get("age"));
         this.email = map.get("email");
         this.phone = map.get("phone");
         this.education = map.get("education");
@@ -37,10 +40,6 @@ public class User {
     }
 
     ////////SETTERS///////
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public void setName(String name) {
         this.name = name;
     }
@@ -49,7 +48,7 @@ public class User {
         this.surname = surname;
     }
 
-    public void setAge(String age) {
+    public void setAge(int age) {
         this.age = age;
     }
 
@@ -80,7 +79,7 @@ public class User {
         return surname;
     }
 
-    public String getAge() {
+    public int getAge() {
         return age;
     }
 
@@ -105,7 +104,7 @@ public class User {
 
         userMap.put("name", getName());
         userMap.put("surname", getSurname());
-        userMap.put("age", getAge());
+        userMap.put("age", Integer.toString(getAge()));
         userMap.put("email", getEmail());
         userMap.put("phone", getPhone());
         userMap.put("education", getEducation());

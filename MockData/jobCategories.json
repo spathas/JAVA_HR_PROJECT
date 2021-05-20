@@ -1,0 +1,18 @@
+[
+  {
+    "category": "IT",
+    "role": "Developer"
+  },
+  {
+    "category": "Business",
+    "role": "HR"
+  },
+  {
+    "category": "Medical",
+    "role": "Nurse"
+  },
+  {
+    "category": "Business",
+    "role": "Marketing"
+  }
+]

@@ -27,9 +27,10 @@ public interface FactoryHandler {
 
         server.executeUpdateQuery(query);
 
-        System.out.println("Table company completed.");
+        System.out.println("Table " + tableName + " completed.");
 
         server.connectionClose();
+        System.out.println("");
     }
 
     //Insert data to table
@@ -58,6 +59,7 @@ public interface FactoryHandler {
 
         //Output
         System.out.println("Insert 1 row");
+        System.out.println("");
     }
 
     //Update data table by id
@@ -71,13 +73,13 @@ public interface FactoryHandler {
         }
         query = query.substring(0, query.length()-2).concat(" WHERE ID = " + id + ";");
 
-        System.out.println(query);
+//        System.out.println(query);
 
         server.executeUpdateQuery(query);
         System.out.println("Update completed!");
 
-
         server.connectionClose();
+        System.out.println("");
     }
 
     // Get all data from a table
@@ -111,12 +113,13 @@ public interface FactoryHandler {
         }
 
         server.connectionClose();
+        System.out.println("");
 
         return objectsMap;
     }
 
-    // Get a single row from table by id
-    static HashMap<Integer, HashMap<String, String>> getById(String tableName, HashMap<String, String> table, String filter) throws SQLException, ClassNotFoundException {
+    // Get a single row from table by inserted filter query. eg: "where id = id"
+    static HashMap<Integer, HashMap<String, String>> getFiltering(String tableName, HashMap<String, String> table, String filter) throws SQLException, ClassNotFoundException {
 
         HashMap<Integer, HashMap<String, String>> objectsMap = new HashMap<>();
         server.connectionOpen();
@@ -140,6 +143,7 @@ public interface FactoryHandler {
         }
 
         server.connectionClose();
+        System.out.println("");
 
         return objectsMap;
     }
@@ -151,6 +155,6 @@ public interface FactoryHandler {
         server.executeUpdateQuery("DROP TABLE " + tableName + ";");
 
         server.connectionClose();
+        System.out.println("Table " + tableName + "dropped!");
     }
-
 }

@@ -23,21 +23,19 @@ public class Server {
         Class.forName(driver);
 
         //Open a connection
-
-        System.out.println("");
         this.conn = DriverManager.getConnection(url,user,password);
     }
 
     public void executeInsertQuery(String query) throws SQLException {
         pstmt = conn.prepareStatement(query);
         pstmt.execute();
-        System.out.println("Query: [ " + query + " ] executed.");
+//        System.out.println("Query: [ " + query + " ] executed.");
     }
 
     public void executeUpdateQuery(String query) throws SQLException {
         stmt = conn.createStatement();
         stmt.executeUpdate(query);
-        System.out.println("Query: [ " + query + " ] executed.");
+//        System.out.println("Query: [ " + query + " ] executed.");
     }
 
     public ResultSet executeQuery(String query) throws SQLException {
@@ -49,8 +47,6 @@ public class Server {
         if(pstmt != null) pstmt.close();
         if(stmt != null) stmt.close();
         conn.close();
-
-        System.out.println("");
 
         try{
             if(stmt!=null) stmt.close();
