@@ -22,7 +22,7 @@ public class MainClass {
 
 
         userController.drop();
-        companyController.drop();
+
 
 //        TEST FACTORY FUNC
         try{
