@@ -42,7 +42,7 @@ java.sql.SQLClientInfoException: Client info name 'ApplicationName' not supporte
 	at java.base/java.lang.Thread.run(Thread.java:834)
 2021-05-19 23:41:57 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USER" not found; SQL statement:
-SELECT country, address, phone, name, id, email FROM user where id = 0 [42102-200]
+SELECT country, address, phone, name, id, email FROM jobApplicant where id = 0 [42102-200]
 2021-05-19 21:24:08 jdbc[3]: exception
 java.sql.SQLClientInfoException: Client info name 'ApplicationName' not supported.
 	at org.h2.jdbc.JdbcConnection.setClientInfo(JdbcConnection.java:1749)
@@ -66,7 +66,7 @@ java.sql.SQLClientInfoException: Client info name 'ApplicationName' not supporte
 	at java.base/java.lang.Thread.run(Thread.java:834)
 2021-05-19 21:24:08 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USER" not found; SQL statement:
-select * from user [42102-200]
+select * from jobApplicant [42102-200]
 2021-05-19 21:24:17 jdbc[4]: exception
 java.sql.SQLClientInfoException: Client info name 'ApplicationName' not supported.
 	at org.h2.jdbc.JdbcConnection.setClientInfo(JdbcConnection.java:1749)
@@ -126,7 +126,7 @@ org.h2.message.DbException: General error: "java.lang.IllegalStateException: The
 	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
 	at Server.connectionOpen(Server.java:28)
 	at FactoryHandler.create(FactoryHandler.java:19)
-	at UserController.create(UserController.java:21)
+	at JobApplicantController.create(JobApplicantController.java:21)
 	at MainClass.main(MainClass.java:26)
 Caused by: org.h2.jdbc.JdbcSQLNonTransientException: General error: "java.lang.IllegalStateException: The file is locked: nio:E:/MyProjects/JAVA_HR_PROJECT/src/main/resources/HR_DATABASE.mv.db [1.4.200/7]" [50000-200]
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:505)
@@ -165,7 +165,7 @@ org.h2.message.DbException: General error: "java.lang.IllegalStateException: The
 	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
 	at Server.connectionOpen(Server.java:28)
 	at FactoryHandler.insert(FactoryHandler.java:36)
-	at UserController.insert(UserController.java:34)
+	at JobApplicantController.insert(JobApplicantController.java:34)
 	at MainClass.main(MainClass.java:27)
 Caused by: org.h2.jdbc.JdbcSQLNonTransientException: General error: "java.lang.IllegalStateException: The file is locked: nio:E:/MyProjects/JAVA_HR_PROJECT/src/main/resources/HR_DATABASE.mv.db [1.4.200/7]" [50000-200]
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:505)
@@ -241,10 +241,10 @@ java.sql.SQLClientInfoException: Client info name 'ApplicationName' not supporte
 	at java.base/java.lang.Thread.run(Thread.java:834)
 2021-05-20 00:31:29 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USER" already exists; SQL statement:
-CREATE TABLE user (education VARCHAR2(50),works BOOLEAN,phone VARCHAR2(20),surname VARCHAR2(50) NOT NULL,name VARCHAR2(50) NOT NULL,id INTEGER auto_increment PRIMARY KEY,age VARCHAR2(3) NOT NULL,email VARCHAR2(50) NOT NULL); [42101-200]
+CREATE TABLE jobApplicant (education VARCHAR2(50),works BOOLEAN,phone VARCHAR2(20),surname VARCHAR2(50) NOT NULL,name VARCHAR2(50) NOT NULL,id INTEGER auto_increment PRIMARY KEY,age VARCHAR2(3) NOT NULL,email VARCHAR2(50) NOT NULL); [42101-200]
 2021-05-20 00:31:58 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USER" already exists; SQL statement:
-CREATE TABLE user (education VARCHAR2(50),works BOOLEAN,phone VARCHAR2(20),surname VARCHAR2(50) NOT NULL,name VARCHAR2(50) NOT NULL,id INTEGER auto_increment PRIMARY KEY,age VARCHAR2(3) NOT NULL,email VARCHAR2(50) NOT NULL); [42101-200]
+CREATE TABLE jobApplicant (education VARCHAR2(50),works BOOLEAN,phone VARCHAR2(20),surname VARCHAR2(50) NOT NULL,name VARCHAR2(50) NOT NULL,id INTEGER auto_increment PRIMARY KEY,age VARCHAR2(3) NOT NULL,email VARCHAR2(50) NOT NULL); [42101-200]
 2021-05-19 21:53:01 jdbc[3]: exception
 java.sql.SQLClientInfoException: Client info name 'ApplicationName' not supported.
 	at org.h2.jdbc.JdbcConnection.setClientInfo(JdbcConnection.java:1749)
@@ -294,10 +294,10 @@ java.sql.SQLClientInfoException: Client info name 'ApplicationName' not supporte
 	at java.base/java.lang.Thread.run(Thread.java:834)
 2021-05-20 00:55:53 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USER" already exists; SQL statement:
-CREATE TABLE user (education VARCHAR2(50),works BOOLEAN,phone VARCHAR2(20) UNIQUE,surname VARCHAR2(50) NOT NULL,name VARCHAR2(50) NOT NULL,id INTEGER auto_increment PRIMARY KEY,age VARCHAR2(3) NOT NULL,email VARCHAR2(50) NOT NULL UNIQUE); [42101-200]
+CREATE TABLE jobApplicant (education VARCHAR2(50),works BOOLEAN,phone VARCHAR2(20) UNIQUE,surname VARCHAR2(50) NOT NULL,name VARCHAR2(50) NOT NULL,id INTEGER auto_increment PRIMARY KEY,age VARCHAR2(3) NOT NULL,email VARCHAR2(50) NOT NULL UNIQUE); [42101-200]
 2021-05-20 00:59:22 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "UPDATE USER SET EDUCATION = COMPUTER SCIENCE[*], WORKS = FALSE, PHONE = 6985544778, SURNAME = SMITH, NAME = NICOLAS, AGE = 10, EMAIL = NICK@EXAMPLE.COM WHERE ID = 0;"; SQL statement:
-UPDATE user SET education = Computer Science, works = false, phone = 6985544778, surname = Smith, name = Nicolas, age = 10, email = nick@example.com WHERE ID = 0; [42000-200]
+UPDATE jobApplicant SET education = Computer Science, works = false, phone = 6985544778, surname = Smith, name = Nicolas, age = 10, email = nick@example.com WHERE ID = 0; [42000-200]
 2021-05-19 22:00:46 jdbc[3]: exception
 java.sql.SQLClientInfoException: Client info name 'ApplicationName' not supported.
 	at org.h2.jdbc.JdbcConnection.setClientInfo(JdbcConnection.java:1749)
@@ -389,7 +389,7 @@ org.h2.message.DbException: General error: "java.lang.IllegalStateException: The
 	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
 	at Server.connectionOpen(Server.java:28)
 	at FactoryHandler.update(FactoryHandler.java:66)
-	at UserController.update(UserController.java:52)
+	at JobApplicantController.update(JobApplicantController.java:52)
 	at MainClass.main(MainClass.java:27)
 Caused by: org.h2.jdbc.JdbcSQLNonTransientException: General error: "java.lang.IllegalStateException: The file is locked: nio:E:/MyProjects/JAVA_HR_PROJECT/src/main/resources/HR_DATABASE.mv.db [1.4.200/7]" [50000-200]
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:505)
@@ -491,7 +491,7 @@ org.h2.message.DbException: General error: "java.lang.IllegalStateException: The
 	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
 	at Server.connectionOpen(Server.java:28)
 	at FactoryHandler.update(FactoryHandler.java:66)
-	at UserController.update(UserController.java:52)
+	at JobApplicantController.update(JobApplicantController.java:52)
 	at MainClass.main(MainClass.java:28)
 Caused by: org.h2.jdbc.JdbcSQLNonTransientException: General error: "java.lang.IllegalStateException: The file is locked: nio:E:/MyProjects/JAVA_HR_PROJECT/src/main/resources/HR_DATABASE.mv.db [1.4.200/7]" [50000-200]
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:505)
@@ -530,7 +530,7 @@ org.h2.message.DbException: General error: "java.lang.IllegalStateException: The
 	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
 	at Server.connectionOpen(Server.java:28)
 	at FactoryHandler.getById(FactoryHandler.java:122)
-	at UserController.getById(UserController.java:56)
+	at JobApplicantController.getById(JobApplicantController.java:56)
 	at MainClass.main(MainClass.java:25)
 Caused by: org.h2.jdbc.JdbcSQLNonTransientException: General error: "java.lang.IllegalStateException: The file is locked: nio:E:/MyProjects/JAVA_HR_PROJECT/src/main/resources/HR_DATABASE.mv.db [1.4.200/7]" [50000-200]
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:505)
@@ -543,28 +543,28 @@ Caused by: java.lang.IllegalStateException: The file is locked: nio:E:/MyProject
 	... 22 more
 2021-05-20 01:13:00 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USER" already exists; SQL statement:
-CREATE TABLE user (education VARCHAR2(50),works BOOLEAN,phone VARCHAR2(20) UNIQUE,surname VARCHAR2(50) NOT NULL,name VARCHAR2(50) NOT NULL,id INTEGER auto_increment PRIMARY KEY,age VARCHAR2(3) NOT NULL,email VARCHAR2(50) NOT NULL UNIQUE); [42101-200]
+CREATE TABLE jobApplicant (education VARCHAR2(50),works BOOLEAN,phone VARCHAR2(20) UNIQUE,surname VARCHAR2(50) NOT NULL,name VARCHAR2(50) NOT NULL,id INTEGER auto_increment PRIMARY KEY,age VARCHAR2(3) NOT NULL,email VARCHAR2(50) NOT NULL UNIQUE); [42101-200]
 2021-05-20 01:13:36 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "COMPANY" not found; SQL statement:
 DROP TABLE company; [42102-200]
 2021-05-20 01:13:36 jdbc[10]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USER" not found; SQL statement:
-SELECT education, works, phone, surname, name, id, age, email FROM user where id = 1 [42102-200]
+SELECT education, works, phone, surname, name, id, age, email FROM jobApplicant where id = 1 [42102-200]
 2021-05-20 01:15:25 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "COMPANY" not found; SQL statement:
 DROP TABLE company; [42102-200]
 2021-05-20 01:15:36 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USER" not found; SQL statement:
-DROP TABLE user; [42102-200]
+DROP TABLE jobApplicant; [42102-200]
 2021-05-20 01:15:54 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USER" not found; SQL statement:
-SELECT education, works, phone, surname, name, id, age, email FROM user where id = 1 [42102-200]
+SELECT education, works, phone, surname, name, id, age, email FROM jobApplicant where id = 1 [42102-200]
 2021-05-20 01:16:38 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "COMPANY" not found; SQL statement:
 DROP TABLE company; [42102-200]
 2021-05-20 01:16:38 jdbc[10]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USER" not found; SQL statement:
-SELECT education, works, phone, surname, name, id, age, email FROM user where id = 1 [42102-200]
+SELECT education, works, phone, surname, name, id, age, email FROM jobApplicant where id = 1 [42102-200]
 2021-05-20 09:52:42 jdbc[3]: exception
 java.sql.SQLClientInfoException: Client info name 'ApplicationName' not supported.
 	at org.h2.jdbc.JdbcConnection.setClientInfo(JdbcConnection.java:1749)
@@ -588,31 +588,31 @@ java.sql.SQLClientInfoException: Client info name 'ApplicationName' not supporte
 	at java.base/java.lang.Thread.run(Thread.java:834)
 2021-05-20 14:34:00 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USER" already exists; SQL statement:
-CREATE TABLE user (education VARCHAR2(50),works BOOLEAN,phone VARCHAR2(20) UNIQUE,surname VARCHAR2(50) NOT NULL,name VARCHAR2(50) NOT NULL,id INTEGER auto_increment PRIMARY KEY,age VARCHAR2(3) NOT NULL,email VARCHAR2(50) NOT NULL UNIQUE); [42101-200]
+CREATE TABLE jobApplicant (education VARCHAR2(50),works BOOLEAN,phone VARCHAR2(20) UNIQUE,surname VARCHAR2(50) NOT NULL,name VARCHAR2(50) NOT NULL,id INTEGER auto_increment PRIMARY KEY,age VARCHAR2(3) NOT NULL,email VARCHAR2(50) NOT NULL UNIQUE); [42101-200]
 2021-05-20 14:36:54 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USER" already exists; SQL statement:
-CREATE TABLE user (education VARCHAR2(50),works BOOLEAN,phone VARCHAR2(20) UNIQUE,surname VARCHAR2(50) NOT NULL,name VARCHAR2(50) NOT NULL,id INTEGER auto_increment PRIMARY KEY,age VARCHAR2(3) NOT NULL,email VARCHAR2(50) NOT NULL UNIQUE); [42101-200]
+CREATE TABLE jobApplicant (education VARCHAR2(50),works BOOLEAN,phone VARCHAR2(20) UNIQUE,surname VARCHAR2(50) NOT NULL,name VARCHAR2(50) NOT NULL,id INTEGER auto_increment PRIMARY KEY,age VARCHAR2(3) NOT NULL,email VARCHAR2(50) NOT NULL UNIQUE); [42101-200]
 2021-05-20 14:37:16 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE USER )[*];"; SQL statement:
-CREATE TABLE user ); [42000-200]
+CREATE TABLE jobApplicant ); [42000-200]
 2021-05-20 14:37:16 jdbc[4]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USER" not found; SQL statement:
-INSERT INTO user (education,works,phone,surname,name,age,email) VALUES ('Computer Science' ,'false' ,'6985544778' ,'Smith' ,'Nick' ,'50' ,'nick@example.com'); [42102-200]
+INSERT INTO jobApplicant (education,works,phone,surname,name,age,email) VALUES ('Computer Science' ,'false' ,'6985544778' ,'Smith' ,'Nick' ,'50' ,'nick@example.com'); [42102-200]
 2021-05-20 14:37:41 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE USER )[*];"; SQL statement:
-CREATE TABLE user ); [42000-200]
+CREATE TABLE jobApplicant ); [42000-200]
 2021-05-20 14:37:41 jdbc[4]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USER" not found; SQL statement:
-INSERT INTO user (education,works,phone,surname,name,age,email) VALUES ('Computer Science' ,'false' ,'6985544778' ,'Smith' ,'Nick' ,'50' ,'nick@example.com'); [42102-200]
+INSERT INTO jobApplicant (education,works,phone,surname,name,age,email) VALUES ('Computer Science' ,'false' ,'6985544778' ,'Smith' ,'Nick' ,'50' ,'nick@example.com'); [42102-200]
 2021-05-20 15:08:17 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USER" already exists; SQL statement:
-CREATE TABLE user (education VARCHAR2(50),works BOOLEAN,phone VARCHAR2(20) UNIQUE,surname VARCHAR2(50) NOT NULL,name VARCHAR2(50) NOT NULL,id INTEGER auto_increment PRIMARY KEY,age VARCHAR2(3) NOT NULL,email VARCHAR2(50) NOT NULL UNIQUE); [42101-200]
+CREATE TABLE jobApplicant (education VARCHAR2(50),works BOOLEAN,phone VARCHAR2(20) UNIQUE,surname VARCHAR2(50) NOT NULL,name VARCHAR2(50) NOT NULL,id INTEGER auto_increment PRIMARY KEY,age VARCHAR2(3) NOT NULL,email VARCHAR2(50) NOT NULL UNIQUE); [42101-200]
 2021-05-20 15:15:44 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USER" already exists; SQL statement:
-CREATE TABLE user (education VARCHAR2(50),works BOOLEAN,phone VARCHAR2(20) UNIQUE,surname VARCHAR2(50) NOT NULL,name VARCHAR2(50) NOT NULL,id INTEGER auto_increment PRIMARY KEY,age VARCHAR2(3) NOT NULL,email VARCHAR2(50) NOT NULL UNIQUE); [42101-200]
+CREATE TABLE jobApplicant (education VARCHAR2(50),works BOOLEAN,phone VARCHAR2(20) UNIQUE,surname VARCHAR2(50) NOT NULL,name VARCHAR2(50) NOT NULL,id INTEGER auto_increment PRIMARY KEY,age VARCHAR2(3) NOT NULL,email VARCHAR2(50) NOT NULL UNIQUE); [42101-200]
 2021-05-20 15:26:01 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USER" not found; SQL statement:
-DROP TABLE user; [42102-200]
+DROP TABLE jobApplicant; [42102-200]
 2021-05-20 15:39:11 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "COMPANY" already exists; SQL statement:
 CREATE TABLE company (country VARCHAR(20) NOT NULL,address VARCHAR(50),phone VARCHAR(20),name varchar(50) NOT NULL UNIQUE,id INTEGER auto_increment,email VARCHAR(50) NOT NULL UNIQUE); [42101-200]
@@ -639,22 +639,22 @@ org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "COMPANY" already exists; SQL sta
 CREATE TABLE company (country VARCHAR(20) NOT NULL,address VARCHAR(50),phone VARCHAR(20),name varchar(50) NOT NULL UNIQUE,id INTEGER auto_increment,email VARCHAR(50) NOT NULL UNIQUE); [42101-200]
 2021-05-20 15:44:19 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USER" not found; SQL statement:
-DROP TABLE user; [42102-200]
+DROP TABLE jobApplicant; [42102-200]
 2021-05-20 15:44:53 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USER" not found; SQL statement:
-DROP TABLE user; [42102-200]
+DROP TABLE jobApplicant; [42102-200]
 2021-05-20 15:46:33 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USER" not found; SQL statement:
-DROP TABLE user; [42102-200]
+DROP TABLE jobApplicant; [42102-200]
 2021-05-20 15:49:51 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USER" already exists; SQL statement:
-CREATE TABLE user (education VARCHAR2(50),works BOOLEAN,phone VARCHAR2(20) UNIQUE,surname VARCHAR2(50) NOT NULL,name VARCHAR2(50) NOT NULL,id INTEGER auto_increment PRIMARY KEY,age VARCHAR2(3) NOT NULL,email VARCHAR2(50) NOT NULL UNIQUE); [42101-200]
+CREATE TABLE jobApplicant (education VARCHAR2(50),works BOOLEAN,phone VARCHAR2(20) UNIQUE,surname VARCHAR2(50) NOT NULL,name VARCHAR2(50) NOT NULL,id INTEGER auto_increment PRIMARY KEY,age VARCHAR2(3) NOT NULL,email VARCHAR2(50) NOT NULL UNIQUE); [42101-200]
 2021-05-20 15:50:04 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "COMPANY" not found; SQL statement:
 DROP TABLE company; [42102-200]
 2021-05-20 15:50:17 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USER" not found; SQL statement:
-DROP TABLE user; [42102-200]
+DROP TABLE jobApplicant; [42102-200]
 2021-05-20 15:50:17 jdbc[4]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "COMPANY" not found; SQL statement:
 DROP TABLE company; [42102-200]
@@ -671,7 +671,7 @@ org.h2.message.DbException: The connection was not closed by the application and
 	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
 	at Server.connectionOpen(Server.java:28)
 	at FactoryHandler.getFiltering(FactoryHandler.java:122)
-	at UserController.getById(UserController.java:64)
+	at JobApplicantController.getById(JobApplicantController.java:64)
 	at MainClass.main(MainClass.java:37)
 Caused by: org.h2.jdbc.JdbcSQLNonTransientConnectionException: The connection was not closed by the application and is garbage collected [90018-200]
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:622)
@@ -690,7 +690,7 @@ org.h2.message.DbException: The connection was not closed by the application and
 	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
 	at Server.connectionOpen(Server.java:28)
 	at FactoryHandler.getFiltering(FactoryHandler.java:122)
-	at UserController.getById(UserController.java:64)
+	at JobApplicantController.getById(JobApplicantController.java:64)
 	at MainClass.main(MainClass.java:37)
 Caused by: org.h2.jdbc.JdbcSQLNonTransientConnectionException: The connection was not closed by the application and is garbage collected [90018-200]
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:622)
@@ -698,58 +698,58 @@ Caused by: org.h2.jdbc.JdbcSQLNonTransientConnectionException: The connection wa
 	... 13 more
 2021-05-20 15:54:37 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USER" not found; SQL statement:
-DROP TABLE user; [42102-200]
+DROP TABLE jobApplicant; [42102-200]
 2021-05-20 15:55:12 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USER" not found; SQL statement:
-DROP TABLE user; [42102-200]
+DROP TABLE jobApplicant; [42102-200]
 2021-05-20 15:55:12 jdbc[4]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "COMPANY" not found; SQL statement:
 DROP TABLE company; [42102-200]
 2021-05-20 15:55:42 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USER" not found; SQL statement:
-DROP TABLE user; [42102-200]
+DROP TABLE jobApplicant; [42102-200]
 2021-05-20 15:55:42 jdbc[4]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "COMPANY" not found; SQL statement:
 DROP TABLE company; [42102-200]
 2021-05-20 15:55:58 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USER" not found; SQL statement:
-DROP TABLE user; [42102-200]
+DROP TABLE jobApplicant; [42102-200]
 2021-05-20 15:55:58 jdbc[4]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "COMPANY" not found; SQL statement:
 DROP TABLE company; [42102-200]
 2021-05-20 15:57:24 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USER" not found; SQL statement:
-DROP TABLE user; [42102-200]
+DROP TABLE jobApplicant; [42102-200]
 2021-05-20 15:57:24 jdbc[4]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "COMPANY" not found; SQL statement:
 DROP TABLE company; [42102-200]
 2021-05-20 15:58:31 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USER" not found; SQL statement:
-DROP TABLE user; [42102-200]
+DROP TABLE jobApplicant; [42102-200]
 2021-05-20 15:58:31 jdbc[4]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "COMPANY" not found; SQL statement:
 DROP TABLE company; [42102-200]
 2021-05-20 16:09:09 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USER" not found; SQL statement:
-DROP TABLE user; [42102-200]
+DROP TABLE jobApplicant; [42102-200]
 2021-05-20 16:09:09 jdbc[4]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "COMPANY" not found; SQL statement:
 DROP TABLE company; [42102-200]
 2021-05-20 16:10:04 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USER" not found; SQL statement:
-DROP TABLE user; [42102-200]
+DROP TABLE jobApplicant; [42102-200]
 2021-05-20 16:10:04 jdbc[4]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "COMPANY" not found; SQL statement:
 DROP TABLE company; [42102-200]
 2021-05-20 16:19:51 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USER" not found; SQL statement:
-DROP TABLE user; [42102-200]
+DROP TABLE jobApplicant; [42102-200]
 2021-05-20 16:19:51 jdbc[4]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "COMPANY" not found; SQL statement:
 DROP TABLE company; [42102-200]
 2021-05-20 16:20:57 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USER" not found; SQL statement:
-DROP TABLE user; [42102-200]
+DROP TABLE jobApplicant; [42102-200]
 2021-05-20 16:21:13 jdbc[4]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "COMPANY" not found; SQL statement:
 DROP TABLE company; [42102-200]
@@ -766,7 +766,7 @@ org.h2.message.DbException: The connection was not closed by the application and
 	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
 	at Server.connectionOpen(Server.java:26)
 	at FactoryHandler.getFiltering(FactoryHandler.java:125)
-	at UserController.getById(UserController.java:75)
+	at JobApplicantController.getById(JobApplicantController.java:75)
 	at MainClass.main(MainClass.java:37)
 Caused by: org.h2.jdbc.JdbcSQLNonTransientConnectionException: The connection was not closed by the application and is garbage collected [90018-200]
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:622)
@@ -785,7 +785,7 @@ org.h2.message.DbException: The connection was not closed by the application and
 	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
 	at Server.connectionOpen(Server.java:26)
 	at FactoryHandler.getFiltering(FactoryHandler.java:125)
-	at UserController.getById(UserController.java:75)
+	at JobApplicantController.getById(JobApplicantController.java:75)
 	at MainClass.main(MainClass.java:37)
 Caused by: org.h2.jdbc.JdbcSQLNonTransientConnectionException: The connection was not closed by the application and is garbage collected [90018-200]
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:622)
@@ -796,31 +796,31 @@ org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "COMPANY" not found; SQL statemen
 DROP TABLE company; [42102-200]
 2021-05-20 16:22:22 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USER" not found; SQL statement:
-DROP TABLE user; [42102-200]
+DROP TABLE jobApplicant; [42102-200]
 2021-05-20 16:22:22 jdbc[4]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "COMPANY" not found; SQL statement:
 DROP TABLE company; [42102-200]
 2021-05-20 16:23:22 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USER" not found; SQL statement:
-DROP TABLE user; [42102-200]
+DROP TABLE jobApplicant; [42102-200]
 2021-05-20 16:23:22 jdbc[4]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "COMPANY" not found; SQL statement:
 DROP TABLE company; [42102-200]
 2021-05-20 16:23:28 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USER" not found; SQL statement:
-DROP TABLE user; [42102-200]
+DROP TABLE jobApplicant; [42102-200]
 2021-05-20 16:23:28 jdbc[4]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "COMPANY" not found; SQL statement:
 DROP TABLE company; [42102-200]
 2021-05-20 16:23:35 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USER" not found; SQL statement:
-DROP TABLE user; [42102-200]
+DROP TABLE jobApplicant; [42102-200]
 2021-05-20 16:23:35 jdbc[4]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "COMPANY" not found; SQL statement:
 DROP TABLE company; [42102-200]
 2021-05-20 16:23:53 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USER" not found; SQL statement:
-DROP TABLE user; [42102-200]
+DROP TABLE jobApplicant; [42102-200]
 2021-05-20 16:23:53 jdbc[4]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "COMPANY" not found; SQL statement:
 DROP TABLE company; [42102-200]
@@ -829,7 +829,7 @@ org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "COMPANY" not found; SQL statemen
 DROP TABLE company; [42102-200]
 2021-05-20 16:37:16 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USER" not found; SQL statement:
-DROP TABLE user; [42102-200]
+DROP TABLE jobApplicant; [42102-200]
 2021-05-20 16:37:16 jdbc[4]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "COMPANY" not found; SQL statement:
 DROP TABLE company; [42102-200]
@@ -896,3 +896,551 @@ java.sql.SQLClientInfoException: Client info name 'ApplicationName' not supporte
 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
 	at java.base/java.lang.Thread.run(Thread.java:834)
+2021-05-21 15:05:25 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "COMPANY" already exists; SQL statement:
+CREATE TABLE company (country VARCHAR(20) NOT NULL,address VARCHAR(50),phone VARCHAR(20),name varchar(50) NOT NULL UNIQUE,id INTEGER auto_increment PRIMARY KEY,email VARCHAR(50) NOT NULL UNIQUE); [42101-200]
+2021-05-21 15:13:17 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USER" not found; SQL statement:
+INSERT INTO jobApplicant (education,works,phone,surname,name,age,email) VALUES ('Computer Science' ,'true' ,'69244589641' ,'Smith' ,'Nick' ,'50' ,'nick@example.com'); [42102-200]
+2021-05-21 15:38:51 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USER" not found; SQL statement:
+DROP TABLE jobApplicant; [42102-200]
+2021-05-21 15:38:51 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "COMPANY" not found; SQL statement:
+DROP TABLE company; [42102-200]
+2021-05-21 15:50:01 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "COMPANY" not found; SQL statement:
+DROP TABLE company; [42102-200]
+2021-05-21 16:53:47 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "JOBAPPLICANT" not found; SQL statement:
+DROP TABLE jobApplicant; [42102-200]
+2021-05-21 13:54:14 jdbc[3]: exception
+java.sql.SQLClientInfoException: Client info name 'ApplicationName' not supported.
+	at org.h2.jdbc.JdbcConnection.setClientInfo(JdbcConnection.java:1749)
+	at com.intellij.database.remote.jdbc.impl.RemoteConnectionImpl.setClientInfo(RemoteConnectionImpl.java:466)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at java.rmi/sun.rmi.server.UnicastServerRef.dispatch(UnicastServerRef.java:359)
+	at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:200)
+	at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:197)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.rmi/sun.rmi.transport.Transport.serviceCall(Transport.java:196)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport.handleMessages(TCPTransport.java:562)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(TCPTransport.java:796)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.lambda$run$0(TCPTransport.java:677)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(TCPTransport.java:676)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+2021-05-21 13:54:25 jdbc[3]: exception
+java.sql.SQLClientInfoException: Client info name 'ApplicationName' not supported.
+	at org.h2.jdbc.JdbcConnection.setClientInfo(JdbcConnection.java:1749)
+	at com.intellij.database.remote.jdbc.impl.RemoteConnectionImpl.setClientInfo(RemoteConnectionImpl.java:466)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at java.rmi/sun.rmi.server.UnicastServerRef.dispatch(UnicastServerRef.java:359)
+	at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:200)
+	at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:197)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.rmi/sun.rmi.transport.Transport.serviceCall(Transport.java:196)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport.handleMessages(TCPTransport.java:562)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(TCPTransport.java:796)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.lambda$run$0(TCPTransport.java:677)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(TCPTransport.java:676)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+2021-05-21 13:54:33 database: wrong user or password; user: "SPATHAS"
+org.h2.message.DbException: Wrong user name or password [28000-200]
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.message.DbException.get(DbException.java:170)
+	at org.h2.engine.Engine.openSession(Engine.java:131)
+	at org.h2.engine.Engine.openSession(Engine.java:192)
+	at org.h2.engine.Engine.createSessionAndValidate(Engine.java:171)
+	at org.h2.engine.Engine.createSession(Engine.java:166)
+	at org.h2.engine.Engine.createSession(Engine.java:29)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:340)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:173)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:152)
+	at org.h2.Driver.connect(Driver.java:69)
+	at com.intellij.database.remote.jdbc.helpers.JdbcHelperImpl.connect(JdbcHelperImpl.java:617)
+	at com.intellij.database.remote.jdbc.impl.RemoteDriverImpl.connect(RemoteDriverImpl.java:43)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at java.rmi/sun.rmi.server.UnicastServerRef.dispatch(UnicastServerRef.java:359)
+	at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:200)
+	at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:197)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.rmi/sun.rmi.transport.Transport.serviceCall(Transport.java:196)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport.handleMessages(TCPTransport.java:562)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(TCPTransport.java:796)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.lambda$run$0(TCPTransport.java:677)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(TCPTransport.java:676)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.h2.jdbc.JdbcSQLInvalidAuthorizationSpecException: Wrong user name or password [28000-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:461)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 31 more
+2021-05-21 13:54:33 database: wrong user or password; user: "SPATHAS"
+org.h2.message.DbException: Wrong user name or password [28000-200]
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.message.DbException.get(DbException.java:170)
+	at org.h2.engine.Engine.openSession(Engine.java:131)
+	at org.h2.engine.Engine.openSession(Engine.java:192)
+	at org.h2.engine.Engine.createSessionAndValidate(Engine.java:171)
+	at org.h2.engine.Engine.createSession(Engine.java:166)
+	at org.h2.engine.Engine.createSession(Engine.java:29)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:340)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:173)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:152)
+	at org.h2.Driver.connect(Driver.java:69)
+	at com.intellij.database.remote.jdbc.helpers.JdbcHelperImpl.connect(JdbcHelperImpl.java:617)
+	at com.intellij.database.remote.jdbc.impl.RemoteDriverImpl.connect(RemoteDriverImpl.java:43)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at java.rmi/sun.rmi.server.UnicastServerRef.dispatch(UnicastServerRef.java:359)
+	at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:200)
+	at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:197)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.rmi/sun.rmi.transport.Transport.serviceCall(Transport.java:196)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport.handleMessages(TCPTransport.java:562)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(TCPTransport.java:796)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.lambda$run$0(TCPTransport.java:677)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(TCPTransport.java:676)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.h2.jdbc.JdbcSQLInvalidAuthorizationSpecException: Wrong user name or password [28000-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:461)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 31 more
+2021-05-21 13:54:38 jdbc[4]: exception
+java.sql.SQLClientInfoException: Client info name 'ApplicationName' not supported.
+	at org.h2.jdbc.JdbcConnection.setClientInfo(JdbcConnection.java:1749)
+	at com.intellij.database.remote.jdbc.impl.RemoteConnectionImpl.setClientInfo(RemoteConnectionImpl.java:466)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at java.rmi/sun.rmi.server.UnicastServerRef.dispatch(UnicastServerRef.java:359)
+	at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:200)
+	at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:197)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.rmi/sun.rmi.transport.Transport.serviceCall(Transport.java:196)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport.handleMessages(TCPTransport.java:562)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(TCPTransport.java:796)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.lambda$run$0(TCPTransport.java:677)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(TCPTransport.java:676)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+2021-05-21 16:54:43 database: flush
+org.h2.message.DbException: General error: "java.lang.IllegalStateException: The file is locked: nio:/home/cspathas/MyProjects/JAVA_HR_PROJECT/src/main/resources/HR_DATABASE.mv.db [1.4.200/7]" [50000-200]
+	at org.h2.message.DbException.get(DbException.java:194)
+	at org.h2.message.DbException.convert(DbException.java:347)
+	at org.h2.mvstore.db.MVTableEngine$1.uncaughtException(MVTableEngine.java:93)
+	at org.h2.mvstore.MVStore.handleException(MVStore.java:2877)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:481)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:402)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:3579)
+	at org.h2.mvstore.db.MVTableEngine$Store.open(MVTableEngine.java:170)
+	at org.h2.mvstore.db.MVTableEngine.init(MVTableEngine.java:103)
+	at org.h2.engine.Database.getPageStore(Database.java:2659)
+	at org.h2.engine.Database.open(Database.java:675)
+	at org.h2.engine.Database.openDatabase(Database.java:307)
+	at org.h2.engine.Database.<init>(Database.java:301)
+	at org.h2.engine.Engine.openSession(Engine.java:74)
+	at org.h2.engine.Engine.openSession(Engine.java:192)
+	at org.h2.engine.Engine.createSessionAndValidate(Engine.java:171)
+	at org.h2.engine.Engine.createSession(Engine.java:166)
+	at org.h2.engine.Engine.createSession(Engine.java:29)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:340)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:173)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:152)
+	at org.h2.Driver.connect(Driver.java:69)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
+	at Server.connectionOpen(Server.java:26)
+	at FactoryHandler.drop(FactoryHandler.java:164)
+	at JobApplicantController.drop(JobApplicantController.java:92)
+	at MainClass.main(MainClass.java:16)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: General error: "java.lang.IllegalStateException: The file is locked: nio:/home/cspathas/MyProjects/JAVA_HR_PROJECT/src/main/resources/HR_DATABASE.mv.db [1.4.200/7]" [50000-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:505)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 28 more
+Caused by: java.lang.IllegalStateException: The file is locked: nio:/home/cspathas/MyProjects/JAVA_HR_PROJECT/src/main/resources/HR_DATABASE.mv.db [1.4.200/7]
+	at org.h2.mvstore.DataUtils.newIllegalStateException(DataUtils.java:950)
+	at org.h2.mvstore.FileStore.open(FileStore.java:172)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:381)
+	... 22 more
+2021-05-21 16:54:43 database: flush
+org.h2.message.DbException: General error: "java.lang.IllegalStateException: The file is locked: nio:/home/cspathas/MyProjects/JAVA_HR_PROJECT/src/main/resources/HR_DATABASE.mv.db [1.4.200/7]" [50000-200]
+	at org.h2.message.DbException.get(DbException.java:194)
+	at org.h2.message.DbException.convert(DbException.java:347)
+	at org.h2.mvstore.db.MVTableEngine$1.uncaughtException(MVTableEngine.java:93)
+	at org.h2.mvstore.MVStore.handleException(MVStore.java:2877)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:481)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:402)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:3579)
+	at org.h2.mvstore.db.MVTableEngine$Store.open(MVTableEngine.java:170)
+	at org.h2.mvstore.db.MVTableEngine.init(MVTableEngine.java:103)
+	at org.h2.engine.Database.getPageStore(Database.java:2659)
+	at org.h2.engine.Database.open(Database.java:675)
+	at org.h2.engine.Database.openDatabase(Database.java:307)
+	at org.h2.engine.Database.<init>(Database.java:301)
+	at org.h2.engine.Engine.openSession(Engine.java:74)
+	at org.h2.engine.Engine.openSession(Engine.java:192)
+	at org.h2.engine.Engine.createSessionAndValidate(Engine.java:171)
+	at org.h2.engine.Engine.createSession(Engine.java:166)
+	at org.h2.engine.Engine.createSession(Engine.java:29)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:340)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:173)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:152)
+	at org.h2.Driver.connect(Driver.java:69)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
+	at Server.connectionOpen(Server.java:26)
+	at FactoryHandler.drop(FactoryHandler.java:164)
+	at CompanyController.drop(CompanyController.java:84)
+	at MainClass.main(MainClass.java:17)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: General error: "java.lang.IllegalStateException: The file is locked: nio:/home/cspathas/MyProjects/JAVA_HR_PROJECT/src/main/resources/HR_DATABASE.mv.db [1.4.200/7]" [50000-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:505)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 28 more
+Caused by: java.lang.IllegalStateException: The file is locked: nio:/home/cspathas/MyProjects/JAVA_HR_PROJECT/src/main/resources/HR_DATABASE.mv.db [1.4.200/7]
+	at org.h2.mvstore.DataUtils.newIllegalStateException(DataUtils.java:950)
+	at org.h2.mvstore.FileStore.open(FileStore.java:172)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:381)
+	... 22 more
+2021-05-21 16:54:43 database: flush
+org.h2.message.DbException: General error: "java.lang.IllegalStateException: The file is locked: nio:/home/cspathas/MyProjects/JAVA_HR_PROJECT/src/main/resources/HR_DATABASE.mv.db [1.4.200/7]" [50000-200]
+	at org.h2.message.DbException.get(DbException.java:194)
+	at org.h2.message.DbException.convert(DbException.java:347)
+	at org.h2.mvstore.db.MVTableEngine$1.uncaughtException(MVTableEngine.java:93)
+	at org.h2.mvstore.MVStore.handleException(MVStore.java:2877)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:481)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:402)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:3579)
+	at org.h2.mvstore.db.MVTableEngine$Store.open(MVTableEngine.java:170)
+	at org.h2.mvstore.db.MVTableEngine.init(MVTableEngine.java:103)
+	at org.h2.engine.Database.getPageStore(Database.java:2659)
+	at org.h2.engine.Database.open(Database.java:675)
+	at org.h2.engine.Database.openDatabase(Database.java:307)
+	at org.h2.engine.Database.<init>(Database.java:301)
+	at org.h2.engine.Engine.openSession(Engine.java:74)
+	at org.h2.engine.Engine.openSession(Engine.java:192)
+	at org.h2.engine.Engine.createSessionAndValidate(Engine.java:171)
+	at org.h2.engine.Engine.createSession(Engine.java:166)
+	at org.h2.engine.Engine.createSession(Engine.java:29)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:340)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:173)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:152)
+	at org.h2.Driver.connect(Driver.java:69)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
+	at Server.connectionOpen(Server.java:26)
+	at FactoryHandler.create(FactoryHandler.java:19)
+	at JobApplicantController.create(JobApplicantController.java:27)
+	at MainClass.main(MainClass.java:20)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: General error: "java.lang.IllegalStateException: The file is locked: nio:/home/cspathas/MyProjects/JAVA_HR_PROJECT/src/main/resources/HR_DATABASE.mv.db [1.4.200/7]" [50000-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:505)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 28 more
+Caused by: java.lang.IllegalStateException: The file is locked: nio:/home/cspathas/MyProjects/JAVA_HR_PROJECT/src/main/resources/HR_DATABASE.mv.db [1.4.200/7]
+	at org.h2.mvstore.DataUtils.newIllegalStateException(DataUtils.java:950)
+	at org.h2.mvstore.FileStore.open(FileStore.java:172)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:381)
+	... 22 more
+2021-05-21 16:55:06 database: flush
+org.h2.message.DbException: General error: "java.lang.IllegalStateException: The file is locked: nio:/home/cspathas/MyProjects/JAVA_HR_PROJECT/src/main/resources/HR_DATABASE.mv.db [1.4.200/7]" [50000-200]
+	at org.h2.message.DbException.get(DbException.java:194)
+	at org.h2.message.DbException.convert(DbException.java:347)
+	at org.h2.mvstore.db.MVTableEngine$1.uncaughtException(MVTableEngine.java:93)
+	at org.h2.mvstore.MVStore.handleException(MVStore.java:2877)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:481)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:402)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:3579)
+	at org.h2.mvstore.db.MVTableEngine$Store.open(MVTableEngine.java:170)
+	at org.h2.mvstore.db.MVTableEngine.init(MVTableEngine.java:103)
+	at org.h2.engine.Database.getPageStore(Database.java:2659)
+	at org.h2.engine.Database.open(Database.java:675)
+	at org.h2.engine.Database.openDatabase(Database.java:307)
+	at org.h2.engine.Database.<init>(Database.java:301)
+	at org.h2.engine.Engine.openSession(Engine.java:74)
+	at org.h2.engine.Engine.openSession(Engine.java:192)
+	at org.h2.engine.Engine.createSessionAndValidate(Engine.java:171)
+	at org.h2.engine.Engine.createSession(Engine.java:166)
+	at org.h2.engine.Engine.createSession(Engine.java:29)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:340)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:173)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:152)
+	at org.h2.Driver.connect(Driver.java:69)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
+	at Server.connectionOpen(Server.java:26)
+	at FactoryHandler.drop(FactoryHandler.java:164)
+	at JobApplicantController.drop(JobApplicantController.java:92)
+	at MainClass.main(MainClass.java:16)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: General error: "java.lang.IllegalStateException: The file is locked: nio:/home/cspathas/MyProjects/JAVA_HR_PROJECT/src/main/resources/HR_DATABASE.mv.db [1.4.200/7]" [50000-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:505)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 28 more
+Caused by: java.lang.IllegalStateException: The file is locked: nio:/home/cspathas/MyProjects/JAVA_HR_PROJECT/src/main/resources/HR_DATABASE.mv.db [1.4.200/7]
+	at org.h2.mvstore.DataUtils.newIllegalStateException(DataUtils.java:950)
+	at org.h2.mvstore.FileStore.open(FileStore.java:172)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:381)
+	... 22 more
+2021-05-21 16:55:06 database: flush
+org.h2.message.DbException: General error: "java.lang.IllegalStateException: The file is locked: nio:/home/cspathas/MyProjects/JAVA_HR_PROJECT/src/main/resources/HR_DATABASE.mv.db [1.4.200/7]" [50000-200]
+	at org.h2.message.DbException.get(DbException.java:194)
+	at org.h2.message.DbException.convert(DbException.java:347)
+	at org.h2.mvstore.db.MVTableEngine$1.uncaughtException(MVTableEngine.java:93)
+	at org.h2.mvstore.MVStore.handleException(MVStore.java:2877)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:481)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:402)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:3579)
+	at org.h2.mvstore.db.MVTableEngine$Store.open(MVTableEngine.java:170)
+	at org.h2.mvstore.db.MVTableEngine.init(MVTableEngine.java:103)
+	at org.h2.engine.Database.getPageStore(Database.java:2659)
+	at org.h2.engine.Database.open(Database.java:675)
+	at org.h2.engine.Database.openDatabase(Database.java:307)
+	at org.h2.engine.Database.<init>(Database.java:301)
+	at org.h2.engine.Engine.openSession(Engine.java:74)
+	at org.h2.engine.Engine.openSession(Engine.java:192)
+	at org.h2.engine.Engine.createSessionAndValidate(Engine.java:171)
+	at org.h2.engine.Engine.createSession(Engine.java:166)
+	at org.h2.engine.Engine.createSession(Engine.java:29)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:340)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:173)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:152)
+	at org.h2.Driver.connect(Driver.java:69)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
+	at Server.connectionOpen(Server.java:26)
+	at FactoryHandler.drop(FactoryHandler.java:164)
+	at CompanyController.drop(CompanyController.java:84)
+	at MainClass.main(MainClass.java:17)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: General error: "java.lang.IllegalStateException: The file is locked: nio:/home/cspathas/MyProjects/JAVA_HR_PROJECT/src/main/resources/HR_DATABASE.mv.db [1.4.200/7]" [50000-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:505)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 28 more
+Caused by: java.lang.IllegalStateException: The file is locked: nio:/home/cspathas/MyProjects/JAVA_HR_PROJECT/src/main/resources/HR_DATABASE.mv.db [1.4.200/7]
+	at org.h2.mvstore.DataUtils.newIllegalStateException(DataUtils.java:950)
+	at org.h2.mvstore.FileStore.open(FileStore.java:172)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:381)
+	... 22 more
+2021-05-21 16:55:06 database: flush
+org.h2.message.DbException: General error: "java.lang.IllegalStateException: The file is locked: nio:/home/cspathas/MyProjects/JAVA_HR_PROJECT/src/main/resources/HR_DATABASE.mv.db [1.4.200/7]" [50000-200]
+	at org.h2.message.DbException.get(DbException.java:194)
+	at org.h2.message.DbException.convert(DbException.java:347)
+	at org.h2.mvstore.db.MVTableEngine$1.uncaughtException(MVTableEngine.java:93)
+	at org.h2.mvstore.MVStore.handleException(MVStore.java:2877)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:481)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:402)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:3579)
+	at org.h2.mvstore.db.MVTableEngine$Store.open(MVTableEngine.java:170)
+	at org.h2.mvstore.db.MVTableEngine.init(MVTableEngine.java:103)
+	at org.h2.engine.Database.getPageStore(Database.java:2659)
+	at org.h2.engine.Database.open(Database.java:675)
+	at org.h2.engine.Database.openDatabase(Database.java:307)
+	at org.h2.engine.Database.<init>(Database.java:301)
+	at org.h2.engine.Engine.openSession(Engine.java:74)
+	at org.h2.engine.Engine.openSession(Engine.java:192)
+	at org.h2.engine.Engine.createSessionAndValidate(Engine.java:171)
+	at org.h2.engine.Engine.createSession(Engine.java:166)
+	at org.h2.engine.Engine.createSession(Engine.java:29)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:340)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:173)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:152)
+	at org.h2.Driver.connect(Driver.java:69)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
+	at Server.connectionOpen(Server.java:26)
+	at FactoryHandler.create(FactoryHandler.java:19)
+	at JobApplicantController.create(JobApplicantController.java:27)
+	at MainClass.main(MainClass.java:20)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: General error: "java.lang.IllegalStateException: The file is locked: nio:/home/cspathas/MyProjects/JAVA_HR_PROJECT/src/main/resources/HR_DATABASE.mv.db [1.4.200/7]" [50000-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:505)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 28 more
+Caused by: java.lang.IllegalStateException: The file is locked: nio:/home/cspathas/MyProjects/JAVA_HR_PROJECT/src/main/resources/HR_DATABASE.mv.db [1.4.200/7]
+	at org.h2.mvstore.DataUtils.newIllegalStateException(DataUtils.java:950)
+	at org.h2.mvstore.FileStore.open(FileStore.java:172)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:381)
+	... 22 more
+2021-05-21 16:55:26 database: flush
+org.h2.message.DbException: General error: "java.lang.IllegalStateException: The file is locked: nio:/home/cspathas/MyProjects/JAVA_HR_PROJECT/src/main/resources/HR_DATABASE.mv.db [1.4.200/7]" [50000-200]
+	at org.h2.message.DbException.get(DbException.java:194)
+	at org.h2.message.DbException.convert(DbException.java:347)
+	at org.h2.mvstore.db.MVTableEngine$1.uncaughtException(MVTableEngine.java:93)
+	at org.h2.mvstore.MVStore.handleException(MVStore.java:2877)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:481)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:402)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:3579)
+	at org.h2.mvstore.db.MVTableEngine$Store.open(MVTableEngine.java:170)
+	at org.h2.mvstore.db.MVTableEngine.init(MVTableEngine.java:103)
+	at org.h2.engine.Database.getPageStore(Database.java:2659)
+	at org.h2.engine.Database.open(Database.java:675)
+	at org.h2.engine.Database.openDatabase(Database.java:307)
+	at org.h2.engine.Database.<init>(Database.java:301)
+	at org.h2.engine.Engine.openSession(Engine.java:74)
+	at org.h2.engine.Engine.openSession(Engine.java:192)
+	at org.h2.engine.Engine.createSessionAndValidate(Engine.java:171)
+	at org.h2.engine.Engine.createSession(Engine.java:166)
+	at org.h2.engine.Engine.createSession(Engine.java:29)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:340)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:173)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:152)
+	at org.h2.Driver.connect(Driver.java:69)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
+	at Server.connectionOpen(Server.java:26)
+	at FactoryHandler.drop(FactoryHandler.java:164)
+	at JobApplicantController.drop(JobApplicantController.java:92)
+	at MainClass.main(MainClass.java:16)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: General error: "java.lang.IllegalStateException: The file is locked: nio:/home/cspathas/MyProjects/JAVA_HR_PROJECT/src/main/resources/HR_DATABASE.mv.db [1.4.200/7]" [50000-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:505)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 28 more
+Caused by: java.lang.IllegalStateException: The file is locked: nio:/home/cspathas/MyProjects/JAVA_HR_PROJECT/src/main/resources/HR_DATABASE.mv.db [1.4.200/7]
+	at org.h2.mvstore.DataUtils.newIllegalStateException(DataUtils.java:950)
+	at org.h2.mvstore.FileStore.open(FileStore.java:172)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:381)
+	... 22 more
+2021-05-21 16:55:26 database: flush
+org.h2.message.DbException: General error: "java.lang.IllegalStateException: The file is locked: nio:/home/cspathas/MyProjects/JAVA_HR_PROJECT/src/main/resources/HR_DATABASE.mv.db [1.4.200/7]" [50000-200]
+	at org.h2.message.DbException.get(DbException.java:194)
+	at org.h2.message.DbException.convert(DbException.java:347)
+	at org.h2.mvstore.db.MVTableEngine$1.uncaughtException(MVTableEngine.java:93)
+	at org.h2.mvstore.MVStore.handleException(MVStore.java:2877)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:481)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:402)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:3579)
+	at org.h2.mvstore.db.MVTableEngine$Store.open(MVTableEngine.java:170)
+	at org.h2.mvstore.db.MVTableEngine.init(MVTableEngine.java:103)
+	at org.h2.engine.Database.getPageStore(Database.java:2659)
+	at org.h2.engine.Database.open(Database.java:675)
+	at org.h2.engine.Database.openDatabase(Database.java:307)
+	at org.h2.engine.Database.<init>(Database.java:301)
+	at org.h2.engine.Engine.openSession(Engine.java:74)
+	at org.h2.engine.Engine.openSession(Engine.java:192)
+	at org.h2.engine.Engine.createSessionAndValidate(Engine.java:171)
+	at org.h2.engine.Engine.createSession(Engine.java:166)
+	at org.h2.engine.Engine.createSession(Engine.java:29)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:340)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:173)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:152)
+	at org.h2.Driver.connect(Driver.java:69)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
+	at Server.connectionOpen(Server.java:26)
+	at FactoryHandler.drop(FactoryHandler.java:164)
+	at CompanyController.drop(CompanyController.java:84)
+	at MainClass.main(MainClass.java:17)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: General error: "java.lang.IllegalStateException: The file is locked: nio:/home/cspathas/MyProjects/JAVA_HR_PROJECT/src/main/resources/HR_DATABASE.mv.db [1.4.200/7]" [50000-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:505)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 28 more
+Caused by: java.lang.IllegalStateException: The file is locked: nio:/home/cspathas/MyProjects/JAVA_HR_PROJECT/src/main/resources/HR_DATABASE.mv.db [1.4.200/7]
+	at org.h2.mvstore.DataUtils.newIllegalStateException(DataUtils.java:950)
+	at org.h2.mvstore.FileStore.open(FileStore.java:172)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:381)
+	... 22 more
+2021-05-21 16:55:26 database: flush
+org.h2.message.DbException: General error: "java.lang.IllegalStateException: The file is locked: nio:/home/cspathas/MyProjects/JAVA_HR_PROJECT/src/main/resources/HR_DATABASE.mv.db [1.4.200/7]" [50000-200]
+	at org.h2.message.DbException.get(DbException.java:194)
+	at org.h2.message.DbException.convert(DbException.java:347)
+	at org.h2.mvstore.db.MVTableEngine$1.uncaughtException(MVTableEngine.java:93)
+	at org.h2.mvstore.MVStore.handleException(MVStore.java:2877)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:481)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:402)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:3579)
+	at org.h2.mvstore.db.MVTableEngine$Store.open(MVTableEngine.java:170)
+	at org.h2.mvstore.db.MVTableEngine.init(MVTableEngine.java:103)
+	at org.h2.engine.Database.getPageStore(Database.java:2659)
+	at org.h2.engine.Database.open(Database.java:675)
+	at org.h2.engine.Database.openDatabase(Database.java:307)
+	at org.h2.engine.Database.<init>(Database.java:301)
+	at org.h2.engine.Engine.openSession(Engine.java:74)
+	at org.h2.engine.Engine.openSession(Engine.java:192)
+	at org.h2.engine.Engine.createSessionAndValidate(Engine.java:171)
+	at org.h2.engine.Engine.createSession(Engine.java:166)
+	at org.h2.engine.Engine.createSession(Engine.java:29)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:340)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:173)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:152)
+	at org.h2.Driver.connect(Driver.java:69)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
+	at Server.connectionOpen(Server.java:26)
+	at FactoryHandler.create(FactoryHandler.java:19)
+	at JobApplicantController.create(JobApplicantController.java:27)
+	at MainClass.main(MainClass.java:20)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: General error: "java.lang.IllegalStateException: The file is locked: nio:/home/cspathas/MyProjects/JAVA_HR_PROJECT/src/main/resources/HR_DATABASE.mv.db [1.4.200/7]" [50000-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:505)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 28 more
+Caused by: java.lang.IllegalStateException: The file is locked: nio:/home/cspathas/MyProjects/JAVA_HR_PROJECT/src/main/resources/HR_DATABASE.mv.db [1.4.200/7]
+	at org.h2.mvstore.DataUtils.newIllegalStateException(DataUtils.java:950)
+	at org.h2.mvstore.FileStore.open(FileStore.java:172)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:381)
+	... 22 more
+2021-05-21 16:55:26 database: flush
+org.h2.message.DbException: General error: "java.lang.IllegalStateException: The file is locked: nio:/home/cspathas/MyProjects/JAVA_HR_PROJECT/src/main/resources/HR_DATABASE.mv.db [1.4.200/7]" [50000-200]
+	at org.h2.message.DbException.get(DbException.java:194)
+	at org.h2.message.DbException.convert(DbException.java:347)
+	at org.h2.mvstore.db.MVTableEngine$1.uncaughtException(MVTableEngine.java:93)
+	at org.h2.mvstore.MVStore.handleException(MVStore.java:2877)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:481)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:402)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:3579)
+	at org.h2.mvstore.db.MVTableEngine$Store.open(MVTableEngine.java:170)
+	at org.h2.mvstore.db.MVTableEngine.init(MVTableEngine.java:103)
+	at org.h2.engine.Database.getPageStore(Database.java:2659)
+	at org.h2.engine.Database.open(Database.java:675)
+	at org.h2.engine.Database.openDatabase(Database.java:307)
+	at org.h2.engine.Database.<init>(Database.java:301)
+	at org.h2.engine.Engine.openSession(Engine.java:74)
+	at org.h2.engine.Engine.openSession(Engine.java:192)
+	at org.h2.engine.Engine.createSessionAndValidate(Engine.java:171)
+	at org.h2.engine.Engine.createSession(Engine.java:166)
+	at org.h2.engine.Engine.createSession(Engine.java:29)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:340)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:173)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:152)
+	at org.h2.Driver.connect(Driver.java:69)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
+	at Server.connectionOpen(Server.java:26)
+	at FactoryHandler.insert(FactoryHandler.java:38)
+	at JobApplicantController.mockData(JobApplicantController.java:114)
+	at MainClass.main(MainClass.java:21)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: General error: "java.lang.IllegalStateException: The file is locked: nio:/home/cspathas/MyProjects/JAVA_HR_PROJECT/src/main/resources/HR_DATABASE.mv.db [1.4.200/7]" [50000-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:505)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 28 more
+Caused by: java.lang.IllegalStateException: The file is locked: nio:/home/cspathas/MyProjects/JAVA_HR_PROJECT/src/main/resources/HR_DATABASE.mv.db [1.4.200/7]
+	at org.h2.mvstore.DataUtils.newIllegalStateException(DataUtils.java:950)
+	at org.h2.mvstore.FileStore.open(FileStore.java:172)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:381)
+	... 22 more
+2021-05-21 16:55:33 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "COMPANY" not found; SQL statement:
+DROP TABLE company; [42102-200]

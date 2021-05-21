@@ -105,4 +105,6 @@ public class CompanyController implements FactoryHandler {
             FactoryHandler.insert("company", companyData);
         }
     }
+
+    // Get all users based on job posting.
 }

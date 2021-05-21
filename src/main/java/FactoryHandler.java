@@ -56,8 +56,19 @@ public interface FactoryHandler {
         server.executeInsertQuery(query);
 
         server.connectionClose();
+        System.out.println("Insert 1 row");
+        System.out.println("");
+    }
 
-        //Output
+    static void deleteRowById(String tableName, String rowId) throws SQLException, ClassNotFoundException {
+        server.connectionOpen();
+
+        //Delete row from tableName
+        String query = "DELETE FROM " + tableName + " WHERE ID = " + rowId;
+
+        server.executeInsertQuery(query);
+
+        server.connectionClose();
         System.out.println("Insert 1 row");
         System.out.println("");
     }
