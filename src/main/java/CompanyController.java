@@ -70,8 +70,20 @@ public class CompanyController implements FactoryHandler {
     public Company getById(int companyID) {
         try {
             return new Company(
-                    FactoryHandler.getFiltering("company", this.companyTable, "where id = " + companyID)
+                    FactoryHandler.getFiltering("company", this.companyTable, "id", Integer.toString(companyID))
                             .get(companyID)
+            );
+        } catch (SQLException | ClassNotFoundException sqlError) {
+            System.out.println("Table company not found or your filter is wrong!");
+        }
+        return null;
+    }
+
+    public Company getByName(String companyName) {
+        try {
+            return new Company(
+                    FactoryHandler.getFiltering("company", this.companyTable, "name", companyName)
+                            .get(companyName)
             );
         } catch (SQLException | ClassNotFoundException sqlError) {
             System.out.println("Table company not found or your filter is wrong!");

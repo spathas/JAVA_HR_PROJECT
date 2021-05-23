@@ -12,7 +12,7 @@ public class MainClass {
         JobApplicantController jobApplicantController = new JobApplicantController();
         CompanyController companyController = new CompanyController();
 
-//        TEST FACTORY FUNC
+ //        TEST FACTORY FUNC
         jobApplicantController.drop();
         companyController.drop();
         try{
@@ -22,12 +22,12 @@ public class MainClass {
             jobApplicantController.getAll();
             jobApplicantController.getById(1);
             jobApplicantController.delete(2);
-            jobApplicantController.getAll();
 
             JobApplicant nickolas = jobApplicantController.getById(1);
             nickolas.setName("Nickolas");
             nickolas.setAge(20);
             jobApplicantController.update(nickolas);
+            jobApplicantController.getAll();
 
             //////COMPANY///////
             companyController.create();

@@ -1444,3 +1444,65 @@ Caused by: java.lang.IllegalStateException: The file is locked: nio:/home/cspath
 2021-05-21 16:55:33 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "COMPANY" not found; SQL statement:
 DROP TABLE company; [42102-200]
+2021-05-21 23:32:22 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Column "JOBCATEGORY" not found; SQL statement:
+INSERT INTO jobApplicant (jobCategory,education,works,phone,surname,name,age,email) VALUES ('Computer Science' ,'69244589641' ,'true' ,'Computer Science' ,'Smith' ,'Nick' ,'50' ,'nick@example.com'); [42122-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:453)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.table.Table.getColumn(Table.java:703)
+	at org.h2.command.Parser.parseColumn(Parser.java:1450)
+	at org.h2.command.Parser.parseColumnList(Parser.java:1435)
+	at org.h2.command.Parser.parseInsertGivenTable(Parser.java:1804)
+	at org.h2.command.Parser.parseInsert(Parser.java:1749)
+	at org.h2.command.Parser.parsePrepared(Parser.java:954)
+	at org.h2.command.Parser.parse(Parser.java:843)
+	at org.h2.command.Parser.parse(Parser.java:815)
+	at org.h2.command.Parser.prepareCommand(Parser.java:738)
+	at org.h2.engine.Session.prepareLocal(Session.java:657)
+	at org.h2.engine.Session.prepareCommand(Session.java:595)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1235)
+	at org.h2.jdbc.JdbcPreparedStatement.<init>(JdbcPreparedStatement.java:76)
+	at org.h2.jdbc.JdbcConnection.prepareStatement(JdbcConnection.java:352)
+	at Server.executeInsertQuery(Server.java:30)
+	at FactoryHandler.insert(FactoryHandler.java:56)
+	at JobApplicantController.mockData(JobApplicantController.java:114)
+	at MainClass.main(MainClass.java:21)
+2021-05-21 23:32:59 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "COMPANY" not found; SQL statement:
+DROP TABLE company; [42102-200]
+2021-05-21 23:32:59 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Column "JOBCATEGORY" not found; SQL statement:
+INSERT INTO jobApplicant (jobCategory,education,works,phone,surname,name,age,email) VALUES ('Development' ,'69244589641' ,'true' ,'Computer Science' ,'Smith' ,'Nick' ,'50' ,'nick@example.com'); [42122-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:453)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.table.Table.getColumn(Table.java:703)
+	at org.h2.command.Parser.parseColumn(Parser.java:1450)
+	at org.h2.command.Parser.parseColumnList(Parser.java:1435)
+	at org.h2.command.Parser.parseInsertGivenTable(Parser.java:1804)
+	at org.h2.command.Parser.parseInsert(Parser.java:1749)
+	at org.h2.command.Parser.parsePrepared(Parser.java:954)
+	at org.h2.command.Parser.parse(Parser.java:843)
+	at org.h2.command.Parser.parse(Parser.java:815)
+	at org.h2.command.Parser.prepareCommand(Parser.java:738)
+	at org.h2.engine.Session.prepareLocal(Session.java:657)
+	at org.h2.engine.Session.prepareCommand(Session.java:595)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1235)
+	at org.h2.jdbc.JdbcPreparedStatement.<init>(JdbcPreparedStatement.java:76)
+	at org.h2.jdbc.JdbcConnection.prepareStatement(JdbcConnection.java:352)
+	at Server.executeInsertQuery(Server.java:30)
+	at FactoryHandler.insert(FactoryHandler.java:56)
+	at JobApplicantController.mockData(JobApplicantController.java:114)
+	at MainClass.main(MainClass.java:21)
+2021-05-21 23:33:24 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "COMPANY" not found; SQL statement:
+DROP TABLE company; [42102-200]
+2021-05-21 23:33:24 jdbc[6]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "PHONE VARCHAR(20)": "'Business and Management' (23)"; SQL statement:
+INSERT INTO jobApplicant (jobCategory,education,works,phone,surname,name,age,email) VALUES ('Management' ,'69344589641' ,'false' ,'Business and Management' ,'Luck' ,'John' ,'25' ,'john@example.com'); [22001-200]
+2021-05-21 23:36:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "COMPANY" not found; SQL statement:
+DROP TABLE company; [42102-200]

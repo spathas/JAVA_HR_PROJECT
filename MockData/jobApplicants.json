@@ -1,12 +1,13 @@
 [
  {
-  "name": "Nick",
-  "surname": "Smith",
-  "age": "50",
+   "name": "Nick",
+   "surname": "Smith",
+   "age": "50",
    "phone": "69244589641",
-  "email": "nick@example.com",
-  "education": "Computer Science",
-  "works" : true
+   "email": "nick@example.com",
+   "education": "Computer Science",
+   "jobCategory": "Development",
+   "works" : true
   },
   {
     "name": "John",
@@ -15,6 +16,7 @@
     "phone": "69344589641",
     "email": "john@example.com",
     "education": "Business and Management",
+    "jobCategory": "Management",
     "works" : false
   },
   {
@@ -24,6 +26,7 @@
     "phone": "69444589641",
     "email": "stephanie@example.com",
     "education": "Business and Management",
+    "jobCategory": "HR",
     "works" : false
   },
   {
@@ -32,16 +35,18 @@
     "age": "30",
     "phone": "69234589641",
     "email": "jack@example.com",
-    "education": "Nursing",
+    "education": "Medical",
+    "jobCategory": "Nursing",
     "works" : true
   },
   {
-    "name": "maria",
+    "name": "Maria",
     "surname": "Brown",
     "age": "20",
     "phone": "69644589641",
     "email": "maria@example.com",
-    "education": "Nursing",
+    "education": "Medical",
+    "jobCategory": "Doctor",
     "works" : false
   }
 ]

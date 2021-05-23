@@ -19,6 +19,7 @@ public class JobApplicantController implements FactoryHandler {
         jobApplicantTable.put("email", "VARCHAR2(50) NOT NULL UNIQUE");
         jobApplicantTable.put("phone", "VARCHAR2(20) UNIQUE");
         jobApplicantTable.put("education", "VARCHAR2(50)");
+        jobApplicantTable.put("jobCategory", "VARCHAR2(50)");
         jobApplicantTable.put("works", "BOOLEAN");
     }
 
@@ -80,7 +81,8 @@ public class JobApplicantController implements FactoryHandler {
 
     public JobApplicant getById(int jobApplicantID) {
         try {
-            return new JobApplicant( FactoryHandler.getFiltering("jobApplicant", this.jobApplicantTable, "where id = " + jobApplicantID).get(jobApplicantID) );
+            return new JobApplicant( FactoryHandler.getFiltering("jobApplicant", this.jobApplicantTable, "id", Integer.toString(jobApplicantID))
+                    .get(jobApplicantID) );
         } catch (SQLException | ClassNotFoundException sqlError) {
             System.out.println("Table jobApplicant not found or your filter is wrong!");
         }
@@ -106,8 +108,16 @@ public class JobApplicantController implements FactoryHandler {
         {
             //Setup Objects
             JSONObject jsonObj = (JSONObject) u;
-            JobApplicant jobApplicant = new JobApplicant((String) jsonObj.get("name"), (String) jsonObj.get("surname"), Integer.parseInt((String) jsonObj.get("age")), (String) jsonObj.get("email"),
-                    (String) jsonObj.get("phone"), (String) jsonObj.get("education"), (boolean) jsonObj.get("works"));
+            JobApplicant jobApplicant = new JobApplicant(
+                    (String) jsonObj.get("name"),
+                    (String) jsonObj.get("surname"),
+                    Integer.parseInt((String) jsonObj.get("age")),
+                    (String) jsonObj.get("email"),
+                    (String) jsonObj.get("phone"),
+                    (String) jsonObj.get("education"),
+                    (String) jsonObj.get("jobCategory"), 
+                    (boolean) jsonObj.get("works")
+            );
             //Convert jobApplicant to hash map
             HashMap<String, String> jobApplicantData = jobApplicant.getJobApplicantMap();
             //Insert data to DB
@@ -117,5 +127,5 @@ public class JobApplicantController implements FactoryHandler {
     }
 
     // Return all jobApplicants who work.
-
+//    public HashMap<Integer, JobApplicant>
 }
