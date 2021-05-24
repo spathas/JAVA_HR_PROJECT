@@ -1506,3 +1506,472 @@ INSERT INTO jobApplicant (jobCategory,education,works,phone,surname,name,age,ema
 2021-05-21 23:36:00 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "COMPANY" not found; SQL statement:
 DROP TABLE company; [42102-200]
+2021-05-24 10:48:10 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT COUNTRY, ADDRESS, PHONE, NAME, ID, EMAIL FROM COMPANY WHEREID =[*] 1"; SQL statement:
+SELECT country, address, phone, name, id, email FROM company WHEREid = 1 [42000-200]
+2021-05-24 10:48:10 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT COUNTRY, ADDRESS, PHONE, NAME, ID, EMAIL FROM COMPANY WHEREID =[*] 1"; SQL statement:
+SELECT country, address, phone, name, id, email FROM company WHEREid = 1 [42000-200]
+2021-05-24 10:50:13 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "JOBAPPLICANT" not found; SQL statement:
+DROP TABLE jobApplicant; [42102-200]
+2021-05-24 10:50:13 jdbc[10]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT COUNTRY, ADDRESS, PHONE, NAME, ID, EMAIL FROM COMPANY WHEREID =[*] 1"; SQL statement:
+SELECT country, address, phone, name, id, email FROM company WHEREid = 1 [42000-200]
+2021-05-24 10:50:13 jdbc[11]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT COUNTRY, ADDRESS, PHONE, NAME, ID, EMAIL FROM COMPANY WHEREID =[*] 1"; SQL statement:
+SELECT country, address, phone, name, id, email FROM company WHEREid = 1 [42000-200]
+2021-05-24 10:50:26 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "JOBAPPLICANT" not found; SQL statement:
+DROP TABLE jobApplicant; [42102-200]
+2021-05-24 10:50:26 jdbc[10]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT COUNTRY, ADDRESS, PHONE, NAME, ID, EMAIL FROM COMPANY WHEREID =[*] 1"; SQL statement:
+SELECT country, address, phone, name, id, email FROM company WHEREid = 1 [42000-200]
+2021-05-24 10:50:38 jdbc[11]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT COUNTRY, ADDRESS, PHONE, NAME, ID, EMAIL FROM COMPANY WHEREID =[*] 1"; SQL statement:
+SELECT country, address, phone, name, id, email FROM company WHEREid = 1 [42000-200]
+2021-05-24 10:51:04 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "JOBAPPLICANT" not found; SQL statement:
+DROP TABLE jobApplicant; [42102-200]
+2021-05-24 10:51:04 jdbc[10]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT COUNTRY, ADDRESS, PHONE, NAME, ID, EMAIL FROM COMPANY WHEREID =[*] 1"; SQL statement:
+SELECT country, address, phone, name, id, email FROM company WHEREid = 1 [42000-200]
+2021-05-24 10:51:25 jdbc[11]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT COUNTRY, ADDRESS, PHONE, NAME, ID, EMAIL FROM COMPANY WHEREID =[*] 1"; SQL statement:
+SELECT country, address, phone, name, id, email FROM company WHEREid = 1 [42000-200]
+2021-05-24 10:51:36 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "JOBAPPLICANT" not found; SQL statement:
+DROP TABLE jobApplicant; [42102-200]
+2021-05-24 10:51:36 jdbc[10]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT COUNTRY, ADDRESS, PHONE, NAME, ID, EMAIL FROM COMPANY WHEREID =[*] 1"; SQL statement:
+SELECT country, address, phone, name, id, email FROM company WHEREid = 1 [42000-200]
+2021-05-24 10:52:30 jdbc[11]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT COUNTRY, ADDRESS, PHONE, NAME, ID, EMAIL FROM COMPANY WHEREID =[*] 1"; SQL statement:
+SELECT country, address, phone, name, id, email FROM company WHEREid = 1 [42000-200]
+2021-05-24 10:52:41 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "JOBAPPLICANT" not found; SQL statement:
+DROP TABLE jobApplicant; [42102-200]
+2021-05-24 10:55:37 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "JOBAPPLICANT" not found; SQL statement:
+DROP TABLE jobApplicant; [42102-200]
+2021-05-24 11:00:27 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "JOBAPPLICANT" not found; SQL statement:
+DROP TABLE jobApplicant; [42102-200]
+2021-05-24 11:05:41 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "JOBAPPLICANT" not found; SQL statement:
+DROP TABLE jobApplicant; [42102-200]
+2021-05-24 11:11:02 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "JOBAPPLICANT" not found; SQL statement:
+DROP TABLE jobApplicant; [42102-200]
+2021-05-24 11:11:58 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "JOBAPPLICANT" not found; SQL statement:
+DROP TABLE jobApplicant; [42102-200]
+2021-05-24 11:12:12 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "JOBAPPLICANT" not found; SQL statement:
+DROP TABLE jobApplicant; [42102-200]
+2021-05-24 11:14:48 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "JOBAPPLICANT" not found; SQL statement:
+DROP TABLE jobApplicant; [42102-200]
+2021-05-24 11:16:11 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "JOBAPPLICANT" not found; SQL statement:
+DROP TABLE jobApplicant; [42102-200]
+2021-05-24 11:18:43 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "JOBAPPLICANT" not found; SQL statement:
+DROP TABLE jobApplicant; [42102-200]
+2021-05-24 11:20:15 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "JOBAPPLICANT" not found; SQL statement:
+DROP TABLE jobApplicant; [42102-200]
+2021-05-24 11:25:34 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "JOBAPPLICANT" not found; SQL statement:
+DROP TABLE jobApplicant; [42102-200]
+2021-05-24 11:27:39 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "JOBAPPLICANT" not found; SQL statement:
+DROP TABLE jobApplicant; [42102-200]
+2021-05-24 11:30:01 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "JOBAPPLICANT" not found; SQL statement:
+DROP TABLE jobApplicant; [42102-200]
+2021-05-24 11:30:11 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "JOBAPPLICANT" not found; SQL statement:
+DROP TABLE jobApplicant; [42102-200]
+2021-05-24 11:30:54 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "JOBAPPLICANT" not found; SQL statement:
+DROP TABLE jobApplicant; [42102-200]
+2021-05-24 11:31:36 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "JOBAPPLICANT" not found; SQL statement:
+DROP TABLE jobApplicant; [42102-200]
+2021-05-24 11:33:15 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "JOBAPPLICANT" not found; SQL statement:
+DROP TABLE jobApplicant; [42102-200]
+2021-05-24 11:33:25 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "JOBAPPLICANT" not found; SQL statement:
+DROP TABLE jobApplicant; [42102-200]
+2021-05-24 11:34:37 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "JOBAPPLICANT" not found; SQL statement:
+DROP TABLE jobApplicant; [42102-200]
+2021-05-24 11:35:14 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "JOBAPPLICANT" not found; SQL statement:
+DROP TABLE jobApplicant; [42102-200]
+2021-05-24 11:37:06 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "JOBAPPLICANT" not found; SQL statement:
+DROP TABLE jobApplicant; [42102-200]
+2021-05-24 11:37:36 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "JOBAPPLICANT" not found; SQL statement:
+DROP TABLE jobApplicant; [42102-200]
+2021-05-24 11:41:10 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "JOBAPPLICANT" not found; SQL statement:
+DROP TABLE jobApplicant; [42102-200]
+2021-05-24 11:46:52 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "JOBAPPLICANT" not found; SQL statement:
+DROP TABLE jobApplicant; [42102-200]
+2021-05-24 11:47:13 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "JOBAPPLICANT" not found; SQL statement:
+DROP TABLE jobApplicant; [42102-200]
+2021-05-24 11:48:24 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "JOBAPPLICANT" not found; SQL statement:
+DROP TABLE jobApplicant; [42102-200]
+2021-05-24 11:48:39 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "JOBAPPLICANT" not found; SQL statement:
+DROP TABLE jobApplicant; [42102-200]
+2021-05-24 11:55:41 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "JOBAPPLICANT" not found; SQL statement:
+DROP TABLE jobApplicant; [42102-200]
+2021-05-24 11:57:38 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "JOBAPPLICANT" not found; SQL statement:
+DROP TABLE jobApplicant; [42102-200]
+2021-05-24 11:58:36 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "JOBAPPLICANT" not found; SQL statement:
+DROP TABLE jobApplicant; [42102-200]
+2021-05-24 11:59:07 jdbc[16]: null
+org.h2.message.DbException: The connection was not closed by the application and is garbage collected [90018-200]
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.message.DbException.get(DbException.java:170)
+	at org.h2.jdbc.JdbcConnection.closeOld(JdbcConnection.java:245)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:186)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:152)
+	at org.h2.Driver.connect(Driver.java:69)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
+	at Server.connectionOpen(Server.java:26)
+	at FactoryHandler.insert(FactoryHandler.java:38)
+	at JobPostingController.mockData(JobPostingController.java:134)
+	at MainClass.main(MainClass.java:46)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientConnectionException: The connection was not closed by the application and is garbage collected [90018-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:622)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 13 more
+2021-05-24 11:59:09 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "JOBAPPLICANT" not found; SQL statement:
+DROP TABLE jobApplicant; [42102-200]
+2021-05-24 12:00:30 jdbc[16]: null
+org.h2.message.DbException: The connection was not closed by the application and is garbage collected [90018-200]
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.message.DbException.get(DbException.java:170)
+	at org.h2.jdbc.JdbcConnection.closeOld(JdbcConnection.java:245)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:186)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:152)
+	at org.h2.Driver.connect(Driver.java:69)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
+	at Server.connectionOpen(Server.java:26)
+	at FactoryHandler.insert(FactoryHandler.java:38)
+	at JobPostingController.mockData(JobPostingController.java:134)
+	at MainClass.main(MainClass.java:46)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientConnectionException: The connection was not closed by the application and is garbage collected [90018-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:622)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 13 more
+2021-05-24 12:00:30 jdbc[16]: exception
+org.h2.jdbc.JdbcSQLNonTransientConnectionException: The database is open in exclusive mode; can not open additional connections [90135-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:622)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.message.DbException.get(DbException.java:170)
+	at org.h2.engine.Session.checkSuspended(Session.java:1369)
+	at org.h2.engine.Session.transitionToState(Session.java:1361)
+	at org.h2.engine.Session.setCurrentCommand(Session.java:1343)
+	at org.h2.engine.Session.endStatement(Session.java:1887)
+	at org.h2.command.Command.executeUpdate(Command.java:285)
+	at org.h2.jdbc.JdbcPreparedStatement.execute(JdbcPreparedStatement.java:240)
+	at Server.executeInsertQuery(Server.java:31)
+	at FactoryHandler.insert(FactoryHandler.java:56)
+	at JobPostingController.mockData(JobPostingController.java:134)
+	at MainClass.main(MainClass.java:46)
+2021-05-24 12:00:31 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "JOBAPPLICANT" not found; SQL statement:
+DROP TABLE jobApplicant; [42102-200]
+2021-05-24 12:00:44 jdbc[16]: null
+org.h2.message.DbException: The connection was not closed by the application and is garbage collected [90018-200]
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.message.DbException.get(DbException.java:170)
+	at org.h2.jdbc.JdbcConnection.closeOld(JdbcConnection.java:245)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:186)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:152)
+	at org.h2.Driver.connect(Driver.java:69)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
+	at Server.connectionOpen(Server.java:26)
+	at FactoryHandler.insert(FactoryHandler.java:38)
+	at JobPostingController.mockData(JobPostingController.java:134)
+	at MainClass.main(MainClass.java:46)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientConnectionException: The connection was not closed by the application and is garbage collected [90018-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:622)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 13 more
+2021-05-24 12:02:11 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "JOBAPPLICANT" not found; SQL statement:
+DROP TABLE jobApplicant; [42102-200]
+2021-05-24 12:03:44 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "JOBAPPLICANT" not found; SQL statement:
+DROP TABLE jobApplicant; [42102-200]
+2021-05-24 12:04:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "JOBAPPLICANT" not found; SQL statement:
+DROP TABLE jobApplicant; [42102-200]
+2021-05-24 12:04:43 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "JOBAPPLICANT" not found; SQL statement:
+DROP TABLE jobApplicant; [42102-200]
+2021-05-24 12:04:51 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "JOBAPPLICANT" not found; SQL statement:
+DROP TABLE jobApplicant; [42102-200]
+2021-05-24 12:06:28 jdbc[16]: null
+org.h2.message.DbException: The connection was not closed by the application and is garbage collected [90018-200]
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.message.DbException.get(DbException.java:170)
+	at org.h2.jdbc.JdbcConnection.closeOld(JdbcConnection.java:245)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:186)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:152)
+	at org.h2.Driver.connect(Driver.java:69)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
+	at Server.connectionOpen(Server.java:26)
+	at FactoryHandler.insert(FactoryHandler.java:38)
+	at JobPostingController.mockData(JobPostingController.java:138)
+	at MainClass.main(MainClass.java:46)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientConnectionException: The connection was not closed by the application and is garbage collected [90018-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:622)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 13 more
+2021-05-24 12:06:30 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "JOBAPPLICANT" not found; SQL statement:
+DROP TABLE jobApplicant; [42102-200]
+2021-05-24 12:10:24 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "JOBAPPLICANT" not found; SQL statement:
+DROP TABLE jobApplicant; [42102-200]
+2021-05-24 12:10:24 jdbc[16]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "DESCRIPTION VARCHAR(50)": "STRINGDECODE('Required Skills & Experience:\n\n7+ years of experience in developing enterprise applications, with at least 5 of ... (1279)"; SQL statement:
+INSERT INTO jobPosting (jobCategory,description,company,fullTime,title,salary,seniority) VALUES ('Development' ,'Required Skills & Experience:
+
+7+ years of experience in developing enterprise applications, with at least 5 of them being with C# and .NET framework.
+Solid experience in/with:
+Designing, developing, deploying, and supporting the back and front ends of MULTI-TIER ASP.NET MVC WEB applications.
+Advanced SQL query development, database architecture design and query tuning techniques, primarily for SQL Server, but also for Oracle.
+Application integration with 3rd party solutions.
+Back-end & front-end web development patterns, challenges, and best practices.
+Experience with the source control process (MS DevOps or similar) and the full software development life cycle of enterprise applications.
+Excellent command of the English language.
+Nice to have as additional assets:
+
+One of the following Certifications by Microsoft:
+MCSD: App Builder.
+MCSA: Web Applications.
+One of the new Developer Associate role-based certifications.
+Degree in computer science, engineering, or a related technical field.
+Experience in web-APIs from design to deployment.
+Experience with WCF services, .NET CORE, and the MVVM architecture.
+Affinity for getting your hands dirty with JSON & XML.
+Experience in working on the Cloud, and especially Microsoft Azure.
+Comfortable with Oracle databases.' ,'1' ,'true' ,'Software Engineers & Developers' ,'1400' ,'Mid'); [22001-200]
+2021-05-24 12:11:03 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "JOBAPPLICANT" not found; SQL statement:
+DROP TABLE jobApplicant; [42102-200]
+2021-05-24 12:11:41 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "JOBAPPLICANT" not found; SQL statement:
+DROP TABLE jobApplicant; [42102-200]
+2021-05-24 12:13:53 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "JOBAPPLICANT" not found; SQL statement:
+DROP TABLE jobApplicant; [42102-200]
+2021-05-24 12:17:03 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "JOBAPPLICANT" not found; SQL statement:
+DROP TABLE jobApplicant; [42102-200]
+2021-05-24 12:23:48 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "JOBAPPLICANT" not found; SQL statement:
+DROP TABLE jobApplicant; [42102-200]
+2021-05-24 12:23:49 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "JOBAPPLICANT" not found; SQL statement:
+DROP TABLE jobApplicant; [42102-200]
+2021-05-24 12:26:32 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "JOBAPPLICANT" not found; SQL statement:
+DROP TABLE jobApplicant; [42102-200]
+2021-05-24 12:27:23 jdbc[23]: null
+org.h2.message.DbException: The connection was not closed by the application and is garbage collected [90018-200]
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.message.DbException.get(DbException.java:170)
+	at org.h2.jdbc.JdbcConnection.closeOld(JdbcConnection.java:245)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:186)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:152)
+	at org.h2.Driver.connect(Driver.java:69)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
+	at Server.connectionOpen(Server.java:26)
+	at FactoryHandler.getFiltering(FactoryHandler.java:136)
+	at CompanyController.getById(CompanyController.java:73)
+	at JobPosting.<init>(JobPosting.java:27)
+	at JobPostingController.getAll(JobPostingController.java:82)
+	at MainClass.main(MainClass.java:47)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientConnectionException: The connection was not closed by the application and is garbage collected [90018-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:622)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 15 more
+2021-05-24 12:27:25 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "JOBAPPLICANT" not found; SQL statement:
+DROP TABLE jobApplicant; [42102-200]
+2021-05-24 12:29:31 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "JOBAPPLICANT" not found; SQL statement:
+DROP TABLE jobApplicant; [42102-200]
+2021-05-24 12:30:03 jdbc[25]: null
+org.h2.message.DbException: The connection was not closed by the application and is garbage collected [90018-200]
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.message.DbException.get(DbException.java:170)
+	at org.h2.jdbc.JdbcConnection.closeOld(JdbcConnection.java:245)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:186)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:152)
+	at org.h2.Driver.connect(Driver.java:69)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
+	at Server.connectionOpen(Server.java:26)
+	at FactoryHandler.getFiltering(FactoryHandler.java:136)
+	at JobPostingController.getById(JobPostingController.java:91)
+	at MainClass.main(MainClass.java:48)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientConnectionException: The connection was not closed by the application and is garbage collected [90018-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:622)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 13 more
+2021-05-24 12:30:24 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "JOBAPPLICANT" not found; SQL statement:
+DROP TABLE jobApplicant; [42102-200]
+2021-05-24 12:33:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "JOBAPPLICANT" not found; SQL statement:
+DROP TABLE jobApplicant; [42102-200]
+2021-05-24 12:33:28 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "JOBAPPLICANT" not found; SQL statement:
+DROP TABLE jobApplicant; [42102-200]
+2021-05-24 12:35:03 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "JOBAPPLICANT" not found; SQL statement:
+DROP TABLE jobApplicant; [42102-200]
+2021-05-24 12:35:38 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "JOBAPPLICANT" not found; SQL statement:
+DROP TABLE jobApplicant; [42102-200]
+2021-05-24 12:35:38 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "JOBPOSTING" not found; SQL statement:
+DROP TABLE JobPosting; [42102-200]
+2021-05-24 12:36:28 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "JOBAPPLICANT" not found; SQL statement:
+DROP TABLE jobApplicant; [42102-200]
+2021-05-24 12:36:58 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "COMPANY" not found; SQL statement:
+SELECT country, address, phone, name, id, email FROM company WHERE id = 1 [42102-200]
+2021-05-24 13:42:12 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "COMPANY" not found; SQL statement:
+DROP TABLE company; [42102-200]
+2021-05-24 14:31:47 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "JOBPOSTING" not found; SQL statement:
+DROP TABLE JobPosting; [42102-200]
+2021-05-24 14:31:47 jdbc[23]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "JOBCATEGORY" already exists; SQL statement:
+CREATE TABLE JobCategory (company VARCHAR2(50) NOT NULL,id INTEGER auto_increment PRIMARY KEY,title VARCHAR2(50) NOT NULL); [42101-200]
+2021-05-24 14:32:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "JOBPOSTING" not found; SQL statement:
+DROP TABLE JobPosting; [42102-200]
+2021-05-24 14:32:00 jdbc[23]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "JOBCATEGORY" already exists; SQL statement:
+CREATE TABLE JobCategory (company VARCHAR2(50) NOT NULL,id INTEGER auto_increment PRIMARY KEY,title VARCHAR2(50) NOT NULL); [42101-200]
+2021-05-24 14:32:00 jdbc[24]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Column "ROLE" not found; SQL statement:
+INSERT INTO JobCategory (role,category) VALUES ('Developer' ,'IT'); [42122-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:453)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.table.Table.getColumn(Table.java:703)
+	at org.h2.command.Parser.parseColumn(Parser.java:1450)
+	at org.h2.command.Parser.parseColumnList(Parser.java:1435)
+	at org.h2.command.Parser.parseInsertGivenTable(Parser.java:1804)
+	at org.h2.command.Parser.parseInsert(Parser.java:1749)
+	at org.h2.command.Parser.parsePrepared(Parser.java:954)
+	at org.h2.command.Parser.parse(Parser.java:843)
+	at org.h2.command.Parser.parse(Parser.java:815)
+	at org.h2.command.Parser.prepareCommand(Parser.java:738)
+	at org.h2.engine.Session.prepareLocal(Session.java:657)
+	at org.h2.engine.Session.prepareCommand(Session.java:595)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1235)
+	at org.h2.jdbc.JdbcPreparedStatement.<init>(JdbcPreparedStatement.java:76)
+	at org.h2.jdbc.JdbcConnection.prepareStatement(JdbcConnection.java:352)
+	at Server.executeInsertQuery(Server.java:30)
+	at FactoryHandler.insert(FactoryHandler.java:56)
+	at JobCategoryController.mockData(JobCategoryController.java:120)
+	at MainClass.main(MainClass.java:45)
+2021-05-24 14:32:13 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "JOBPOSTING" not found; SQL statement:
+DROP TABLE JobPosting; [42102-200]
+2021-05-24 14:32:13 jdbc[25]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Column "ROLE" not found; SQL statement:
+INSERT INTO JobCategory (role,category) VALUES ('Developer' ,'IT'); [42122-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:453)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.table.Table.getColumn(Table.java:703)
+	at org.h2.command.Parser.parseColumn(Parser.java:1450)
+	at org.h2.command.Parser.parseColumnList(Parser.java:1435)
+	at org.h2.command.Parser.parseInsertGivenTable(Parser.java:1804)
+	at org.h2.command.Parser.parseInsert(Parser.java:1749)
+	at org.h2.command.Parser.parsePrepared(Parser.java:954)
+	at org.h2.command.Parser.parse(Parser.java:843)
+	at org.h2.command.Parser.parse(Parser.java:815)
+	at org.h2.command.Parser.prepareCommand(Parser.java:738)
+	at org.h2.engine.Session.prepareLocal(Session.java:657)
+	at org.h2.engine.Session.prepareCommand(Session.java:595)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1235)
+	at org.h2.jdbc.JdbcPreparedStatement.<init>(JdbcPreparedStatement.java:76)
+	at org.h2.jdbc.JdbcConnection.prepareStatement(JdbcConnection.java:352)
+	at Server.executeInsertQuery(Server.java:30)
+	at FactoryHandler.insert(FactoryHandler.java:56)
+	at JobCategoryController.mockData(JobCategoryController.java:120)
+	at MainClass.main(MainClass.java:46)
+2021-05-24 14:32:49 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "JOBPOSTING" not found; SQL statement:
+DROP TABLE JobPosting; [42102-200]
+2021-05-24 14:32:49 jdbc[25]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Column "CATEGORY" not found; SQL statement:
+INSERT INTO JobCategory (role,category) VALUES ('Developer' ,'IT'); [42122-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:453)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.table.Table.getColumn(Table.java:703)
+	at org.h2.command.Parser.parseColumn(Parser.java:1450)
+	at org.h2.command.Parser.parseColumnList(Parser.java:1435)
+	at org.h2.command.Parser.parseInsertGivenTable(Parser.java:1804)
+	at org.h2.command.Parser.parseInsert(Parser.java:1749)
+	at org.h2.command.Parser.parsePrepared(Parser.java:954)
+	at org.h2.command.Parser.parse(Parser.java:843)
+	at org.h2.command.Parser.parse(Parser.java:815)
+	at org.h2.command.Parser.prepareCommand(Parser.java:738)
+	at org.h2.engine.Session.prepareLocal(Session.java:657)
+	at org.h2.engine.Session.prepareCommand(Session.java:595)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1235)
+	at org.h2.jdbc.JdbcPreparedStatement.<init>(JdbcPreparedStatement.java:76)
+	at org.h2.jdbc.JdbcConnection.prepareStatement(JdbcConnection.java:352)
+	at Server.executeInsertQuery(Server.java:30)
+	at FactoryHandler.insert(FactoryHandler.java:56)
+	at JobCategoryController.mockData(JobCategoryController.java:120)
+	at MainClass.main(MainClass.java:46)
+2021-05-24 14:32:58 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "JOBPOSTING" not found; SQL statement:
+DROP TABLE JobPosting; [42102-200]

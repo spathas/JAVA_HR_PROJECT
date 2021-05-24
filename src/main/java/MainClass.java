@@ -11,16 +11,19 @@ public class MainClass {
 
         JobApplicantController jobApplicantController = new JobApplicantController();
         CompanyController companyController = new CompanyController();
+        JobPostingController jobPostingController = new JobPostingController();
+        JobCategoryController jobCategoryController = new JobCategoryController();
 
  //        TEST FACTORY FUNC
         jobApplicantController.drop();
         companyController.drop();
+        jobPostingController.drop();
+        jobCategoryController.drop();
         try{
-            ///////USER/////////
+            ///////JOP APPLICANT/////////
             jobApplicantController.create();
             jobApplicantController.mockData();
             jobApplicantController.getAll();
-            jobApplicantController.getById(1);
             jobApplicantController.delete(2);
 
             JobApplicant nickolas = jobApplicantController.getById(1);
@@ -33,11 +36,23 @@ public class MainClass {
             companyController.create();
             companyController.mockData();
             companyController.getAll();
-            companyController.getById(1);
 
-            Company c1 = companyController.getById(1);
-            c1.setName("Name Updated");
-            companyController.update(c1);
+//            Company c1 = companyController.getById(1);
+//            c1.setName("Name Updated");
+//            companyController.update(c1);
+
+            //////JOB CATEGORY///////
+            jobCategoryController.create();
+            jobCategoryController.mockData();
+            jobCategoryController.getAll();
+
+            //////JOB POSTING///////
+            jobPostingController.create();
+            jobPostingController.mockData();
+            jobPostingController.getAll();
+            JobPosting posting = jobPostingController.getById(1);
+            System.out.println(posting.toString());
+
 
         } catch (Exception se) {
             //Handle errors for JDBC

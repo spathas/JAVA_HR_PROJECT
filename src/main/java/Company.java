@@ -90,6 +90,6 @@ public class Company {
 
     @Override
     public String toString() {
-        return " || " + this.getName() + " | " + this.getEmail() + " | " + this.getCountry() + " | " + this.getPhone() + " | " + this.getAddress();
+        return this.getName() + " | " + this.getEmail() + " | " + this.getCountry() + " | " + this.getPhone() + " | " + this.getAddress();
     }
 }

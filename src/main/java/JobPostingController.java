@@ -9,15 +9,15 @@ import java.sql.SQLException;
 import java.util.HashMap;
 
 public class JobPostingController {
-    CompanyController companyController = new CompanyController();
 
     private final HashMap<String, String> JobPostingTable = new HashMap<>();
 
     public JobPostingController() {
         JobPostingTable.put("id", "INTEGER auto_increment PRIMARY KEY");
+        JobPostingTable.put("company", "INTEGER NOT NULL");
         JobPostingTable.put("title", "VARCHAR2(50) NOT NULL");
-        JobPostingTable.put("description", "VARCHAR2(50) NOT NULL");
-        JobPostingTable.put("jobCategory", "VARCHAR2(20) NOT NULL"); //Change to object
+        JobPostingTable.put("description", "VARCHAR2(4000) NOT NULL");
+        JobPostingTable.put("jobCategory", "INTEGER NOT NULL"); //Change to object
         JobPostingTable.put("seniority", "VARCHAR2(10)");
         JobPostingTable.put("salary", "INTEGER");
         JobPostingTable.put("fullTime", "BOOLEAN");
@@ -107,28 +107,36 @@ public class JobPostingController {
     //Insert mock data
     public void mockData() throws SQLException, ClassNotFoundException, IOException, ParseException {
 
+        CompanyController companyController = new CompanyController();
+        JobCategoryController jobCategoryController = new JobCategoryController();
+
         //JSON parser object to parse read file
         JSONParser parser = new JSONParser();
 
-        JSONArray jsonJobApplicants = (JSONArray) parser.parse(new FileReader("MockData/jobPosting.json"));
+        JSONArray jsonJobPostings = (JSONArray) parser.parse(new FileReader("MockData/jobPostings.json"));
 
-        for (Object posting : jsonJobApplicants)
+        for (Object posting : jsonJobPostings)
         {
             //Setup Objects
             JSONObject jsonObj = (JSONObject) posting;
+
+            Long company = (Long) jsonObj.get("company");
+            Long salary = (Long) jsonObj.get("salary");
+            Long jobCategory = (Long) jsonObj.get("jobCategory");
+
             JobPosting jobPosting = new JobPosting(
-                    companyController.getById((int) jsonObj.get("company")),
+                    companyController.getById(company.intValue()),
                     (String) jsonObj.get("title"),
-                    Long.getLong((String) jsonObj.get("description")),
-                    (String) jsonObj.get("jobCategory"),
+                    (String) jsonObj.get("description"),
+                    jobCategoryController.getById(jobCategory.intValue()),
                     (String) jsonObj.get("seniority"),
-                    (String) jsonObj.get("salary"),
-                    (boolean) jsonObj.get("works")
+                    salary.intValue(),
+                    (boolean) jsonObj.get("fullTime")
             );
-            //Convert jobApplicant to hash map
+            // Convert jobApplicant to hash map
             HashMap<String, String> jobPostingData = jobPosting.getJobPostingMap();
-            //Insert data to DB
-            FactoryHandler.insert("JobPosting", jobPostingData);
+            // Insert data to DB
+            FactoryHandler.insert("jobPosting", jobPostingData);
         }
 
     }

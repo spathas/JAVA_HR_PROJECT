@@ -141,7 +141,7 @@ public interface FactoryHandler {
             query = query.concat(key + ", ");
         }
         query = query.substring(0, query.length()-2).concat(" FROM " + tableName);
-        query = query.concat(" WHERE" + filterColumn + " = " + filterValue);
+        query = query.concat(" WHERE " + filterColumn + " = " + filterValue);
         ResultSet resultSet = server.executeQuery(query);
 
         //Fetch data and store in a map
