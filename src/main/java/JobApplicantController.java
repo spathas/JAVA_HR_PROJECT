@@ -25,9 +25,9 @@ public class JobApplicantController implements FactoryHandler {
 
     public void create() {
         try {
-            FactoryHandler.create("jobApplicant", this.jobApplicantTable);
+            FactoryHandler.create("JobApplicant", this.jobApplicantTable);
         } catch (SQLException | ClassNotFoundException e) {
-            System.out.println("Table jobApplicant already exists");
+            System.out.println("Table JobApplicant already exists");
         }
     }
 
@@ -35,29 +35,34 @@ public class JobApplicantController implements FactoryHandler {
         HashMap<String, String> jobApplicantData = jobApplicant.getJobApplicantMap();
 
         try {
-            FactoryHandler.insert("jobApplicant", jobApplicantData);
+            FactoryHandler.insert("JobApplicant", jobApplicantData);
         } catch (SQLException | ClassNotFoundException e) {
-            System.out.println("Table jobApplicant or current jobApplicant not found");
+            System.out.println("Table JobApplicant or current jobApplicant not found");
         }
+
     }
 
     public void delete(int jobApplicantId) {
         try {
             JobApplicant jobApplicant = getById(jobApplicantId);
-            FactoryHandler.deleteRowById("jobApplicant", Integer.toString(jobApplicant.getId()));
+            FactoryHandler.deleteRowById("JobApplicant", Integer.toString(jobApplicant.getId()));
         } catch (SQLException | ClassNotFoundException e) {
-            System.out.println("Table jobApplicant or current jobApplicant not found");
+            System.out.println("Table JobApplicant or current jobApplicant not found");
         }
+
+        getById(jobApplicantId);
     }
 
     public void update(JobApplicant jobApplicant) {
         int id = jobApplicant.getId();
 
         try {
-            FactoryHandler.update("jobApplicant", id, jobApplicant.getJobApplicantMap());
+            FactoryHandler.update("JobApplicant", id, jobApplicant.getJobApplicantMap());
         } catch (SQLException | ClassNotFoundException sqlError) {
-            System.out.println("Table jobApplicant or column not found");
+            System.out.println("Table JobApplicant or column not found");
         }
+
+        getById(id);
     }
 
     public HashMap<Integer, JobApplicant> getAll() {
@@ -65,11 +70,57 @@ public class JobApplicantController implements FactoryHandler {
 
         HashMap<Integer, HashMap<String, String>> map = null;
         try {
-            map = FactoryHandler.getAll("jobApplicant", this.jobApplicantTable);
+            map = FactoryHandler.getAll("JobApplicant", this.jobApplicantTable, "");
         } catch (SQLException sqlError) {
             sqlError.printStackTrace();
         } catch (ClassNotFoundException notFoundException) {
-            System.out.println("Table jobApplicant not found");
+            System.out.println("Table JobApplicant not found");
+        }
+
+        for(Integer id : map.keySet()) {
+            jobApplicants.put( id, new JobApplicant(map.get(id)) );
+        }
+
+        return jobApplicants;
+    }
+
+    // Return all JobApplicants via posting description
+    public HashMap<Integer, JobApplicant> getApplicantsViaJobPosting(JobPosting jobPosting) {
+        String categoryId = Integer.toString(jobPosting.getJobCategory().getId());
+        String filter = "WHERE jobCategory = " + categoryId;
+
+        HashMap<Integer, JobApplicant> jobApplicants = new HashMap<>();
+
+        HashMap<Integer, HashMap<String, String>> map = null;
+        try {
+            map = FactoryHandler.getAll("JobApplicant", this.jobApplicantTable, filter);
+        } catch (SQLException sqlError) {
+            sqlError.printStackTrace();
+        } catch (ClassNotFoundException notFoundException) {
+            System.out.println("Table JobApplicant not found");
+        }
+
+        for(Integer id : map.keySet()) {
+            jobApplicants.put( id, new JobApplicant(map.get(id)) );
+        }
+
+        return jobApplicants;
+    }
+
+    // Return all jobApplicants who NOT work.
+    public HashMap<Integer, JobApplicant> getIfWorks(boolean isWork) {
+        String work = isWork ? Boolean.toString(isWork) : "false";
+        String filter = " WHERE works = " + work;
+
+        HashMap<Integer, JobApplicant> jobApplicants = new HashMap<>();
+
+        HashMap<Integer, HashMap<String, String>> map = null;
+        try {
+            map = FactoryHandler.getAll("JobApplicant", this.jobApplicantTable, filter);
+        } catch (SQLException sqlError) {
+            sqlError.printStackTrace();
+        } catch (ClassNotFoundException notFoundException) {
+            System.out.println("Table JobApplicant not found");
         }
 
         for(Integer id : map.keySet()) {
@@ -81,23 +132,27 @@ public class JobApplicantController implements FactoryHandler {
 
     public JobApplicant getById(int jobApplicantID) {
         try {
-            return new JobApplicant( FactoryHandler.getFiltering("jobApplicant", this.jobApplicantTable, "id", Integer.toString(jobApplicantID))
+            return new JobApplicant( FactoryHandler.getFiltering("JobApplicant", this.jobApplicantTable, "id", Integer.toString(jobApplicantID))
                     .get(jobApplicantID) );
         } catch (SQLException | ClassNotFoundException sqlError) {
-            System.out.println("Table jobApplicant not found or your filter is wrong!");
+            System.out.println("Table JobApplicant not found or your filter is wrong!");
         }
         return null;
     }
 
     public void drop() {
         try {
-            FactoryHandler.drop("jobApplicant");
+            FactoryHandler.drop("JobApplicant");
         } catch (SQLException | ClassNotFoundException sqlError) {
-            System.out.println("Table jobApplicant not found");
+            System.out.println("Table JobApplicant not found");
         }
     }
 
     public void mockData() throws SQLException, ClassNotFoundException, IOException, ParseException {
+        JobCategoryController jobCategoryController = new JobCategoryController();
+
+        drop();
+        create();
 
         //JSON parser object to parse read file
         JSONParser parser = new JSONParser();
@@ -108,6 +163,9 @@ public class JobApplicantController implements FactoryHandler {
         {
             //Setup Objects
             JSONObject jsonObj = (JSONObject) u;
+
+            Long jobCategory = (Long) jsonObj.get("jobCategory");
+
             JobApplicant jobApplicant = new JobApplicant(
                     (String) jsonObj.get("name"),
                     (String) jsonObj.get("surname"),
@@ -115,17 +173,18 @@ public class JobApplicantController implements FactoryHandler {
                     (String) jsonObj.get("email"),
                     (String) jsonObj.get("phone"),
                     (String) jsonObj.get("education"),
-                    (String) jsonObj.get("jobCategory"), 
+                    (jobCategoryController.getById(jobCategory.intValue()) != null)
+                            ? jobCategoryController.getById(jobCategory.intValue()) : new JobCategory(),
                     (boolean) jsonObj.get("works")
             );
             //Convert jobApplicant to hash map
             HashMap<String, String> jobApplicantData = jobApplicant.getJobApplicantMap();
             //Insert data to DB
-            FactoryHandler.insert("jobApplicant", jobApplicantData);
+            FactoryHandler.insert("JobApplicant", jobApplicantData);
         }
 
-    }
+        System.out.println("Mock data insertion.\n");
+        getAll();
 
-    // Return all jobApplicants who work.
-//    public HashMap<Integer, JobApplicant>
+    }
 }

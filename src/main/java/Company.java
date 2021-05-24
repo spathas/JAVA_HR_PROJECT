@@ -9,6 +9,14 @@ public class Company {
     private String phone;
     private String address;
 
+    public Company() {
+        this.name = "Unknown company";
+        this.email = "Unknown email";
+        this.country = "Unknown country";
+        this.phone = "Unknown phone";
+        this.phone = "Unknown phone";
+    }
+
     public Company(String name, String email, String country, String phone, String address) {
         this.name = name;
         this.email = email;

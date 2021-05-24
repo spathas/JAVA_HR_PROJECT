@@ -15,43 +15,42 @@ public class MainClass {
         JobCategoryController jobCategoryController = new JobCategoryController();
 
  //        TEST FACTORY FUNC
-        jobApplicantController.drop();
-        companyController.drop();
-        jobPostingController.drop();
-        jobCategoryController.drop();
         try{
-            ///////JOP APPLICANT/////////
-            jobApplicantController.create();
-            jobApplicantController.mockData();
-            jobApplicantController.getAll();
-            jobApplicantController.delete(2);
-
-            JobApplicant nickolas = jobApplicantController.getById(1);
-            nickolas.setName("Nickolas");
-            nickolas.setAge(20);
-            jobApplicantController.update(nickolas);
-            jobApplicantController.getAll();
+            //////JOB CATEGORY///////
+            jobCategoryController.mockData();
+//            System.out.println(jobCategoryController.getById(1));
 
             //////COMPANY///////
-            companyController.create();
             companyController.mockData();
-            companyController.getAll();
 
 //            Company c1 = companyController.getById(1);
 //            c1.setName("Name Updated");
 //            companyController.update(c1);
 
-            //////JOB CATEGORY///////
-            jobCategoryController.create();
-            jobCategoryController.mockData();
-            jobCategoryController.getAll();
-
             //////JOB POSTING///////
-            jobPostingController.create();
             jobPostingController.mockData();
-            jobPostingController.getAll();
-            JobPosting posting = jobPostingController.getById(1);
-            System.out.println(posting.toString());
+//            JobApplicant nickolas = jobApplicantController.getById(1);
+//            jobPostingController.getPostingsViaUserProfile(nickolas);
+
+//            JobPosting posting = jobPostingController.getById(1);
+//            System.out.println(posting.toString());
+
+            ///////JOP APPLICANT/////////
+            jobApplicantController.mockData();
+//            jobApplicantController.getIfWorks(false);
+//            jobApplicantController.delete(2);
+//
+//            JobApplicant nickolas = jobApplicantController.getById(1);
+//            nickolas.setName("Nickolas");
+//            nickolas.setAge(20);
+//            jobApplicantController.update(nickolas);
+//            jobApplicantController.getAll();
+
+            JobApplicant nickolas = jobApplicantController.getById(1);
+            jobPostingController.getPostingsViaUserProfile(nickolas);
+
+            JobPosting job1 = jobPostingController.getById(1);
+            jobApplicantController.getApplicantsViaJobPosting(job1);
 
 
         } catch (Exception se) {

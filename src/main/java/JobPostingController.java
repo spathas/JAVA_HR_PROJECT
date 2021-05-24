@@ -70,7 +70,30 @@ public class JobPostingController {
 
         HashMap<Integer, HashMap<String, String>> map = null;
         try {
-            map = FactoryHandler.getAll("JobPosting", this.JobPostingTable);
+            map = FactoryHandler.getAll("JobPosting", this.JobPostingTable, "");
+        } catch (SQLException sqlError) {
+            sqlError.printStackTrace();
+        } catch (ClassNotFoundException notFoundException) {
+            System.out.println("Table JobPosting not found");
+        }
+
+        for(Integer id : map.keySet()) {
+            jobPostings.put( id, new JobPosting(map.get(id)) );
+        }
+
+        return jobPostings;
+    }
+
+    // Return all jobPosting via user profile
+    public HashMap<Integer, JobPosting> getPostingsViaUserProfile(JobApplicant jobApplicant) {
+        String categoryId = Integer.toString(jobApplicant.getJobCategory().getId());
+        String filter = "WHERE jobCategory = " + categoryId;
+
+        HashMap<Integer, JobPosting> jobPostings = new HashMap<>();
+
+        HashMap<Integer, HashMap<String, String>> map = null;
+        try {
+            map = FactoryHandler.getAll("JobPosting", this.JobPostingTable, filter);
         } catch (SQLException sqlError) {
             sqlError.printStackTrace();
         } catch (ClassNotFoundException notFoundException) {
@@ -107,6 +130,9 @@ public class JobPostingController {
     //Insert mock data
     public void mockData() throws SQLException, ClassNotFoundException, IOException, ParseException {
 
+        drop();
+        create();
+
         CompanyController companyController = new CompanyController();
         JobCategoryController jobCategoryController = new JobCategoryController();
 
@@ -115,8 +141,7 @@ public class JobPostingController {
 
         JSONArray jsonJobPostings = (JSONArray) parser.parse(new FileReader("MockData/jobPostings.json"));
 
-        for (Object posting : jsonJobPostings)
-        {
+        for (Object posting : jsonJobPostings) {
             //Setup Objects
             JSONObject jsonObj = (JSONObject) posting;
 
@@ -125,10 +150,12 @@ public class JobPostingController {
             Long jobCategory = (Long) jsonObj.get("jobCategory");
 
             JobPosting jobPosting = new JobPosting(
-                    companyController.getById(company.intValue()),
+                    (companyController.getById(company.intValue()) != null)
+                            ? companyController.getById(company.intValue()) : new Company(),
                     (String) jsonObj.get("title"),
                     (String) jsonObj.get("description"),
-                    jobCategoryController.getById(jobCategory.intValue()),
+                    (jobCategoryController.getById(jobCategory.intValue()) != null)
+                            ? jobCategoryController.getById(jobCategory.intValue()) : new JobCategory(),
                     (String) jsonObj.get("seniority"),
                     salary.intValue(),
                     (boolean) jsonObj.get("fullTime")
@@ -139,11 +166,9 @@ public class JobPostingController {
             FactoryHandler.insert("jobPosting", jobPostingData);
         }
 
+        System.out.println("Mock data insertion.\n");
+        getAll();
     }
-
-    // Check if company exists before insert new posting.
-
-    // Return all users at jobCategory
 
     // Apply to job posting by user
         // Create a new row at table applied

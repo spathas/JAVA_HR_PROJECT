@@ -65,7 +65,7 @@ public class JobCategoryController {
 
         HashMap<Integer, HashMap<String, String>> map = null;
         try {
-            map = FactoryHandler.getAll("JobCategory", this.JobCategoryTable);
+            map = FactoryHandler.getAll("JobCategory", this.JobCategoryTable, "");
         } catch (SQLException sqlError) {
             sqlError.printStackTrace();
         } catch (ClassNotFoundException notFoundException) {
@@ -102,6 +102,9 @@ public class JobCategoryController {
     //Insert mock data
     public void mockData() throws SQLException, ClassNotFoundException, IOException, ParseException {
 
+        drop();
+        create();
+
         //JSON parser object to parse read file
         JSONParser parser = new JSONParser();
 
@@ -119,5 +122,8 @@ public class JobCategoryController {
             // Insert data to DB
             FactoryHandler.insert("JobCategory", jobCategoryData);
         }
+
+        System.out.println("Mock data insertion.\n");
+        getAll();
     }
 }

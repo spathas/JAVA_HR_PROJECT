@@ -6,6 +6,11 @@ public class JobCategory {
     private String category;
     private String role;
 
+    public JobCategory() {
+        this.category = "Unknown category";
+        this.role = "Unknown role";
+    }
+
     public JobCategory(String category, String role) {
         this.category = category;
         this.role = role;

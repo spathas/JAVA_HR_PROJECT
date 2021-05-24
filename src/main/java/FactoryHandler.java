@@ -94,7 +94,7 @@ public interface FactoryHandler {
     }
 
     // Get all data from a table
-    static HashMap<Integer, HashMap<String, String>> getAll(String tableName, HashMap<String, String> table) throws SQLException, ClassNotFoundException {
+    static HashMap<Integer, HashMap<String, String>> getAll(String tableName, HashMap<String, String> table, String filter) throws SQLException, ClassNotFoundException {
 
         HashMap<Integer, HashMap<String, String>> objectsMap = new HashMap<>();
         server.connectionOpen();
@@ -104,7 +104,7 @@ public interface FactoryHandler {
         for(String key : table.keySet()) {
             query = query.concat(key + ", ");
         }
-        query = query.substring(0, query.length()-2).concat(" FROM " + tableName);
+        query = query.substring(0, query.length()-2).concat(" FROM " + tableName + " " + filter);
         ResultSet resultSet = server.executeQuery(query);
 
         //Fetch data and store in a map
@@ -154,7 +154,6 @@ public interface FactoryHandler {
         }
 
         server.connectionClose();
-        System.out.println("");
 
         return objectsMap;
     }

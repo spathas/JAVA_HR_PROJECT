@@ -25,10 +25,12 @@ public class JobPosting {
 
     public JobPosting(HashMap<String, String> map) {
         this.id = Integer.parseInt(map.get("id"));
-        this.company = companyController.getById(Integer.parseInt(map.get("company")));
+        this.company = (companyController.getById(Integer.parseInt(map.get("company"))) != null)
+                ? companyController.getById(Integer.parseInt(map.get("company"))) : new Company();
         this.title = map.get("title");
         this.description = map.get("description");
-        this.jobCategory = jobCategoryController.getById(Integer.parseInt(map.get("jobCategory")));
+        this.jobCategory = (jobCategoryController.getById(Integer.parseInt(map.get("jobCategory"))) != null)
+                ? jobCategoryController.getById(Integer.parseInt(map.get("jobCategory"))) : new JobCategory();
         this.seniority = map.get("seniority");
         this.salary = Integer.parseInt(map.get("salary"));
         this.fullTime = Boolean.parseBoolean(map.get("fullTime"));
@@ -87,7 +89,7 @@ public class JobPosting {
     public String toString() {
         return "Company: " + this.getCompany().getName() + " \n " + "Title: " + this.getTitle() + " \n " + "Description: " + this.getDescription() + " \n "
                 + "Job Category: " + this.getJobCategory().getRole() + " \n " + "Seniority: " + this.getSeniority()+ " \n "
-                + "Salary: " + this.getSalary()+ " \n " + "Full Time: " + this.isFullTime();
+                + "Salary: " + this.getSalary()+ " \n " + "Full Time: " + this.isFullTime() + "\n";
     }
 }
 

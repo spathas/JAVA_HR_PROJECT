@@ -53,7 +53,7 @@ public class CompanyController implements FactoryHandler {
 
         HashMap<Integer, HashMap<String, String>> map = null;
         try {
-            map = FactoryHandler.getAll("company", this.companyTable);
+            map = FactoryHandler.getAll("company", this.companyTable, "");
         } catch (SQLException sqlError) {
             sqlError.printStackTrace();
         } catch (ClassNotFoundException notFoundException) {
@@ -100,6 +100,10 @@ public class CompanyController implements FactoryHandler {
     }
 
     public void mockData() throws IOException, ParseException, SQLException, ClassNotFoundException {
+
+        drop();
+        create();
+
         //JSON parser object to parse read file
         JSONParser parser = new JSONParser();
 
@@ -116,7 +120,8 @@ public class CompanyController implements FactoryHandler {
             //Insert data to DB
             FactoryHandler.insert("company", companyData);
         }
-    }
 
-    // Get all users based on job posting.
+        System.out.println("Mock data insertion.\n");
+        getAll();
+    }
 }

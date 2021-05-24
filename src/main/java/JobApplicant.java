@@ -1,6 +1,7 @@
 import java.util.HashMap;
 
 public class JobApplicant {
+    JobCategoryController jobCategoryController = new JobCategoryController();
 
     private int id;
     private String name;
@@ -8,11 +9,11 @@ public class JobApplicant {
     private int age;
     private String email;
     private String phone;
-    String education;
-    private String jobCategory; // Change to JobCategory obj.
+    private String education;
+    private JobCategory jobCategory; // Change to JobCategory obj.
     private boolean works;
 
-    public JobApplicant(String name, String surname, int age, String email, String phone, String education, String jobCategory, boolean works) {
+    public JobApplicant(String name, String surname, int age, String email, String phone, String education, JobCategory jobCategory, boolean works) {
         this.name = name;
         this.surname = surname;
         this.age = age;
@@ -31,7 +32,8 @@ public class JobApplicant {
         this.email = map.get("email");
         this.phone = map.get("phone");
         this.education = map.get("education");
-        this.jobCategory = map.get("education");
+        this.jobCategory = (jobCategoryController.getById(Integer.parseInt(map.get("jobCategory"))) != null)
+                ? jobCategoryController.getById(Integer.parseInt(map.get("jobCategory"))) : new JobCategory();
         this.works = Boolean.parseBoolean(map.get("works"));
     }
 
@@ -56,7 +58,7 @@ public class JobApplicant {
 
     public void setEducation(String education) { this.education = education; }
 
-    public void setJobCategory(String jobCategory) {
+    public void setJobCategory(JobCategory jobCategory) {
         this.jobCategory = jobCategory;
     }
 
@@ -89,7 +91,7 @@ public class JobApplicant {
 
     public String getEducation() { return education; }
 
-    public String getJobCategory() {
+    public JobCategory getJobCategory() {
         return jobCategory;
     }
 
@@ -106,7 +108,7 @@ public class JobApplicant {
         applicantMAp.put("email", getEmail());
         applicantMAp.put("phone", getPhone());
         applicantMAp.put("education", getEducation());
-        applicantMAp.put("jobCategory", getJobCategory());
+        applicantMAp.put("jobCategory", Integer.toString(getJobCategory().getId()));
         applicantMAp.put("works", Boolean.toString(isWorks()));
 
         return applicantMAp;
@@ -114,7 +116,7 @@ public class JobApplicant {
 
     @Override
     public String toString() {
-        return " || " + this.getName() + " | " + this.getSurname()+ " | " + this.getAge() + " | " + this.getEmail() + " | " +
-                this.getPhone() + " | " + this.getEducation() + " | " + this.getJobCategory() + " | " + this.isWorks();
+        return this.getName() + " | " + this.getSurname()+ " | " + this.getAge() + " | " + this.getEmail() + " | " +
+                this.getPhone() + " | " + this.getEducation() + " | " +  this.getJobCategory().getRole() + " | " + this.isWorks();
     }
 }
