@@ -9,26 +9,26 @@ class MainFrameComponent extends JFrame {
     private Image icon;
 
     MainFrameComponent() {
-        this.title = "Postings";
-        this.isResizable = true;
+        // Frame init
+        this.title = "HR SYSTEM";
+        this.isResizable = false;
         this.bg_color = Color.darkGray;
-        this.icon = new ImageIcon("public/images/customer.png").getImage();
+        this.icon = new ImageIcon("public/images/logo.png").getImage();
 
         setupFrame();
         addPanels();
-
     }
 
     private void setupFrame() {
         this.setTitle(this.title);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(this.isResizable);
-        this.setSize(1940, 720);
+        this.setSize(1280, 740);
         this.setVisible(true);
         this.getContentPane().setBackground(this.bg_color);
         this.setIconImage(icon);
-        this.setLayout(new BorderLayout(5,5));
-        this.pack();
+        this.setLayout(new BorderLayout(10,10));
+//        this.pack();
     }
 
     private void addPanels() {

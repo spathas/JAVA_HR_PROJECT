@@ -6,31 +6,47 @@ import java.awt.geom.Area;
 
 public class SideMenuComponent extends JPanel implements ActionListener {
 
-    JLabel logo = new JLabel("LOGO");
+    JLabel logo = new JLabel("Human Resources System");
     JButton jobPostings_btn = new JButton("Postings");
     JButton jobApplicants_btn = new JButton("Applicants");
     JButton jobCompanies_btn = new JButton("Companies");
 
 
     SideMenuComponent() {
-//        Setup
-        super();
+        setupFrame();
+        addMenuItems();
+    }
+
+    private void setupFrame() {
         this.setBackground(Color.lightGray);
         this.setLayout(new GridLayout(8,1, 1,15));
         this.setBorder(BorderFactory.createEmptyBorder(0,20,0,20));
         this.setPreferredSize(new Dimension(280, 100));
+    }
 
-//        Add menu buttons
+    private void addMenuItems() {
         this.add(logo);
         this.add(jobPostings_btn);
         this.add(jobApplicants_btn);
         this.add(jobCompanies_btn);
-        // Focusable
-        jobPostings_btn.setFocusable(false);
-        jobApplicants_btn.setFocusable(false);
-        jobCompanies_btn.setFocusable(false);
-//        jobPostings_btn.setBorder(new RoundedBorder(10));
-//        Events
+
+        // Logo icon
+        logo.setIcon(new ImageIcon(new ImageIcon("./public/images/logo.png")
+                .getImage()
+                .getScaledInstance(70, 70, Image.SCALE_DEFAULT)));
+
+        // Setup items
+        menuItemsFocusableChanged(false);
+        eventActionButtonClick();
+    }
+
+    private void menuItemsFocusableChanged(boolean focusable) {
+        jobPostings_btn.setFocusable(focusable);
+        jobApplicants_btn.setFocusable(focusable);
+        jobCompanies_btn.setFocusable(focusable);
+    }
+
+    private void eventActionButtonClick() {
         jobPostings_btn.addActionListener(this);
         jobApplicants_btn.addActionListener(this);
         jobCompanies_btn.addActionListener(this);
