@@ -9,54 +9,59 @@ public class MainClass {
 
     public static void main(String[] args) {
 
+        MainFrame frame = new MainFrame();
+
+        frame.basicComponent();
+
         JobApplicantController jobApplicantController = new JobApplicantController();
         CompanyController companyController = new CompanyController();
         JobPostingController jobPostingController = new JobPostingController();
         JobCategoryController jobCategoryController = new JobCategoryController();
 
- //        TEST FACTORY FUNC
-        try{
-            //////JOB CATEGORY///////
-            jobCategoryController.mockData();
-//            System.out.println(jobCategoryController.getById(1));
+//        TEST FACTORY FUNC
 
-            //////COMPANY///////
-            companyController.mockData();
-
-//            Company c1 = companyController.getById(1);
-//            c1.setName("Name Updated");
-//            companyController.update(c1);
-
-            //////JOB POSTING///////
-            jobPostingController.mockData();
-//            JobApplicant nickolas = jobApplicantController.getById(1);
-//            jobPostingController.getPostingsViaUserProfile(nickolas);
-
-//            JobPosting posting = jobPostingController.getById(1);
-//            System.out.println(posting.toString());
-
-            ///////JOP APPLICANT/////////
-            jobApplicantController.mockData();
-//            jobApplicantController.getIfWorks(false);
-//            jobApplicantController.delete(2);
+//        try{
+//            //////JOB CATEGORY///////
+//            jobCategoryController.mockData();
+////            System.out.println(jobCategoryController.getById(1));
+//
+//            //////COMPANY///////
+//            companyController.mockData();
+//
+////            Company c1 = companyController.getById(1);
+////            c1.setName("Name Updated");
+////            companyController.update(c1);
+//
+//            //////JOB POSTING///////
+//            jobPostingController.mockData();
+////            JobApplicant nickolas = jobApplicantController.getById(1);
+////            jobPostingController.getPostingsViaUserProfile(nickolas);
+//
+////            JobPosting posting = jobPostingController.getById(1);
+////            System.out.println(posting.toString());
+//
+//            ///////JOP APPLICANT/////////
+//            jobApplicantController.mockData();
+////            jobApplicantController.getIfWorks(false);
+////            jobApplicantController.delete(2);
+////
+////            JobApplicant nickolas = jobApplicantController.getById(1);
+////            nickolas.setName("Nickolas");
+////            nickolas.setAge(20);
+////            jobApplicantController.update(nickolas);
+////            jobApplicantController.getAll();
 //
 //            JobApplicant nickolas = jobApplicantController.getById(1);
-//            nickolas.setName("Nickolas");
-//            nickolas.setAge(20);
-//            jobApplicantController.update(nickolas);
-//            jobApplicantController.getAll();
-
-            JobApplicant nickolas = jobApplicantController.getById(1);
-            jobPostingController.getPostingsViaUserProfile(nickolas);
-
-            JobPosting job1 = jobPostingController.getById(1);
-            jobApplicantController.getApplicantsViaJobPosting(job1);
-
-
-        } catch (Exception se) {
-            //Handle errors for JDBC
-            se.printStackTrace();
-        }//Handle errors for Class.forName
+//            jobPostingController.getPostingsViaUserProfile(nickolas);
+//
+//            JobPosting job1 = jobPostingController.getById(1);
+//            jobApplicantController.getApplicantsViaJobPosting(job1);
+//
+//
+//        } catch (Exception se) {
+//            //Handle errors for JDBC
+//            se.printStackTrace();
+//        }//Handle errors for Class.forName
 
     }
 }
