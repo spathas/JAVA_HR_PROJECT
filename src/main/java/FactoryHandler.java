@@ -15,7 +15,8 @@ public interface FactoryHandler {
     Server server = new Server(JDBC_DRIVER, DB_URL, USER, PASS);
 
     //Create a new table
-    static void create(String tableName, HashMap<String, String> values) throws SQLException, ClassNotFoundException {
+    static void create(String tableName, HashMap<String, String> values)
+            throws SQLException, ClassNotFoundException {
         server.connectionOpen();
 
         String query = "CREATE TABLE " + tableName + " (";
@@ -34,7 +35,8 @@ public interface FactoryHandler {
     }
 
     //Insert data to table
-    static void insert(String tableName, HashMap<String, String> table) throws SQLException, ClassNotFoundException {
+    static void insert(String tableName, HashMap<String, String> table)
+            throws SQLException, ClassNotFoundException {
         server.connectionOpen();
 
         // Create query string
@@ -60,7 +62,8 @@ public interface FactoryHandler {
         System.out.println("");
     }
 
-    static void deleteRowById(String tableName, String rowId) throws SQLException, ClassNotFoundException {
+    static void deleteRowById(String tableName, String rowId)
+            throws SQLException, ClassNotFoundException {
         server.connectionOpen();
 
         //Delete row from tableName
@@ -74,7 +77,8 @@ public interface FactoryHandler {
     }
 
     //Update data table by id
-    static void update(String tableName, int id, HashMap<String, String> values) throws SQLException, ClassNotFoundException {
+    static void update(String tableName, int id, HashMap<String, String> values)
+            throws SQLException, ClassNotFoundException {
 
         server.connectionOpen();
 
@@ -94,7 +98,8 @@ public interface FactoryHandler {
     }
 
     // Get all data from a table
-    static HashMap<Integer, HashMap<String, String>> getAll(String tableName, HashMap<String, String> table, String filter) throws SQLException, ClassNotFoundException {
+    static HashMap<Integer, HashMap<String, String>> getAll(String tableName, HashMap<String, String> table, String filter)
+            throws SQLException, ClassNotFoundException {
 
         HashMap<Integer, HashMap<String, String>> objectsMap = new HashMap<>();
         server.connectionOpen();
@@ -130,7 +135,8 @@ public interface FactoryHandler {
     }
 
     // Get a single row from table by inserted filter query. eg: "where id = id"
-    static HashMap<Integer, HashMap<String, String>> getFiltering(String tableName, HashMap<String, String> table, String filterColumn, String filterValue) throws SQLException, ClassNotFoundException {
+    static HashMap<Integer, HashMap<String, String>> getFiltering(String tableName, HashMap<String, String> table, String filterColumn, String filterValue)
+            throws SQLException, ClassNotFoundException {
 
         HashMap<Integer, HashMap<String, String>> objectsMap = new HashMap<>();
         server.connectionOpen();
