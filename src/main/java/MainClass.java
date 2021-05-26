@@ -51,6 +51,23 @@ public class MainClass {
 //
 //            JobApplicant nickolas = jobApplicantController.getById(1);
 //            jobPostingController.getPostingsViaUserProfile(nickolas);
+
+//            JobPosting posting = jobPostingController.getById(1);
+//            System.out.println(posting.toString());
+
+            ///////JOP APPLICANT/////////
+//            jobApplicantController.mockData();
+//            jobApplicantController.getIfWorks(false);
+//            jobApplicantController.delete(2);
+//
+//            JobApplicant nickolas = jobApplicantController.getById(1);
+//            nickolas.setName("Nickolas");
+//            nickolas.setAge(20);
+//            jobApplicantController.update(nickolas);
+//            jobApplicantController.getAll();
+//
+//            JobApplicant nickolas = jobApplicantController.getById(1);
+//            jobPostingController.getPostingsViaUserProfile(nickolas);
 //
 //            JobPosting job1 = jobPostingController.getById(1);
 //            jobApplicantController.getApplicantsViaJobPosting(job1);
