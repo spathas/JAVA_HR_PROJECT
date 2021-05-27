@@ -32,7 +32,7 @@ public class JobApplicantController implements FactoryHandler {
     }
 
     public void insert(JobApplicant jobApplicant) {
-        HashMap<String, String> jobApplicantData = jobApplicant.getJobApplicantMap();
+        HashMap<String, String> jobApplicantData = jobApplicant.getMap();
 
         try {
             FactoryHandler.insert("JobApplicant", jobApplicantData);
@@ -57,7 +57,7 @@ public class JobApplicantController implements FactoryHandler {
         int id = jobApplicant.getId();
 
         try {
-            FactoryHandler.update("JobApplicant", id, jobApplicant.getJobApplicantMap());
+            FactoryHandler.update("JobApplicant", id, jobApplicant.getMap());
         } catch (SQLException | ClassNotFoundException sqlError) {
             System.out.println("Table JobApplicant or column not found");
         }
@@ -178,7 +178,7 @@ public class JobApplicantController implements FactoryHandler {
                     (boolean) jsonObj.get("works")
             );
             //Convert jobApplicant to hash map
-            HashMap<String, String> jobApplicantData = jobApplicant.getJobApplicantMap();
+            HashMap<String, String> jobApplicantData = jobApplicant.getMap();
             //Insert data to DB
             FactoryHandler.insert("JobApplicant", jobApplicantData);
         }

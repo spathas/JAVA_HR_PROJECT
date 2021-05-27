@@ -37,7 +37,7 @@ public class JobCategory {
 
     public String getRole() { return role; }
 
-    public HashMap<String,String> getJobCategoryMap() {
+    public HashMap<String,String> getMap() {
         HashMap<String,String> jobCategoryMap = new HashMap<>();
 
         jobCategoryMap.put("category", getCategory());

@@ -2,7 +2,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.geom.Area;
 
 public class SideMenuComponent extends JPanel implements ActionListener {
 
@@ -18,10 +17,10 @@ public class SideMenuComponent extends JPanel implements ActionListener {
     }
 
     private void setupFrame() {
+        this.setPreferredSize(new Dimension(260,0));
         this.setBackground(Color.lightGray);
         this.setLayout(new GridLayout(8,1, 1,15));
-        this.setBorder(BorderFactory.createEmptyBorder(0,20,0,20));
-        this.setPreferredSize(new Dimension(280, 100));
+        this.setBorder(BorderFactory.createEmptyBorder(20,20,20,20));
     }
 
     private void addMenuItems() {
@@ -36,14 +35,26 @@ public class SideMenuComponent extends JPanel implements ActionListener {
                 .getScaledInstance(70, 70, Image.SCALE_DEFAULT)));
 
         // Setup items
-        menuItemsFocusableChanged(false);
+        menuButtonsSetup();
         eventActionButtonClick();
     }
 
-    private void menuItemsFocusableChanged(boolean focusable) {
-        jobPostings_btn.setFocusable(focusable);
-        jobApplicants_btn.setFocusable(focusable);
-        jobCompanies_btn.setFocusable(focusable);
+    private void menuButtonsSetup() {
+        // Colors
+        jobPostings_btn.setFont(new Font(null,Font.BOLD,20));
+        jobPostings_btn.setForeground(Color.WHITE);
+        jobApplicants_btn.setFont(new Font(null,Font.BOLD,20));
+        jobApplicants_btn.setForeground(Color.WHITE);
+        jobCompanies_btn.setFont(new Font(null,Font.BOLD,20));
+        jobCompanies_btn.setForeground(Color.WHITE);
+        jobPostings_btn.setBackground(Color.BLUE);
+        jobApplicants_btn.setBackground(Color.BLUE);
+        jobCompanies_btn.setBackground(Color.BLUE);
+//        logo.setForeground(Color.WHITE);
+        // Focusable
+        jobPostings_btn.setFocusable(false);
+        jobApplicants_btn.setFocusable(false);
+        jobCompanies_btn.setFocusable(false);
     }
 
     private void eventActionButtonClick() {

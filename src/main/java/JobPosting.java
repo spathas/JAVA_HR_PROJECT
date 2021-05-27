@@ -71,7 +71,7 @@ public class JobPosting {
 
     public boolean isFullTime() { return fullTime; }
 
-    public HashMap<String,String> getJobPostingMap() {
+    public HashMap<String,String> getMap() {
         HashMap<String,String> jobPostingMap = new HashMap<>();
 
         jobPostingMap.put("company", Integer.toString(getCompany().getId()));

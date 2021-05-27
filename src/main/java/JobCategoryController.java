@@ -29,7 +29,7 @@ public class JobCategoryController {
 
     // Insert new category
     public void insert(JobCategory jobCategory) {
-        HashMap<String, String> jobCategoryData = jobCategory.getJobCategoryMap();
+        HashMap<String, String> jobCategoryData = jobCategory.getMap();
 
         try {
             FactoryHandler.insert("JobCategory", jobCategoryData);
@@ -53,7 +53,7 @@ public class JobCategoryController {
         int id = jobCategory.getId();
 
         try {
-            FactoryHandler.update("JobCategory", id, jobCategory.getJobCategoryMap());
+            FactoryHandler.update("JobCategory", id, jobCategory.getMap());
         } catch (SQLException | ClassNotFoundException sqlError) {
             System.out.println("Table JobCategory or column not found");
         }
@@ -118,7 +118,7 @@ public class JobCategoryController {
                     (String) jsonObj.get("role")
             );
             // Convert jobApplicant to hash map
-            HashMap<String, String> jobCategoryData = jobCategory.getJobCategoryMap();
+            HashMap<String, String> jobCategoryData = jobCategory.getMap();
             // Insert data to DB
             FactoryHandler.insert("JobCategory", jobCategoryData);
         }

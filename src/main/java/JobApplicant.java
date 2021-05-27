@@ -99,7 +99,7 @@ public class JobApplicant {
         return works;
     }
 
-    public HashMap<String,String> getJobApplicantMap() {
+    public HashMap<String,String> getMap() {
         HashMap<String,String> applicantMAp = new HashMap<>();
 
         applicantMAp.put("name", getName());

@@ -84,9 +84,10 @@ public class Company {
         return address;
     }
 
-    public HashMap<String,String> getCompanyMap() {
+    public HashMap<String,String> getMap() {
         HashMap<String,String> companyMap = new HashMap<>();
 
+        if(getId() > 0) companyMap.put("id", Integer.toString(getId()));
         companyMap.put("name", getName());
         companyMap.put("country", getCountry());
         companyMap.put("email", getEmail());

@@ -3,7 +3,6 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -31,7 +30,7 @@ public class CompanyController implements FactoryHandler {
     }
 
     public void insert(Company company) {
-        HashMap<String, String> userData = company.getCompanyMap();
+        HashMap<String, String> userData = company.getMap();
         try {
             FactoryHandler.insert("company", userData);
         } catch (SQLException | ClassNotFoundException e) {
@@ -42,7 +41,7 @@ public class CompanyController implements FactoryHandler {
     public void update(Company company) {
         int id = company.getId();
         try {
-            FactoryHandler.update("company", id, company.getCompanyMap());
+            FactoryHandler.update("company", id, company.getMap());
         } catch (SQLException | ClassNotFoundException sqlError) {
             System.out.println("Table user not found or your filter is wrong!");
         }
@@ -116,7 +115,7 @@ public class CompanyController implements FactoryHandler {
             Company company = new Company((String) jsonObj.get("name"), (String) jsonObj.get("email"), (String) jsonObj.get("country"),
                     (String) jsonObj.get("phone"), (String) jsonObj.get("address"));
             //Convert companies to hash map
-            HashMap<String, String> companyData = company.getCompanyMap();
+            HashMap<String, String> companyData = company.getMap();
             //Insert data to DB
             FactoryHandler.insert("company", companyData);
         }
@@ -124,4 +123,6 @@ public class CompanyController implements FactoryHandler {
         System.out.println("Mock data insertion.\n");
         getAll();
     }
+
+    public HashMap<String, String> getCompanyTable() { return companyTable; }
 }
