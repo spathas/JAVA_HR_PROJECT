@@ -32,8 +32,8 @@ class MainFrameComponent extends JFrame {
     }
 
     private void addPanels() {
-        this.add(new SideMenuComponent(), BorderLayout.WEST);
         this.add(new ContentComponent(), BorderLayout.CENTER);
+        this.add(new SideMenuComponent(), BorderLayout.WEST);
     }
 
 }

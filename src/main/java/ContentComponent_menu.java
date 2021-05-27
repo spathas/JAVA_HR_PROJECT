@@ -6,12 +6,15 @@ public class ContentComponent_menu extends JPanel {
     private boolean isVisible;
 
     public ContentComponent_menu() {
-        this.isVisible = false;
+        this.isVisible = true;
+        this.setLayout(new BorderLayout());
+        this.setBackground(Color.red);
+        this.setSize(new Dimension(200, 200));
+
         setupMenu();
     }
 
     private void setupMenu() {
-        this.setLayout(new FlowLayout());
         this.setVisible(this.isVisible);
     }
 }
