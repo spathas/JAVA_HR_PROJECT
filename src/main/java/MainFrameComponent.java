@@ -17,8 +17,9 @@ class MainFrameComponent extends JFrame {
     private void setupFrame() {
         this.setTitle(this.title);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setResizable(this.isResizable);
-        this.setPreferredSize(new Dimension(1280, 720));
+//        this.setResizable(this.isResizable);
+        this.setSize(new Dimension(1440,900));
+        this.setPreferredSize(new Dimension(1440, 900));
         this.setVisible(true);
         this.getContentPane().setBackground(this.bg_color);
         this.setIconImage(icon);

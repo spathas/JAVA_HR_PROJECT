@@ -1,0 +1,23 @@
+[
+  {
+    "NAME": "Software House Company",
+    "COUNTRY": "Greece",
+    "EMAIL": "info@softwarehouse.com",
+    "PHONE": "2154555666",
+    "ADDRESS": "Paleologou 5, Attiki"
+  },
+  {
+    "NAME": "Marketing Company",
+    "COUNTRY": "Greece",
+    "EMAIL": "info@marketing.com",
+    "PHONE": "2154565466",
+    "ADDRESS": "Kastorias 40, Marousi"
+  },
+  {
+    "NAME": "Hospital Attika",
+    "COUNTRY": "Greece",
+    "EMAIL": "info@hospital.com",
+    "PHONE": "2154432666",
+    "ADDRESS": "Karaiskaki 57, Attiki"
+  }
+]

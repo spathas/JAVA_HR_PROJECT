@@ -1,4 +1,7 @@
 import javax.swing.*;
+import javax.swing.border.AbstractBorder;
+import javax.swing.border.Border;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.util.*;
 
@@ -8,45 +11,42 @@ public class ContentComponent_data extends JPanel {
     JobApplicantController jobApplicantController = new JobApplicantController();
     CompanyController companyController = new CompanyController();
 
-
     public ContentComponent_data() {
-        int columns = setupColumns();
+        this.setBackground(Color.lightGray);
+
+        //Setup elements component
+        int columns = 1;
+        setupColumns();
         int rows = setupRows();
         setupComponent(rows, columns);
     }
 
     private void setupComponent(int rows, int columns) {
-        this.setLayout(new GridLayout(rows,columns));
+        this.setLayout(new GridLayout(rows,columns,0,15));
     }
 
-    private int setupColumns() {
-        HashMap<String, String> map = new HashMap<String,String>();
+    private void setupColumns() {
+        HashMap<String, String> map;
         // Add if or switch there /////////////////////////////////////////////////////
-        map = companyController.getCompanyTable();
-
-        for(String key : map.keySet()) {
-            this.add(new JLabel(key)); //Create a component
-        }
-
-        return map.size();
+//        map = companyController.getCompanyTable();
+        map = jobApplicantController.getJobApplicantTable();
+        ContentComponent_data__element element = new ContentComponent_data__element(1, map.size());
+        element.setupColumns(map);
+        this.add(element);
+//        System.out.println(map.size());
     }
 
     private int setupRows() {
         // Add if or switch there /////////////////////////////////////////////////////
-        HashMap<Integer, Company> map = companyController.getAll();
+        HashMap<Integer, JobApplicant> map = jobApplicantController.getAll();
 
         for(int key : map.keySet()) {
 
-            HashMap<String,String> obj = map.get(key).getMap(); //Create a component
-            SortedSet<String> values = new TreeSet<>(obj.values());
-
-            System.out.println(values);
-            for (String objKey : values) {
-                System.out.println(objKey);
-                this.add(new JLabel(objKey));
-            }
+            HashMap<String,String> obj = map.get(key).getMap();
+            ContentComponent_data__element element = new ContentComponent_data__element(1, map.size());
+            element.setupRows(obj);
+            this.add(element);
         }
-
-        return map.size();
+        return map.size() + 1; // + 1 because of reference row.
     }
 }

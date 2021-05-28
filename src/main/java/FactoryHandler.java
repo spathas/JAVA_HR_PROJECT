@@ -118,7 +118,7 @@ public interface FactoryHandler {
             for(String key : table.keySet()) {
                 values.put(key, resultSet.getString(key));
             }
-            objectsMap.put(Integer.parseInt(values.get("id")), values);
+            objectsMap.put(Integer.parseInt(values.get("ID")), values);
         }
 
         //Output test

@@ -26,12 +26,12 @@ public class Company {
     }
 
     public Company(HashMap<String, String> map) {
-        this.id = Integer.parseInt(map.get("id"));
-        this.name = map.get("name");
-        this.email = map.get("email");
-        this.country = map.get("country");
-        this.phone = map.get("phone");
-        this.address = map.get("address");
+        this.id = Integer.parseInt(map.get("ID"));
+        this.name = map.get("NAME");
+        this.email = map.get("EMAIL");
+        this.country = map.get("COUNTRY");
+        this.phone = map.get("PHONE");
+        this.address = map.get("ADDRESS");
     }
 
     ///////SETTERS/////////
@@ -87,12 +87,12 @@ public class Company {
     public HashMap<String,String> getMap() {
         HashMap<String,String> companyMap = new HashMap<>();
 
-        if(getId() > 0) companyMap.put("id", Integer.toString(getId()));
-        companyMap.put("name", getName());
-        companyMap.put("country", getCountry());
-        companyMap.put("email", getEmail());
-        companyMap.put("phone", getPhone());
-        companyMap.put("address", getAddress());
+        if(getId() > 0) companyMap.put("ID", Integer.toString(getId()));
+        companyMap.put("NAME", getName());
+        companyMap.put("COUNTRY", getCountry());
+        companyMap.put("EMAIL", getEmail());
+        companyMap.put("PHONE", getPhone());
+        companyMap.put("ADDRESS", getAddress());
 
         return companyMap;
     }

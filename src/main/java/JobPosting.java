@@ -24,16 +24,16 @@ public class JobPosting {
     }
 
     public JobPosting(HashMap<String, String> map) {
-        this.id = Integer.parseInt(map.get("id"));
-        this.company = (companyController.getById(Integer.parseInt(map.get("company"))) != null)
-                ? companyController.getById(Integer.parseInt(map.get("company"))) : new Company();
-        this.title = map.get("title");
-        this.description = map.get("description");
-        this.jobCategory = (jobCategoryController.getById(Integer.parseInt(map.get("jobCategory"))) != null)
-                ? jobCategoryController.getById(Integer.parseInt(map.get("jobCategory"))) : new JobCategory();
-        this.seniority = map.get("seniority");
-        this.salary = Integer.parseInt(map.get("salary"));
-        this.fullTime = Boolean.parseBoolean(map.get("fullTime"));
+        this.id = Integer.parseInt(map.get("ID"));
+        this.company = (companyController.getById(Integer.parseInt(map.get("COMPANY"))) != null)
+                ? companyController.getById(Integer.parseInt(map.get("COMPANY"))) : new Company();
+        this.title = map.get("TITLE");
+        this.description = map.get("DESCRIPTION");
+        this.jobCategory = (jobCategoryController.getById(Integer.parseInt(map.get("JOB_CATEGORY"))) != null)
+                ? jobCategoryController.getById(Integer.parseInt(map.get("JOB_CATEGORY"))) : new JobCategory();
+        this.seniority = map.get("SENIORITY");
+        this.salary = Integer.parseInt(map.get("SALARY"));
+        this.fullTime = Boolean.parseBoolean(map.get("FULL_TIME"));
     }
 
     public void setId(int id) { this.id = id; }
@@ -74,13 +74,14 @@ public class JobPosting {
     public HashMap<String,String> getMap() {
         HashMap<String,String> jobPostingMap = new HashMap<>();
 
-        jobPostingMap.put("company", Integer.toString(getCompany().getId()));
-        jobPostingMap.put("title", getTitle());
-        jobPostingMap.put("description", getDescription());;
-        jobPostingMap.put("jobCategory", Integer.toString(getJobCategory().getId()));
-        jobPostingMap.put("seniority", getSeniority());
-        jobPostingMap.put("salary", Integer.toString(getSalary()));
-        jobPostingMap.put("fullTime", Boolean.toString(isFullTime()));
+        if(getId() > 0) jobPostingMap.put("ID", Integer.toString(getId()));
+        jobPostingMap.put("COMPANY", Integer.toString(getCompany().getId()));
+        jobPostingMap.put("TITLE", getTitle());
+        jobPostingMap.put("DESCRIPTION", getDescription());;
+        jobPostingMap.put("JOB_CATEGORY", Integer.toString(getJobCategory().getId()));
+        jobPostingMap.put("SENIORITY", getSeniority());
+        jobPostingMap.put("SALARY", Integer.toString(getSalary()));
+        jobPostingMap.put("FULL_TIME", Boolean.toString(isFullTime()));
 
         return jobPostingMap;
     }

@@ -16,8 +16,8 @@ public class MainClass {
 //        JobPostingController jobPostingController = new JobPostingController();
 //        JobCategoryController jobCategoryController = new JobCategoryController();
 //
-////        TEST FACTORY FUNC
-//
+//        TEST FACTORY FUNC
+
 //        try{
 //            //////JOB CATEGORY///////
 //            jobCategoryController.mockData();

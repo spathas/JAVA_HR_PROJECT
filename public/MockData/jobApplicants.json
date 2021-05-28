@@ -1,0 +1,52 @@
+[
+ {
+   "NAME": "Nick",
+   "SURNAME": "Smith",
+   "AGE": "50",
+   "PHONE": "69244589641",
+   "EMAIL": "nick@example.com",
+   "EDUCATION": "Computer Science",
+   "JOB_CATEGORY": 1,
+   "WORKS" : true
+  },
+  {
+    "NAME": "John",
+    "SURNAME": "Luck",
+    "AGE": "25",
+    "PHONE": "69344589641",
+    "EMAIL": "john@example.com",
+    "EDUCATION": "Business and Management",
+    "JOB_CATEGORY": 4,
+    "WORKS" : false
+  },
+  {
+    "NAME": "Stephanie",
+    "SURNAME": "Johnson",
+    "AGE": "32",
+    "PHONE": "69444589641",
+    "EMAIL": "stephanie@example.com",
+    "EDUCATION": "Business and Management",
+    "JOB_CATEGORY": 2,
+    "WORKS" : false
+  },
+  {
+    "NAME": "Jack",
+    "SURNAME": "Williams",
+    "AGE": "30",
+    "PHONE": "69234589641",
+    "EMAIL": "jack@example.com",
+    "EDUCATION": "Nurse",
+    "JOB_CATEGORY": 3,
+    "WORKS" : true
+  },
+  {
+    "NAME": "Maria",
+    "SURNAME": "Brown",
+    "AGE": "20",
+    "PHONE": "69644589641",
+    "EMAIL": "maria@example.com",
+    "EDUCATION": "Doctor",
+    "JOB_CATEGORY": 3,
+    "WORKS" : false
+  }
+]

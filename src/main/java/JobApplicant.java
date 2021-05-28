@@ -25,16 +25,16 @@ public class JobApplicant {
     }
 
     public JobApplicant(HashMap<String, String> map) {
-        this.id = Integer.parseInt(map.get("id"));
-        this.name = map.get("name");
-        this.surname = map.get("surname");
-        this.age = Integer.parseInt(map.get("age"));
-        this.email = map.get("email");
-        this.phone = map.get("phone");
-        this.education = map.get("education");
-        this.jobCategory = (jobCategoryController.getById(Integer.parseInt(map.get("jobCategory"))) != null)
-                ? jobCategoryController.getById(Integer.parseInt(map.get("jobCategory"))) : new JobCategory();
-        this.works = Boolean.parseBoolean(map.get("works"));
+        this.id = Integer.parseInt(map.get("ID"));
+        this.name = map.get("NAME");
+        this.surname = map.get("SURNAME");
+        this.age = Integer.parseInt(map.get("AGE"));
+        this.email = map.get("EMAIL");
+        this.phone = map.get("PHONE");
+        this.education = map.get("EDUCATION");
+        this.jobCategory = (jobCategoryController.getById(Integer.parseInt(map.get("JOB_CATEGORY"))) != null)
+                ? jobCategoryController.getById(Integer.parseInt(map.get("JOB_CATEGORY"))) : new JobCategory();
+        this.works = Boolean.parseBoolean(map.get("WORKS"));
     }
 
     ////////SETTERS///////
@@ -102,14 +102,15 @@ public class JobApplicant {
     public HashMap<String,String> getMap() {
         HashMap<String,String> applicantMAp = new HashMap<>();
 
-        applicantMAp.put("name", getName());
-        applicantMAp.put("surname", getSurname());
-        applicantMAp.put("age", Integer.toString(getAge()));
-        applicantMAp.put("email", getEmail());
-        applicantMAp.put("phone", getPhone());
-        applicantMAp.put("education", getEducation());
-        applicantMAp.put("jobCategory", Integer.toString(getJobCategory().getId()));
-        applicantMAp.put("works", Boolean.toString(isWorks()));
+        if(getId() > 0) applicantMAp.put("ID", Integer.toString(getId()));
+        applicantMAp.put("NAME", getName());
+        applicantMAp.put("SURNAME", getSurname());
+        applicantMAp.put("AGE", Integer.toString(getAge()));
+        applicantMAp.put("EMAIL", getEmail());
+        applicantMAp.put("PHONE", getPhone());
+        applicantMAp.put("EDUCATION", getEducation());
+        applicantMAp.put("JOB_CATEGORY", Integer.toString(getJobCategory().getId()));
+        applicantMAp.put("WORKS", Boolean.toString(isWorks()));
 
         return applicantMAp;
     }

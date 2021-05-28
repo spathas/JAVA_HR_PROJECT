@@ -1,0 +1,29 @@
+[
+  {
+    "COMPANY": 1,
+    "TITLE": "Software Engineers & Developers",
+    "DESCRIPTION": "Required Skills & Experience:\n\n7+ years of experience in developing enterprise applications, with at least 5 of them being with C# and .NET framework.\nSolid experience in/with:\nDesigning, developing, deploying, and supporting the back and front ends of MULTI-TIER ASP.NET MVC WEB applications.\nAdvanced SQL query development, database architecture design and query tuning techniques, primarily for SQL Server, but also for Oracle.\nApplication integration with 3rd party solutions.\nBack-end & front-end web development patterns, challenges, and best practices.\nExperience with the source control process (MS DevOps or similar) and the full software development life cycle of enterprise applications.\nExcellent command of the English language.\nNice to have as additional assets:\n\nOne of the following Certifications by Microsoft:\nMCSD: App Builder.\nMCSA: Web Applications.\nOne of the new Developer Associate role-based certifications.\nDegree in computer science, engineering, or a related technical field.\nExperience in web-APIs from design to deployment.\nExperience with WCF services, .NET CORE, and the MVVM architecture.\nAffinity for getting your hands dirty with JSON & XML.\nExperience in working on the Cloud, and especially Microsoft Azure.\nComfortable with Oracle databases.",
+    "JOB_CATEGORY":  1,
+    "SENIORITY": "Mid",
+    "SALARY": 1400,
+    "FULL_TIME": true
+  },
+  {
+    "COMPANY": 2,
+    "TITLE": "Sales Representative",
+    "DESCRIPTION": "Knowledge Skills and Abilities, Key Responsibilities:\nKnowledge: Container import/export/cross-trade shipments, in-depth understanding of international trade terms, knowledge of customs clearance formalities.\nSmall existing clientele will be considered as an asset.\nGood notions of international trade and warehousing-terminal activities.\nBachelor degree, preferably Logistics Management or similar.\n1-3 years of relevant experience in Freight Forwarding Sales / Customer Service / Pricing functions\nFluent in spoken and written English, Spanish language an advantage\nPunctual, team player, process oriented, organized and methodical with work.\nEager to learn\nAble to work with MS Office 2010, and ability to operate our in-house software system after training.\nSalesforce considered an advantage.\nKey Responsibilities\n\nDevelop new and existing business and customers\nCo-ordination with carriers, warehouses, suppliers, customers and internal teams\nUpdate shipment tracker data and send to customers on daily basis\nFiling / record keeping of all shipment related documentation.\nComplete system booking of costs and revenues.",
+    "JOB_CATEGORY":  2,
+    "SENIORITY": "Senior",
+    "SALARY": 1200,
+    "FULL_TIME": true
+  },
+  {
+    "COMPANY": 3,
+    "TITLE": "Junior Medical Sales Representative",
+    "DESCRIPTION": "Responsibilities:\n\nDrive growth and profitability of the product line\nEstablish and maintain strong relationships with doctors through regular and structured contact\nExpand clientele within Attica\nEstablish and maintain strong client relationships\nProvide timely and accurate post-sale follow up (communication and management of delivery dates)\nResearching competitor’s services and their respective market performances\nQualifications:\n\n1-3 years of relevant experience in similar position\nUniversity degree\nVery good knowledge of English\nExcellent computer skills\nStrong negotiation, persuasion, communication and presentation skills\nDriving license\nHighly motivated and ambitious\nPunctual, committed, responsive, extrovert and polite person\nAbility to travel outside Attica",
+    "JOB_CATEGORY":  3,
+    "SENIORITY": "Junior",
+    "SALARY": 450,
+    "FULL_TIME": false
+  }
+]

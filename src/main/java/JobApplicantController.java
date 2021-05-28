@@ -12,15 +12,15 @@ public class JobApplicantController implements FactoryHandler {
     private final HashMap<String, String> jobApplicantTable = new HashMap<>();
 
     public JobApplicantController() {
-        jobApplicantTable.put("id", "INTEGER auto_increment PRIMARY KEY");
-        jobApplicantTable.put("name", "VARCHAR2(50) NOT NULL");
-        jobApplicantTable.put("surname", "VARCHAR2(50) NOT NULL");
-        jobApplicantTable.put("age", "VARCHAR2(3) NOT NULL");
-        jobApplicantTable.put("email", "VARCHAR2(50) NOT NULL UNIQUE");
-        jobApplicantTable.put("phone", "VARCHAR2(20) UNIQUE");
-        jobApplicantTable.put("education", "VARCHAR2(50)");
-        jobApplicantTable.put("jobCategory", "VARCHAR2(50)");
-        jobApplicantTable.put("works", "BOOLEAN");
+        jobApplicantTable.put("ID", "INTEGER auto_increment PRIMARY KEY");
+        jobApplicantTable.put("NAME", "VARCHAR2(50) NOT NULL");
+        jobApplicantTable.put("SURNAME", "VARCHAR2(50) NOT NULL");
+        jobApplicantTable.put("AGE", "VARCHAR2(3) NOT NULL");
+        jobApplicantTable.put("EMAIL", "VARCHAR2(50) NOT NULL UNIQUE");
+        jobApplicantTable.put("PHONE", "VARCHAR2(20) UNIQUE");
+        jobApplicantTable.put("EDUCATION", "VARCHAR2(50)");
+        jobApplicantTable.put("JOB_CATEGORY", "VARCHAR2(50)");
+        jobApplicantTable.put("WORKS", "BOOLEAN");
     }
 
     public void create() {
@@ -87,7 +87,7 @@ public class JobApplicantController implements FactoryHandler {
     // Return all JobApplicants via posting description
     public HashMap<Integer, JobApplicant> getApplicantsViaJobPosting(JobPosting jobPosting) {
         String categoryId = Integer.toString(jobPosting.getJobCategory().getId());
-        String filter = "WHERE jobCategory = " + categoryId;
+        String filter = "WHERE JOB_CATEGORY = " + categoryId;
 
         HashMap<Integer, JobApplicant> jobApplicants = new HashMap<>();
 
@@ -110,7 +110,7 @@ public class JobApplicantController implements FactoryHandler {
     // Return all jobApplicants who NOT work.
     public HashMap<Integer, JobApplicant> getIfWorks(boolean isWork) {
         String work = isWork ? Boolean.toString(isWork) : "false";
-        String filter = " WHERE works = " + work;
+        String filter = " WHERE WORKS = " + work;
 
         HashMap<Integer, JobApplicant> jobApplicants = new HashMap<>();
 
@@ -132,7 +132,7 @@ public class JobApplicantController implements FactoryHandler {
 
     public JobApplicant getById(int jobApplicantID) {
         try {
-            return new JobApplicant( FactoryHandler.getFiltering("JobApplicant", this.jobApplicantTable, "id", Integer.toString(jobApplicantID))
+            return new JobApplicant( FactoryHandler.getFiltering("JobApplicant", this.jobApplicantTable, "ID", Integer.toString(jobApplicantID))
                     .get(jobApplicantID) );
         } catch (SQLException | ClassNotFoundException sqlError) {
             System.out.println("Table JobApplicant not found or your filter is wrong!");
@@ -157,25 +157,25 @@ public class JobApplicantController implements FactoryHandler {
         //JSON parser object to parse read file
         JSONParser parser = new JSONParser();
 
-        JSONArray jsonJobApplicants = (JSONArray) parser.parse(new FileReader("MockData/jobApplicants.json"));
+        JSONArray jsonJobApplicants = (JSONArray) parser.parse(new FileReader("public/MockData/jobApplicants.json"));
 
         for (Object u : jsonJobApplicants)
         {
             //Setup Objects
             JSONObject jsonObj = (JSONObject) u;
 
-            Long jobCategory = (Long) jsonObj.get("jobCategory");
+            Long jobCategory = (Long) jsonObj.get("JOB_CATEGORY");
 
             JobApplicant jobApplicant = new JobApplicant(
-                    (String) jsonObj.get("name"),
-                    (String) jsonObj.get("surname"),
-                    Integer.parseInt((String) jsonObj.get("age")),
-                    (String) jsonObj.get("email"),
-                    (String) jsonObj.get("phone"),
-                    (String) jsonObj.get("education"),
+                    (String) jsonObj.get("NAME"),
+                    (String) jsonObj.get("SURNAME"),
+                    Integer.parseInt((String) jsonObj.get("AGE")),
+                    (String) jsonObj.get("EMAIL"),
+                    (String) jsonObj.get("PHONE"),
+                    (String) jsonObj.get("EDUCATION"),
                     (jobCategoryController.getById(jobCategory.intValue()) != null)
                             ? jobCategoryController.getById(jobCategory.intValue()) : new JobCategory(),
-                    (boolean) jsonObj.get("works")
+                    (boolean) jsonObj.get("WORKS")
             );
             //Convert jobApplicant to hash map
             HashMap<String, String> jobApplicantData = jobApplicant.getMap();
@@ -187,4 +187,6 @@ public class JobApplicantController implements FactoryHandler {
         getAll();
 
     }
+
+    public HashMap<String, String> getJobApplicantTable() { return jobApplicantTable; }
 }

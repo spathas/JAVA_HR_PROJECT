@@ -13,18 +13,18 @@ public class CompanyController implements FactoryHandler {
     final HashMap<String, String> companyTable = new HashMap<>();
 
     public CompanyController() {
-        companyTable.put("id", "INTEGER auto_increment PRIMARY KEY");
-        companyTable.put("name", "varchar(50) NOT NULL UNIQUE");
-        companyTable.put("email", "VARCHAR(50) NOT NULL UNIQUE");
-        companyTable.put("country", "VARCHAR(20) NOT NULL");
-        companyTable.put("phone", "VARCHAR(20)");
-        companyTable.put("address", "VARCHAR(50)");
+        companyTable.put("ID", "INTEGER auto_increment PRIMARY KEY");
+        companyTable.put("NAME", "varchar(50) NOT NULL UNIQUE");
+        companyTable.put("EMAIL", "VARCHAR(50) NOT NULL UNIQUE");
+        companyTable.put("COUNTRY", "VARCHAR(20) NOT NULL");
+        companyTable.put("PHONE", "VARCHAR(20)");
+        companyTable.put("ADDRESS", "VARCHAR(50)");
     }
 
     public void create() {
         try {
             FactoryHandler.create("company", this.companyTable);
-        } catch (SQLException | ClassNotFoundException throwables) {
+        } catch (SQLException | ClassNotFoundException throwable) {
             System.out.println("Table company already exists!");
         }
     }
@@ -69,7 +69,7 @@ public class CompanyController implements FactoryHandler {
     public Company getById(int companyID) {
         try {
             return new Company(
-                    FactoryHandler.getFiltering("company", this.companyTable, "id", Integer.toString(companyID))
+                    FactoryHandler.getFiltering("company", this.companyTable, "ID", Integer.toString(companyID))
                             .get(companyID)
             );
         } catch (SQLException | ClassNotFoundException sqlError) {
@@ -81,7 +81,7 @@ public class CompanyController implements FactoryHandler {
     public Company getByName(String companyName) {
         try {
             return new Company(
-                    FactoryHandler.getFiltering("company", this.companyTable, "name", companyName)
+                    FactoryHandler.getFiltering("company", this.companyTable, "NAME", companyName)
                             .get(companyName)
             );
         } catch (SQLException | ClassNotFoundException sqlError) {
@@ -106,14 +106,19 @@ public class CompanyController implements FactoryHandler {
         //JSON parser object to parse read file
         JSONParser parser = new JSONParser();
 
-        JSONArray jsonCompanies = (JSONArray) parser.parse(new FileReader("MockData/companies.json"));
+        JSONArray jsonCompanies = (JSONArray) parser.parse(new FileReader("public/MockData/companies.json"));
 
         for (Object u : jsonCompanies)
         {
             //Setup Objects
             JSONObject jsonObj = (JSONObject) u;
-            Company company = new Company((String) jsonObj.get("name"), (String) jsonObj.get("email"), (String) jsonObj.get("country"),
-                    (String) jsonObj.get("phone"), (String) jsonObj.get("address"));
+            Company company = new Company(
+                    (String) jsonObj.get("NAME"),
+                    (String) jsonObj.get("EMAIL"),
+                    (String) jsonObj.get("COUNTRY"),
+                    (String) jsonObj.get("PHONE"),
+                    (String) jsonObj.get("ADDRESS")
+            );
             //Convert companies to hash map
             HashMap<String, String> companyData = company.getMap();
             //Insert data to DB

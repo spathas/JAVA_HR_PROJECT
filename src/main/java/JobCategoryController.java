@@ -13,9 +13,9 @@ public class JobCategoryController {
     private final HashMap<String, String> JobCategoryTable = new HashMap<>();
 
     public JobCategoryController() {
-        JobCategoryTable.put("id", "INTEGER auto_increment PRIMARY KEY");
-        JobCategoryTable.put("category", "VARCHAR2(50) NOT NULL");
-        JobCategoryTable.put("role", "VARCHAR2(50) NOT NULL");
+        JobCategoryTable.put("ID", "INTEGER auto_increment PRIMARY KEY");
+        JobCategoryTable.put("CATEGORY", "VARCHAR2(50) NOT NULL");
+        JobCategoryTable.put("ROLE", "VARCHAR2(50) NOT NULL");
     }
 
     // Create a new job category
@@ -82,7 +82,7 @@ public class JobCategoryController {
     // Get category by id
     public JobCategory getById(int jobCategoryId) {
         try {
-            return new JobCategory(FactoryHandler.getFiltering("JobCategory", this.JobCategoryTable, "id", Integer.toString(jobCategoryId))
+            return new JobCategory(FactoryHandler.getFiltering("JobCategory", this.JobCategoryTable, "ID", Integer.toString(jobCategoryId))
                     .get(jobCategoryId));
         } catch (SQLException | ClassNotFoundException sqlError) {
             System.out.println("Table JobCategory not found or your filter is wrong!");
@@ -108,14 +108,14 @@ public class JobCategoryController {
         //JSON parser object to parse read file
         JSONParser parser = new JSONParser();
 
-        JSONArray jsonJobCategories = (JSONArray) parser.parse(new FileReader("MockData/jobCategories.json"));
+        JSONArray jsonJobCategories = (JSONArray) parser.parse(new FileReader("public/MockData/jobCategories.json"));
 
         for (Object category : jsonJobCategories) {
             //Setup Objects
             JSONObject jsonObj = (JSONObject) category;
             JobCategory jobCategory = new JobCategory(
-                    (String) jsonObj.get("category"),
-                    (String) jsonObj.get("role")
+                    (String) jsonObj.get("CATEGORY"),
+                    (String) jsonObj.get("ROLE")
             );
             // Convert jobApplicant to hash map
             HashMap<String, String> jobCategoryData = jobCategory.getMap();

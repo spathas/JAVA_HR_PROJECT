@@ -5,7 +5,9 @@ import java.awt.event.ActionListener;
 
 public class SideMenuComponent extends JPanel implements ActionListener {
 
-    JLabel logo = new JLabel("Human Resources System");
+    public static int selector;
+
+    JLabel logo = new JLabel("HR System");
     JButton jobPostings_btn = new JButton("Postings");
     JButton jobApplicants_btn = new JButton("Applicants");
     JButton jobCompanies_btn = new JButton("Companies");
@@ -41,20 +43,24 @@ public class SideMenuComponent extends JPanel implements ActionListener {
 
     private void menuButtonsSetup() {
         // Colors
-        jobPostings_btn.setFont(new Font(null,Font.BOLD,20));
+        jobPostings_btn.setFont(new Font(null,Font.BOLD,18));
         jobPostings_btn.setForeground(Color.WHITE);
-        jobApplicants_btn.setFont(new Font(null,Font.BOLD,20));
-        jobApplicants_btn.setForeground(Color.WHITE);
-        jobCompanies_btn.setFont(new Font(null,Font.BOLD,20));
-        jobCompanies_btn.setForeground(Color.WHITE);
         jobPostings_btn.setBackground(Color.BLUE);
-        jobApplicants_btn.setBackground(Color.BLUE);
-        jobCompanies_btn.setBackground(Color.BLUE);
-//        logo.setForeground(Color.WHITE);
-        // Focusable
         jobPostings_btn.setFocusable(false);
+
+        jobApplicants_btn.setFont(new Font(null,Font.BOLD,18));
+        jobApplicants_btn.setForeground(Color.WHITE);
+        jobApplicants_btn.setBackground(Color.BLUE);
         jobApplicants_btn.setFocusable(false);
+
+        jobCompanies_btn.setFont(new Font(null,Font.BOLD,18));
+        jobCompanies_btn.setForeground(Color.WHITE);
+        jobCompanies_btn.setBackground(Color.BLUE);
         jobCompanies_btn.setFocusable(false);
+
+
+        logo.setFont(new Font(null,Font.BOLD,18));
+        logo.setForeground(Color.BLUE);
     }
 
     private void eventActionButtonClick() {
@@ -65,8 +71,8 @@ public class SideMenuComponent extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource() == jobApplicants_btn) System.out.println("applicants");
-        if(e.getSource() == jobPostings_btn) System.out.println("posting");
-        if(e.getSource() == jobCompanies_btn) System.out.println("companies");
+        if(e.getSource() == jobApplicants_btn) selector = 1;
+        if(e.getSource() == jobPostings_btn) selector = 2;
+        if(e.getSource() == jobCompanies_btn) selector = 3;
     }
 }

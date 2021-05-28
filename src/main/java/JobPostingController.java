@@ -13,14 +13,14 @@ public class JobPostingController {
     private final HashMap<String, String> JobPostingTable = new HashMap<>();
 
     public JobPostingController() {
-        JobPostingTable.put("id", "INTEGER auto_increment PRIMARY KEY");
-        JobPostingTable.put("company", "INTEGER NOT NULL");
-        JobPostingTable.put("title", "VARCHAR2(50) NOT NULL");
-        JobPostingTable.put("description", "VARCHAR2(4000) NOT NULL");
-        JobPostingTable.put("jobCategory", "INTEGER NOT NULL"); //Change to object
-        JobPostingTable.put("seniority", "VARCHAR2(10)");
-        JobPostingTable.put("salary", "INTEGER");
-        JobPostingTable.put("fullTime", "BOOLEAN");
+        JobPostingTable.put("ID", "INTEGER auto_increment PRIMARY KEY");
+        JobPostingTable.put("COMPANY", "INTEGER NOT NULL");
+        JobPostingTable.put("TITLE", "VARCHAR2(50) NOT NULL");
+        JobPostingTable.put("DESCRIPTION", "VARCHAR2(4000) NOT NULL");
+        JobPostingTable.put("JOB_CATEGORY", "INTEGER NOT NULL"); //Change to object
+        JobPostingTable.put("SENIORITY", "VARCHAR2(10)");
+        JobPostingTable.put("SALARY", "INTEGER");
+        JobPostingTable.put("FULL_TIME", "BOOLEAN");
     }
 
     // Create a new job posting
@@ -87,7 +87,7 @@ public class JobPostingController {
     // Return all jobPosting via user profile
     public HashMap<Integer, JobPosting> getPostingsViaUserProfile(JobApplicant jobApplicant) {
         String categoryId = Integer.toString(jobApplicant.getJobCategory().getId());
-        String filter = "WHERE jobCategory = " + categoryId;
+        String filter = "WHERE JOB_CATEGORY = " + categoryId;
 
         HashMap<Integer, JobPosting> jobPostings = new HashMap<>();
 
@@ -110,7 +110,7 @@ public class JobPostingController {
     // Get posting by id
     public JobPosting getById(int jobPostingId) {
         try {
-            return new JobPosting( FactoryHandler.getFiltering("JobPosting", this.JobPostingTable, "id", Integer.toString(jobPostingId))
+            return new JobPosting( FactoryHandler.getFiltering("JobPosting", this.JobPostingTable, "ID", Integer.toString(jobPostingId))
                     .get(jobPostingId) );
         } catch (SQLException | ClassNotFoundException sqlError) {
             System.out.println("Table JobPosting not found or your filter is wrong!");
@@ -139,26 +139,26 @@ public class JobPostingController {
         //JSON parser object to parse read file
         JSONParser parser = new JSONParser();
 
-        JSONArray jsonJobPostings = (JSONArray) parser.parse(new FileReader("MockData/jobPostings.json"));
+        JSONArray jsonJobPostings = (JSONArray) parser.parse(new FileReader("public/MockData/jobPostings.json"));
 
         for (Object posting : jsonJobPostings) {
             //Setup Objects
             JSONObject jsonObj = (JSONObject) posting;
 
-            Long company = (Long) jsonObj.get("company");
-            Long salary = (Long) jsonObj.get("salary");
-            Long jobCategory = (Long) jsonObj.get("jobCategory");
+            Long company = (Long) jsonObj.get("COMPANY");
+            Long salary = (Long) jsonObj.get("SALARY");
+            Long jobCategory = (Long) jsonObj.get("JOB_CATEGORY");
 
             JobPosting jobPosting = new JobPosting(
                     (companyController.getById(company.intValue()) != null)
                             ? companyController.getById(company.intValue()) : new Company(),
-                    (String) jsonObj.get("title"),
-                    (String) jsonObj.get("description"),
+                    (String) jsonObj.get("TITLE"),
+                    (String) jsonObj.get("DESCRIPTION"),
                     (jobCategoryController.getById(jobCategory.intValue()) != null)
                             ? jobCategoryController.getById(jobCategory.intValue()) : new JobCategory(),
-                    (String) jsonObj.get("seniority"),
+                    (String) jsonObj.get("SENIORITY"),
                     salary.intValue(),
-                    (boolean) jsonObj.get("fullTime")
+                    (boolean) jsonObj.get("FULL_TIME")
             );
             // Convert jobApplicant to hash map
             HashMap<String, String> jobPostingData = jobPosting.getMap();

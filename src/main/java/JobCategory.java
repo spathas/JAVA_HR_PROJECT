@@ -17,9 +17,9 @@ public class JobCategory {
     }
 
     public JobCategory(HashMap<String, String> map) {
-        this.id = Integer.parseInt(map.get("id"));
-        this.category = map.get("category");
-        this.role = map.get("role");
+        this.id = Integer.parseInt(map.get("ID"));
+        this.category = map.get("CATEGORY");
+        this.role = map.get("ROLE");
     }
 
 
@@ -40,8 +40,8 @@ public class JobCategory {
     public HashMap<String,String> getMap() {
         HashMap<String,String> jobCategoryMap = new HashMap<>();
 
-        jobCategoryMap.put("category", getCategory());
-        jobCategoryMap.put("role", getRole());
+        jobCategoryMap.put("CATEGORY", getCategory());
+        jobCategoryMap.put("ROLE", getRole());
 
         return jobCategoryMap;
     }
