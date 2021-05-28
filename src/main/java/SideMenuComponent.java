@@ -5,15 +5,21 @@ import java.awt.event.ActionListener;
 
 public class SideMenuComponent extends JPanel implements ActionListener {
 
-    public static int selector;
+    ContentComponent content;
 
     JLabel logo = new JLabel("HR System");
     JButton jobPostings_btn = new JButton("Postings");
     JButton jobApplicants_btn = new JButton("Applicants");
-    JButton jobCompanies_btn = new JButton("Companies");
+    JButton companies_btn = new JButton("Companies");
 
 
     SideMenuComponent() {
+        setupFrame();
+        addMenuItems();
+    }
+
+    SideMenuComponent(ContentComponent content) {
+        this.content = content;
         setupFrame();
         addMenuItems();
     }
@@ -29,7 +35,7 @@ public class SideMenuComponent extends JPanel implements ActionListener {
         this.add(logo);
         this.add(jobPostings_btn);
         this.add(jobApplicants_btn);
-        this.add(jobCompanies_btn);
+        this.add(companies_btn);
 
         // Logo icon
         logo.setIcon(new ImageIcon(new ImageIcon("./public/images/logo.png")
@@ -53,10 +59,10 @@ public class SideMenuComponent extends JPanel implements ActionListener {
         jobApplicants_btn.setBackground(Color.BLUE);
         jobApplicants_btn.setFocusable(false);
 
-        jobCompanies_btn.setFont(new Font(null,Font.BOLD,18));
-        jobCompanies_btn.setForeground(Color.WHITE);
-        jobCompanies_btn.setBackground(Color.BLUE);
-        jobCompanies_btn.setFocusable(false);
+        companies_btn.setFont(new Font(null,Font.BOLD,18));
+        companies_btn.setForeground(Color.WHITE);
+        companies_btn.setBackground(Color.BLUE);
+        companies_btn.setFocusable(false);
 
 
         logo.setFont(new Font(null,Font.BOLD,18));
@@ -66,13 +72,14 @@ public class SideMenuComponent extends JPanel implements ActionListener {
     private void eventActionButtonClick() {
         jobPostings_btn.addActionListener(this);
         jobApplicants_btn.addActionListener(this);
-        jobCompanies_btn.addActionListener(this);
+        companies_btn.addActionListener(this);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource() == jobApplicants_btn) selector = 1;
-        if(e.getSource() == jobPostings_btn) selector = 2;
-        if(e.getSource() == jobCompanies_btn) selector = 3;
+        if(e.getSource() == jobApplicants_btn) content.addItems("jobApplicants_btn");
+        if(e.getSource() == jobPostings_btn) content.addItems("jobPostings_btn");
+        if(e.getSource() == companies_btn) content.addItems("companies_btn");
     }
+
 }

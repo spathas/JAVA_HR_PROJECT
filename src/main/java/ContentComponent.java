@@ -4,22 +4,37 @@ import java.awt.*;
 
 public class ContentComponent extends JPanel {
 
+    ContentComponent_menu menu = new ContentComponent_menu();
+
+    private ContentComponent_data data = new ContentComponent_data("jobPostings_btn");
+    public ContentComponent_data jobApplicantsView = new ContentComponent_data("jobApplicants_btn");
+    public ContentComponent_data jobPostingsView = new ContentComponent_data("jobPostings_btn");
+    public ContentComponent_data companiesView = new ContentComponent_data("companies_btn");
+
+
     public ContentComponent() {
         setupContent();
-        revalidate();
+        addItems("jobPostings_btn");
     }
 
     private void setupContent() {
         this.setLayout(new BorderLayout(0,5));
         this.setBackground(Color.white);
-//        this.setSize(100,100);
-//        this.setBackground(Color.BLUE);
-
-        addItems();
     }
 
-    private void addItems() {
-        this.add(new ContentComponent_data(), BorderLayout.CENTER);
-        this.add(new ContentComponent_menu(), BorderLayout.NORTH);
+    public void addItems(String selector) {
+        this.remove(jobApplicantsView);
+        this.remove(companiesView);
+        this.remove(jobPostingsView);
+
+        switch (selector) {
+            case "jobApplicants_btn" -> this.data = jobApplicantsView;
+            case "companies_btn" -> this.data = companiesView;
+            default -> this.data = jobPostingsView;
+        }
+        this.add(data, BorderLayout.CENTER);
+        this.add(menu, BorderLayout.NORTH);
+        this.validate();
+        this.repaint();
     }
 }

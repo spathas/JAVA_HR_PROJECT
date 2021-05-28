@@ -170,8 +170,5 @@ public class JobPostingController {
         getAll();
     }
 
-    // Apply to job posting by user
-        // Create a new row at table applied
-
-
+    public HashMap<String, String> getJobPostingTable() { return JobPostingTable; }
 }
