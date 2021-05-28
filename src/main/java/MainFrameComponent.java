@@ -3,15 +3,17 @@ import java.awt.*;
 
 class MainFrameComponent extends JFrame {
 
+    ContentComponent content = new ContentComponent();
+
     private String title = "HR SYSTEM";
     private boolean isResizable = false;
     private Color bg_color = Color.white;
     private Image icon = new ImageIcon("public/images/logo.png").getImage();
+    SideMenuComponent menu = new SideMenuComponent();
 
     MainFrameComponent() {
         setupFrame();
         addPanels();
-        revalidate();
     }
 
     private void setupFrame() {
@@ -28,8 +30,8 @@ class MainFrameComponent extends JFrame {
     }
 
     private void addPanels() {
-        this.add(new ContentComponent(), BorderLayout.CENTER);
-        this.add(new SideMenuComponent(), BorderLayout.WEST);
-    }
 
+        this.add(content, BorderLayout.CENTER);
+        this.add(new SideMenuComponent(content), BorderLayout.WEST);
+    }
 }

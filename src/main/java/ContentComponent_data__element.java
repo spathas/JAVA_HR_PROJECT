@@ -20,6 +20,8 @@ public class ContentComponent_data__element extends JPanel {
         this.setBackground(Color.BLUE);
         this.setLayout(new GridLayout(rows,columns,15,15));
         this.setBorder(new EmptyBorder(10,5,10,5));
+        this.revalidate();
+        this.repaint();
     }
 
     public void setupRows(HashMap<String,String> obj) {
@@ -27,13 +29,13 @@ public class ContentComponent_data__element extends JPanel {
 
         SortedSet<String> keySet = new TreeSet<>(obj.keySet());
 
-        System.out.println(keySet);
         for (String objKey : keySet) {
             JLabel label = new JLabel(obj.get(objKey));
             label.setSize(10,10);
             label.setOpaque(true);
             label.setForeground(Color.WHITE);
             label.setBackground(Color.BLUE);
+
             this.add(label);
         }
     }
@@ -42,15 +44,14 @@ public class ContentComponent_data__element extends JPanel {
         SortedSet<String> keySet = new TreeSet<>(map.keySet());
 
         for(String key : keySet) {
-            System.out.println(key);
             JLabel label = new JLabel(key);
             label.setFont(new Font(null,Font.BOLD,15));
             label.setOpaque(true);
             label.setForeground(Color.WHITE);
             label.setBackground(Color.BLUE);
+
             this.add(label);
         }
-        System.out.println("Selector is: " + SideMenuComponent.selector);
     }
 
 }

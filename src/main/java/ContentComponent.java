@@ -4,22 +4,35 @@ import java.awt.*;
 
 public class ContentComponent extends JPanel {
 
+    public static ContentComponent_data data = new ContentComponent_data();
+
+    public static ContentComponent_data c = ContentComponent.setupComponent("jobApplicants_btn", data);
+
     public ContentComponent() {
         setupContent();
-        revalidate();
     }
 
     private void setupContent() {
         this.setLayout(new BorderLayout(0,5));
         this.setBackground(Color.white);
-//        this.setSize(100,100);
-//        this.setBackground(Color.BLUE);
 
         addItems();
     }
 
+    public static ContentComponent_data setupComponent(String selector, ContentComponent_data data) {
+        int columns = 1;
+        data.setupColumns(selector);
+        int rows = data.setupRows(selector);
+
+        data.setLayout(new GridLayout(rows,columns,0,15));
+        data.validate();
+        data.repaint();
+
+        return data;
+    }
+
     private void addItems() {
-        this.add(new ContentComponent_data(), BorderLayout.CENTER);
+        this.add(c, BorderLayout.CENTER);
         this.add(new ContentComponent_menu(), BorderLayout.NORTH);
     }
 }

@@ -5,7 +5,8 @@ import java.awt.event.ActionListener;
 
 public class SideMenuComponent extends JPanel implements ActionListener {
 
-    public static int selector;
+    ContentComponent content;
+    private String selector = "jobApplicants_btn";
 
     JLabel logo = new JLabel("HR System");
     JButton jobPostings_btn = new JButton("Postings");
@@ -14,6 +15,12 @@ public class SideMenuComponent extends JPanel implements ActionListener {
 
 
     SideMenuComponent() {
+        setupFrame();
+        addMenuItems();
+    }
+
+    SideMenuComponent(ContentComponent content) {
+        this.content = content;
         setupFrame();
         addMenuItems();
     }
@@ -71,8 +78,12 @@ public class SideMenuComponent extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource() == jobApplicants_btn) selector = 1;
-        if(e.getSource() == jobPostings_btn) selector = 2;
-        if(e.getSource() == jobCompanies_btn) selector = 3;
+        if(e.getSource() == jobApplicants_btn) ContentComponent.setupComponent("jobApplicants_btn", ContentComponent.data);
+        if(e.getSource() == jobPostings_btn) ContentComponent.setupComponent("jobPostings_btn", ContentComponent.data);
+        if(e.getSource() == jobCompanies_btn) ContentComponent.setupComponent("jobCompanies_btn", ContentComponent.data);
+    }
+
+    public String getSelector() {
+        return selector;
     }
 }
