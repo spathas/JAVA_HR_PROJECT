@@ -1,18 +1,22 @@
 [
   {
     "CATEGORY": "IT",
-    "ROLE": "Developer"
+    "ROLE": "Developer",
+    "SENIORITY": "Mid"
   },
   {
     "CATEGORY": "Business",
-    "ROLE": "HR"
+    "ROLE": "HR",
+    "SENIORITY": "Mid"
   },
   {
     "CATEGORY": "Medical",
-    "ROLE": "Nurse"
+    "ROLE": "Nurse",
+    "SENIORITY": "Senior"
   },
   {
     "CATEGORY": "Business",
-    "ROLE": "Marketing"
+    "ROLE": "Marketing",
+    "SENIORITY": "Junior-Mid"
   }
 ]

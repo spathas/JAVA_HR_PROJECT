@@ -59,6 +59,8 @@ public class CompanyController implements FactoryHandler {
             System.out.println("Table company not found");
         }
 
+        if(map == null) return null;
+
         for(Integer id : map.keySet()) {
             companies.put( id, new Company(map.get(id)) );
         }

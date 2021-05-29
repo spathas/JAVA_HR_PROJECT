@@ -13,13 +13,9 @@ public class ContentComponent extends JPanel {
 
 
     public ContentComponent() {
-        setupContent();
-        addItems("jobPostings_btn");
-    }
-
-    private void setupContent() {
         this.setLayout(new BorderLayout(0,5));
         this.setBackground(Color.white);
+        addItems("jobPostings_btn");
     }
 
     public void addItems(String selector) {

@@ -121,15 +121,7 @@ public interface FactoryHandler {
             objectsMap.put(Integer.parseInt(values.get("ID")), values);
         }
 
-        //Output test
-        for (Integer name: objectsMap.keySet()) {
-            String key = name.toString();
-            String value = objectsMap.get(name).toString();
-            System.out.println(key + " " + value);
-        }
-
         server.connectionClose();
-        System.out.println("");
 
         return objectsMap;
     }

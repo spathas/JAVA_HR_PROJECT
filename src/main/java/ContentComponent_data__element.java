@@ -25,8 +25,6 @@ public class ContentComponent_data__element extends JPanel {
     }
 
     public void setupRows(HashMap<String,String> obj) {
-        // Add if or switch there /////////////////////////////////////////////////////
-
         SortedSet<String> keySet = new TreeSet<>(obj.keySet());
 
         for (String objKey : keySet) {

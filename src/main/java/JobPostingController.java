@@ -17,8 +17,7 @@ public class JobPostingController {
         JobPostingTable.put("COMPANY", "INTEGER NOT NULL");
         JobPostingTable.put("TITLE", "VARCHAR2(50) NOT NULL");
         JobPostingTable.put("DESCRIPTION", "VARCHAR2(4000) NOT NULL");
-        JobPostingTable.put("JOB_CATEGORY", "INTEGER NOT NULL"); //Change to object
-        JobPostingTable.put("SENIORITY", "VARCHAR2(10)");
+        JobPostingTable.put("JOB_CATEGORY", "INTEGER NOT NULL");
         JobPostingTable.put("SALARY", "INTEGER");
         JobPostingTable.put("FULL_TIME", "BOOLEAN");
     }
@@ -76,6 +75,8 @@ public class JobPostingController {
         } catch (ClassNotFoundException notFoundException) {
             System.out.println("Table JobPosting not found");
         }
+
+        if(map == null) return null;
 
         for(Integer id : map.keySet()) {
             jobPostings.put( id, new JobPosting(map.get(id)) );
@@ -156,7 +157,6 @@ public class JobPostingController {
                     (String) jsonObj.get("DESCRIPTION"),
                     (jobCategoryController.getById(jobCategory.intValue()) != null)
                             ? jobCategoryController.getById(jobCategory.intValue()) : new JobCategory(),
-                    (String) jsonObj.get("SENIORITY"),
                     salary.intValue(),
                     (boolean) jsonObj.get("FULL_TIME")
             );

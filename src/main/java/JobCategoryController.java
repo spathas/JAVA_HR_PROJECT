@@ -16,6 +16,7 @@ public class JobCategoryController {
         JobCategoryTable.put("ID", "INTEGER auto_increment PRIMARY KEY");
         JobCategoryTable.put("CATEGORY", "VARCHAR2(50) NOT NULL");
         JobCategoryTable.put("ROLE", "VARCHAR2(50) NOT NULL");
+        JobCategoryTable.put("SENIORITY", "VARCHAR2(50) NOT NULL");
     }
 
     // Create a new job category
@@ -72,9 +73,12 @@ public class JobCategoryController {
             System.out.println("Table JobCategory not found");
         }
 
+        if(map == null) return null;
+
         for (Integer id : map.keySet()) {
             jobCategories.put(id, new JobCategory(map.get(id)));
         }
+        System.out.println(jobCategories);
 
         return jobCategories;
     }
@@ -115,7 +119,8 @@ public class JobCategoryController {
             JSONObject jsonObj = (JSONObject) category;
             JobCategory jobCategory = new JobCategory(
                     (String) jsonObj.get("CATEGORY"),
-                    (String) jsonObj.get("ROLE")
+                    (String) jsonObj.get("ROLE"),
+                    (String) jsonObj.get("SENIORITY")
             );
             // Convert jobApplicant to hash map
             HashMap<String, String> jobCategoryData = jobCategory.getMap();

@@ -123,6 +123,8 @@ public class JobApplicantController implements FactoryHandler {
             System.out.println("Table JobApplicant not found");
         }
 
+        if(map == null) return null;
+
         for(Integer id : map.keySet()) {
             jobApplicants.put( id, new JobApplicant(map.get(id)) );
         }
