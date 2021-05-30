@@ -1,5 +1,7 @@
 public class MainClass {
     // JDBC driver name and database URL
+
+    MainFrameComponent frame = new MainFrameComponent();
     static final String JDBC_DRIVER = "org.h2.Driver";
     static final String DB_URL = "jdbc:h2:./src/main/resources/HR_DATABASE";
 
@@ -8,31 +10,26 @@ public class MainClass {
     static final String PASS = "spathas1";
 
     public static void main(String[] args) {
-        JobApplicantController jobApplicantController = new JobApplicantController();
-        CompanyController companyController = new CompanyController();
-        JobPostingController jobPostingController = new JobPostingController();
-        JobCategoryController jobCategoryController = new JobCategoryController();
-
-        MainFrameComponent frame = new MainFrameComponent();
-
-
+//        JobApplicantController jobApplicantController = new JobApplicantController();
+//        CompanyController companyController = new CompanyController();
+//        JobPostingController jobPostingController = new JobPostingController();
+//        JobCategoryController jobCategoryController = new JobCategoryController();
+//
 //        try{
-//            //////JOB CATEGORY///////
 //            jobCategoryController.mockData();
 //
-//            //////COMPANY///////
 //            companyController.mockData();
 //
-//            //////JOB POSTING///////
 //            jobPostingController.mockData();
 //
-//            ///////JOP APPLICANT/////////
-//            jobApplicantController.mockData();//
+//            jobApplicantController.mockData();
 //
 //        } catch (Exception se) {
 //            //Handle errors for JDBC
 //            se.printStackTrace();
-//        }//Handle errors for Class.forName
+//        }
 
+
+        MainFrameComponent frame = new MainFrameComponent();
     }
 }

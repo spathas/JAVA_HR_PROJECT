@@ -4,16 +4,19 @@ import java.util.*;
 
 public class ContentComponent_data extends JPanel {
 
+    ContentComponent content;
+
     JobPostingController jobPostingController = new JobPostingController();
     JobApplicantController jobApplicantController = new JobApplicantController();
     CompanyController companyController = new CompanyController();
 
-    public ContentComponent_data(String selector) {
+    public ContentComponent_data(ContentComponent content, String selector) {
+        this.content = content;
         int columns = 1;
         this.setupColumns(selector);
         int rows = this.setupRows(selector);
 
-        this.setLayout(new GridLayout(rows,columns,0,15));
+        this.setLayout(new GridLayout(rows,columns,0,20));
         this.validate();
         this.repaint();
     }
@@ -25,7 +28,7 @@ public class ContentComponent_data extends JPanel {
             default -> jobPostingController.getJobPostingTable();
         };
 
-        ContentComponent_data__element element = new ContentComponent_data__element(1, map.size());
+        ContentComponent_data__element element = new ContentComponent_data__element(this.content, 1, map.size(), 0);
         element.setupColumns(map);
         this.add(element);
     }
@@ -37,7 +40,7 @@ public class ContentComponent_data extends JPanel {
 
             for(int key : map.keySet()) {
                 HashMap<String,String> obj = map.get(key).getMap();
-                ContentComponent_data__element element = new ContentComponent_data__element(1, map.size());
+                ContentComponent_data__element element = new ContentComponent_data__element(this.content, 1, map.size(), key);
                 element.setupRows(obj);
                 this.add(element);
             }
@@ -48,7 +51,7 @@ public class ContentComponent_data extends JPanel {
 
             for(int key : map.keySet()) {
                 HashMap<String,String> obj = map.get(key).getMap();
-                ContentComponent_data__element element = new ContentComponent_data__element(1, map.size());
+                ContentComponent_data__element element = new ContentComponent_data__element(this.content, 1, map.size(), key);
                 element.setupRows(obj);
                 this.add(element);
             }
@@ -59,7 +62,7 @@ public class ContentComponent_data extends JPanel {
 
         for(int key : map.keySet()) {
             HashMap<String,String> obj = map.get(key).getMap();
-            ContentComponent_data__element element = new ContentComponent_data__element(1, map.size());
+            ContentComponent_data__element element = new ContentComponent_data__element(this.content, 1, map.size(), key);
             element.setupRows(obj);
             this.add(element);
         }

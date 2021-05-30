@@ -1,25 +1,29 @@
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.HashMap;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
-public class ContentComponent_data__element extends JPanel {
+public class ContentComponent_data__element extends JButton implements ActionListener {
 
-    private int rows;
-    private int columns;
+    ContentComponent content;
+    int id;
 
-    public ContentComponent_data__element(int rows, int columns) {
-        this.rows = rows;
-        this.columns = columns;
+    public ContentComponent_data__element(ContentComponent content, int rows, int columns, int id) {
+        this.content = content;
+        this.id = id;
 
         this.setFont(new Font(null,Font.BOLD,15));
         this.setOpaque(true);
         this.setForeground(Color.WHITE);
         this.setBackground(Color.BLUE);
-        this.setLayout(new GridLayout(rows,columns,15,15));
+        this.setLayout(new GridLayout(rows,columns,20,20));
         this.setBorder(new EmptyBorder(10,5,10,5));
+        this.setFocusable(false);
+        this.addActionListener(this);
         this.revalidate();
         this.repaint();
     }
@@ -29,6 +33,7 @@ public class ContentComponent_data__element extends JPanel {
 
         for (String objKey : keySet) {
             JLabel label = new JLabel(obj.get(objKey));
+            label.setBorder(new EmptyBorder(10,10,10,10));
             label.setSize(10,10);
             label.setOpaque(true);
             label.setForeground(Color.WHITE);
@@ -43,6 +48,7 @@ public class ContentComponent_data__element extends JPanel {
 
         for(String key : keySet) {
             JLabel label = new JLabel(key);
+            label.setBorder(new EmptyBorder(10,10,10,10));
             label.setFont(new Font(null,Font.BOLD,15));
             label.setOpaque(true);
             label.setForeground(Color.WHITE);
@@ -52,4 +58,11 @@ public class ContentComponent_data__element extends JPanel {
         }
     }
 
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if(e.getSource() == this) {
+            if(this.id != 0 )
+            content.addFormGet(this.id);
+        }
+    }
 }

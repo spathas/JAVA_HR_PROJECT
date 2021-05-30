@@ -5,12 +5,15 @@ import java.awt.event.ActionListener;
 
 public class ContentComponent_menu extends JPanel implements ActionListener {
 
-    // search bar and btns
+    ContentComponent content;
+
+    // search bar and btn
     JLabel searchBarLabel = new JLabel("  Search: ");
     JTextField searchBarTextField = new JTextField();
     JButton newBtn = new JButton("New element");
 
-    public ContentComponent_menu() {
+    public ContentComponent_menu(ContentComponent content) {
+        this.content = content;
         setupSearchBar();
         setupButton();
         this.setLayout(null);
@@ -38,6 +41,7 @@ public class ContentComponent_menu extends JPanel implements ActionListener {
         searchBarTextField.setOpaque(true);
         searchBarTextField.setBounds(150,10,400,80);
         searchBarTextField.setBorder(BorderFactory.createLineBorder(Color.BLUE));
+        searchBarTextField.setCaretColor(Color.WHITE);
     }
 
     private void setupButton() {
@@ -51,6 +55,6 @@ public class ContentComponent_menu extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource() == newBtn) System.out.println("newBtn");
+        if(e.getSource() == newBtn) content.addFormNew();
     }
 }

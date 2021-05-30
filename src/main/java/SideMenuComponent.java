@@ -77,9 +77,18 @@ public class SideMenuComponent extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource() == jobApplicants_btn) content.addItems("jobApplicants_btn");
-        if(e.getSource() == jobPostings_btn) content.addItems("jobPostings_btn");
-        if(e.getSource() == companies_btn) content.addItems("companies_btn");
+        if(e.getSource() == jobApplicants_btn) {
+            content.setSelector("jobApplicants_btn");
+            content.addItems();
+        }
+        if(e.getSource() == jobPostings_btn) {
+            content.setSelector("jobPostings_btn");
+            content.addItems();
+        }
+        if(e.getSource() == companies_btn) {
+            content.setSelector("companies_btn");
+            content.addItems();
+        }
     }
 
 }
