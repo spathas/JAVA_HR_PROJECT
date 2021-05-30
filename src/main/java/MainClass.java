@@ -10,10 +10,10 @@ public class MainClass {
     static final String PASS = "spathas1";
 
     public static void main(String[] args) {
-//        JobApplicantController jobApplicantController = new JobApplicantController();
-//        CompanyController companyController = new CompanyController();
-//        JobPostingController jobPostingController = new JobPostingController();
-//        JobCategoryController jobCategoryController = new JobCategoryController();
+        JobApplicantController jobApplicantController = new JobApplicantController();
+        CompanyController companyController = new CompanyController();
+        JobPostingController jobPostingController = new JobPostingController();
+        JobCategoryController jobCategoryController = new JobCategoryController();
 //
 //        try{
 //            jobCategoryController.mockData();
@@ -28,7 +28,7 @@ public class MainClass {
 //            //Handle errors for JDBC
 //            se.printStackTrace();
 //        }
-
+        System.out.println(jobPostingController.getAll());
 
         MainFrameComponent frame = new MainFrameComponent();
     }

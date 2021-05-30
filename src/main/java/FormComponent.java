@@ -6,11 +6,14 @@ import java.util.TreeSet;
 
 public class FormComponent extends JPanel {
 
+    HashMap<String, JTextField> map = new HashMap<>();
+
     ContentComponent content;
 
     JobPostingController jobPostingController = new JobPostingController();
     JobApplicantController jobApplicantController = new JobApplicantController();
     CompanyController companyController = new CompanyController();
+    JobCategoryController jobCategoryController = new JobCategoryController();
 
     public FormComponent(ContentComponent content, String selector) {
         this.content = content;
@@ -33,7 +36,7 @@ public class FormComponent extends JPanel {
             for (String label : applicantMap.keySet())
                 this.add(new FromComponent_element(label, applicantMap.get(label)));
 
-            this.add(new FormComponent_buttons(this.content, "getElement"));
+            this.add(new FormComponent_buttons(this.content, this, "getElement"));
 
             return applicantMap.size() + 1;
         }
@@ -45,7 +48,7 @@ public class FormComponent extends JPanel {
             for (String label : companyMap.keySet())
                 this.add(new FromComponent_element(label, companyMap.get(label)));
 
-            this.add(new FormComponent_buttons(this.content, "getElement"));
+            this.add(new FormComponent_buttons(this.content, this, "getElement"));
 
             return companyMap.size() + 1;
         }
@@ -56,7 +59,7 @@ public class FormComponent extends JPanel {
         for (String label : postingMap.keySet())
             this.add(new FromComponent_element(label, postingMap.get(label)));
 
-        this.add(new FormComponent_buttons(this.content, "getElement"));
+        this.add(new FormComponent_buttons(this.content, this, "getElement"));
 
         return postingMap.size() + 1;
 
@@ -74,12 +77,31 @@ public class FormComponent extends JPanel {
 
         for (String label : keySet) {
             if(!label.equals("ID")) {
-                this.add(new FromComponent_element(label, "WRITE YOUR " + label));
+                FromComponent_element el = new FromComponent_element(label, "WRITE YOUR " + label);
+                this.map.put(label, el.getTextField());
+                this.add(el);
             }
         }
-        this.add(new FormComponent_buttons(this.content, "newElement"));
+        this.add(new FormComponent_buttons(this.content, this, "newElement"));
 
         return keySet.size(); // We don't use + 1 here because ID row never user so we have this result -> [size -1 +1 = size]!
+    }
+
+    public void insertNewElement() {
+        HashMap<String, String> insertMap = new HashMap<>();
+        for(String key : map.keySet()) {
+            System.out.println(key + map.get(key).getText());
+            insertMap.put(key, map.get(key).getText());
+        }
+
+        jobPostingController.insert(new JobPosting(
+                companyController.getByName(map.get("COMPANY").getText()),
+                map.get("TITLE").getText(),
+                map.get("DESCRIPTION").getText(),
+                jobCategoryController.getByRole(map.get("JOB_CATEGORY").getText()),
+                Integer.parseInt(map.get("SALARY").getText()),
+                Boolean.parseBoolean(map.get("FULL_TIME").getText())
+        ));
     }
 
 

@@ -134,8 +134,8 @@ public class JobApplicantController implements FactoryHandler {
 
     public JobApplicant getById(int jobApplicantID) {
         try {
-            return new JobApplicant( FactoryHandler.getFiltering("JobApplicant", this.jobApplicantTable, "ID", Integer.toString(jobApplicantID))
-                    .get(jobApplicantID) );
+            return new JobApplicant( FactoryHandler.getFiltering("JobApplicant", this.jobApplicantTable, "ID",
+                    Integer.toString(jobApplicantID)) );
         } catch (SQLException | ClassNotFoundException sqlError) {
             System.out.println("Table JobApplicant not found or your filter is wrong!");
         }

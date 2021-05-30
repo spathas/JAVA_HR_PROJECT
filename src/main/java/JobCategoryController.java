@@ -87,7 +87,17 @@ public class JobCategoryController {
     public JobCategory getById(int jobCategoryId) {
         try {
             return new JobCategory(FactoryHandler.getFiltering("JobCategory", this.JobCategoryTable, "ID", Integer.toString(jobCategoryId))
-                    .get(jobCategoryId));
+                    );
+        } catch (SQLException | ClassNotFoundException sqlError) {
+            System.out.println("Table JobCategory not found or your filter is wrong!");
+        }
+        return null;
+    }
+
+    public JobCategory getByRole(String role) {
+        try {
+            return new JobCategory(FactoryHandler.getFiltering("JobCategory", this.JobCategoryTable, "ROLE","'" + role + "'")
+                    );
         } catch (SQLException | ClassNotFoundException sqlError) {
             System.out.println("Table JobCategory not found or your filter is wrong!");
         }

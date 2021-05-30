@@ -127,10 +127,11 @@ public interface FactoryHandler {
     }
 
     // Get a single row from table by inserted filter query. eg: "where id = id"
-    static HashMap<Integer, HashMap<String, String>> getFiltering(String tableName, HashMap<String, String> table, String filterColumn, String filterValue)
+    static HashMap<String, String> getFiltering(String tableName, HashMap<String, String> table, String filterColumn, String filterValue)
             throws SQLException, ClassNotFoundException {
 
         HashMap<Integer, HashMap<String, String>> objectsMap = new HashMap<>();
+        HashMap<String, String> values = new HashMap<>();
         server.connectionOpen();
 
         //Query
@@ -144,16 +145,15 @@ public interface FactoryHandler {
 
         //Fetch data and store in a map
         while (resultSet.next()) {
-            HashMap<String, String> values = new HashMap<>();
+
             for(String key : table.keySet()) {
                 values.put(key, resultSet.getString(key));
             }
-            objectsMap.put(Integer.parseInt(values.get(filterColumn)), values);
         }
 
         server.connectionClose();
 
-        return objectsMap;
+        return values;
     }
 
     //Drop table

@@ -26,7 +26,7 @@ public class FromComponent_element extends JPanel {
         label.setHorizontalAlignment(SwingConstants.RIGHT);
         label.setFont(new Font(null, Font.BOLD,18));
         label.setForeground(Color.WHITE);
-        label.setPreferredSize(new Dimension(150, 100));
+        label.setPreferredSize(new Dimension(200, 100));
 
         if(labelText.equals("ID")) textField.setEditable(false);
     }
@@ -38,8 +38,10 @@ public class FromComponent_element extends JPanel {
         textField.setForeground(Color.WHITE);
         textField.setBorder(BorderFactory.createLineBorder(Color.BLUE));
         textField.setCaretColor(Color.WHITE);
-        textField.setPreferredSize(new Dimension(500, 100));
+        textField.setPreferredSize(new Dimension(800, 100));
     }
 
-
+    public JTextField getTextField() {
+        return textField;
+    }
 }

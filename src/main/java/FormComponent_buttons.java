@@ -2,18 +2,21 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.Normalizer;
 
 public class FormComponent_buttons extends JPanel implements ActionListener {
 
     ContentComponent content;
+    FormComponent form;
 
     JButton deleteButton = new JButton("DELETE");
     JButton updateButton = new JButton("UPDATE");
     JButton cancelButton = new JButton("CANCEL");
     JButton submitButton = new JButton("SUBMIT");
 
-    public FormComponent_buttons(ContentComponent content, String typeOfContent) {
+    public FormComponent_buttons(ContentComponent content, FormComponent form, String typeOfContent) {
         this.content = content;
+        this.form = form;
         this.setBackground(Color.lightGray);
         this.setLayout(new FlowLayout(FlowLayout.TRAILING));
 
@@ -78,7 +81,7 @@ public class FormComponent_buttons extends JPanel implements ActionListener {
         submitButton.setFocusable(false);
         submitButton.setPreferredSize(new Dimension(150, 50));
 
-//        submitButton.addActionListener(this);
+        submitButton.addActionListener(this);
     }
 
     @Override
@@ -87,7 +90,7 @@ public class FormComponent_buttons extends JPanel implements ActionListener {
             content.addItems();
         }
         if(e.getSource() == submitButton) {
-            content.addItems();
+            form.insertNewElement();
         }
     }
 }

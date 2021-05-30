@@ -112,7 +112,7 @@ public class JobPostingController {
     public JobPosting getById(int jobPostingId) {
         try {
             return new JobPosting( FactoryHandler.getFiltering("JobPosting", this.JobPostingTable, "ID", Integer.toString(jobPostingId))
-                    .get(jobPostingId) );
+                    );
         } catch (SQLException | ClassNotFoundException sqlError) {
             System.out.println("Table JobPosting not found or your filter is wrong!");
         }
