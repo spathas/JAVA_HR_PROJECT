@@ -56,6 +56,7 @@ public class ContentComponent extends JPanel {
         this.repaint();
     }
 
+    // Return for which create a new element per category.
     public void addFormNew() {
         this.removeAll();
 
@@ -64,7 +65,7 @@ public class ContentComponent extends JPanel {
         this.repaint();
     }
 
-
+    // Return form which update or delete an element
     public void addFormGet(int id) {
         this.removeAll();
 
@@ -72,4 +73,25 @@ public class ContentComponent extends JPanel {
         this.validate();
         this.repaint();
     }
+
+    // Return all applicants per posting map
+    public void findRelationships(String selectorColumns, int id) {
+        this.removeAll();
+
+        // !!! IMPORTANT !!!
+        // We need to swap current selector with scope selector at this time,
+        // because when we search from e.g company screen for jobPostings through this company
+        // we have to swap screen view (to jobPosting view). It is not so sense but it works well.
+        // Sorry :D
+        String selectorRows = this.selector;
+        this.selector = selectorColumns;
+        this.data = new ContentComponent_data(this, selectorColumns, selectorRows, id);
+
+        this.add(data, BorderLayout.CENTER);
+        this.add( new ContentComponent_menu(this), BorderLayout.NORTH);
+        this.validate();
+        this.repaint();
+    }
+
+
 }

@@ -86,9 +86,32 @@ public class JobPostingController {
     }
 
     // Return all jobPosting via user profile
-    public HashMap<Integer, JobPosting> getPostingsViaUserProfile(JobApplicant jobApplicant) {
+    public HashMap<Integer, JobPosting> getPostingsViaApplicant(JobApplicant jobApplicant) {
         String categoryId = Integer.toString(jobApplicant.getJobCategory().getId());
         String filter = "WHERE JOB_CATEGORY = " + categoryId;
+
+        HashMap<Integer, JobPosting> jobPostings = new HashMap<>();
+
+        HashMap<Integer, HashMap<String, String>> map = null;
+        try {
+            map = FactoryHandler.getAll("JobPosting", this.JobPostingTable, filter);
+        } catch (SQLException sqlError) {
+            sqlError.printStackTrace();
+        } catch (ClassNotFoundException notFoundException) {
+            System.out.println("Table JobPosting not found");
+        }
+
+        for(Integer id : map.keySet()) {
+            jobPostings.put( id, new JobPosting(map.get(id)) );
+        }
+
+        return jobPostings;
+    }
+
+    // Return all jobPosting via company profile
+    public HashMap<Integer, JobPosting> getPostingsViaCompany(Company company) {
+        String companyId = Integer.toString(company.getId());
+        String filter = "WHERE COMPANY = " + companyId;
 
         HashMap<Integer, JobPosting> jobPostings = new HashMap<>();
 

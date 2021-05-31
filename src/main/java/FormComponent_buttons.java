@@ -101,7 +101,7 @@ public class FormComponent_buttons extends JPanel implements ActionListener {
         findButton.setFocusable(false);
         findButton.setPreferredSize(new Dimension(50, 50));
 
-//        findButton.addActionListener(this);
+        findButton.addActionListener(this);
     }
 
     @Override
@@ -133,9 +133,6 @@ public class FormComponent_buttons extends JPanel implements ActionListener {
 
         if(e.getSource() == findButton) {
             form.findElement(content.getSelector());
-            //Refresh data in content component.
-            content.refreshObjects();
-            content.addItems();
         }
     }
 }

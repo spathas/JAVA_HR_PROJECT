@@ -178,15 +178,17 @@ public class FormComponent extends JPanel {
     }
 
     public void findElement(String selector) {
-//        if(selector.equals("jobApplicants_btn")) {
-//            int id = Integer.parseInt(map.get("ID").getText());
-//            form.setupRows(selector, id);
-//        }
-//        if(selector.equals("companies_btn")) {
-////            companyController.delete(Integer.parseInt(map.get("ID").getText()));
-//        }
-//        if(selector.equals("jobPostings_btn")) {
-//            jobApplicantController.getApplicantsViaJobPosting(jobPostingController.getById(Integer.parseInt(map.get("ID").getText())));
-//        }
+        int id = Integer.parseInt(map.get("ID").getText());
+
+        if(selector.equals("jobPostings_btn")) {
+            content.findRelationships("jobApplicants_btn", id);
+        }
+        if(selector.equals("companies_btn")) {
+            //We need different selector there to setup column for jobPostings
+            content.findRelationships("jobPostings_btn", id);
+        }
+        if(selector.equals("jobApplicants_btn")) {
+            content.findRelationships("jobPostings_btn", id);
+        }
     }
 }

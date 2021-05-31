@@ -28,7 +28,7 @@ public class MainClass {
 //            //Handle errors for JDBC
 //            se.printStackTrace();
 //        }
-        System.out.println(jobPostingController.getAll());
+//        System.out.println(jobPostingController.getAll());
 
         MainFrameComponent frame = new MainFrameComponent();
     }
