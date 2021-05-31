@@ -38,6 +38,15 @@ public class CompanyController implements FactoryHandler {
         }
     }
 
+    public void delete(int companyId) {
+        try {
+            Company company = getById(companyId);
+            FactoryHandler.deleteRowById("company", Integer.toString(company.getId()));
+        } catch (SQLException | ClassNotFoundException e) {
+            System.out.println("Table JobApplicant or current jobApplicant not found");
+        }
+    }
+
     public void update(Company company) {
         int id = company.getId();
         try {

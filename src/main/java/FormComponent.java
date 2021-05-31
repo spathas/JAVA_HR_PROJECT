@@ -28,40 +28,35 @@ public class FormComponent extends JPanel {
         this.setVisible(true);
     }
 
-    private int setupGetElements(String selector, int id) {
-        if(selector.equals("jobApplicants_btn")) {
-            JobApplicant obj = jobApplicantController.getById(id);
-            HashMap<String, String> applicantMap = new HashMap<>(obj.getMap());
+        private int setupGetElements(String selector, int id) {
+            HashMap<String, String> getterMap;
 
-            for (String label : applicantMap.keySet())
-                this.add(new FromComponent_element(label, applicantMap.get(label)));
+            if(selector.equals("jobApplicants_btn")) {
+                JobApplicant obj = jobApplicantController.getById(id);
+                getterMap = new HashMap<>(obj.getMap());
+            }else if(selector.equals("companies_btn")) {
+                Company obj = companyController.getById(id);
+                getterMap = new HashMap<>(obj.getMap());
+            } else {
+                JobPosting obj = jobPostingController.getById(id);
+                getterMap = new HashMap<>(obj.getMap());
+            }
 
-            this.add(new FormComponent_buttons(this.content, this, "getElement"));
+        for (String label : getterMap.keySet()) {
 
-            return applicantMap.size() + 1;
+            // Get the name of company or the role of categories to display a readable content.
+            String value = getterMap.get(label);
+            if(label.equals("JOB_CATEGORY")) value = jobCategoryController.getById(Integer.parseInt(value)).getRole();
+            if(label.equals("COMPANY")) value = companyController.getById(Integer.parseInt(value)).getName();
+
+            FromComponent_element el = new FromComponent_element(label, value);
+            this.map.put(label, el.getTextField());
+            this.add(el);
         }
-
-        if(selector.equals("companies_btn")) {
-            Company obj = companyController.getById(id);
-            HashMap<String, String> companyMap = new HashMap<>(obj.getMap());
-
-            for (String label : companyMap.keySet())
-                this.add(new FromComponent_element(label, companyMap.get(label)));
-
-            this.add(new FormComponent_buttons(this.content, this, "getElement"));
-
-            return companyMap.size() + 1;
-        }
-
-        JobPosting obj = jobPostingController.getById(id);
-        HashMap<String, String> postingMap = new HashMap<>(obj.getMap());
-
-        for (String label : postingMap.keySet())
-            this.add(new FromComponent_element(label, postingMap.get(label)));
 
         this.add(new FormComponent_buttons(this.content, this, "getElement"));
 
-        return postingMap.size() + 1;
+        return getterMap.size() + 1;
 
     }
 
@@ -77,7 +72,15 @@ public class FormComponent extends JPanel {
 
         for (String label : keySet) {
             if(!label.equals("ID")) {
-                FromComponent_element el = new FromComponent_element(label, "WRITE YOUR " + label);
+
+                // Init placeholders
+                String value = map.get(label);
+                if(label.equals("COMPANY")) value = "Insert the name of company (p.x. Software House Company)";
+                else if(label.equals("JOB_CATEGORY")) value = "Insert the role of category (p.x. Developer)";
+                else if(value.contains("NOT NULL")) value = "required";
+                else value = "";
+
+                FromComponent_element el = new FromComponent_element(label, value);
                 this.map.put(label, el.getTextField());
                 this.add(el);
             }
@@ -87,14 +90,72 @@ public class FormComponent extends JPanel {
         return keySet.size(); // We don't use + 1 here because ID row never user so we have this result -> [size -1 +1 = size]!
     }
 
-    public void insertNewElement() {
-        HashMap<String, String> insertMap = new HashMap<>();
-        for(String key : map.keySet()) {
-            System.out.println(key + map.get(key).getText());
-            insertMap.put(key, map.get(key).getText());
+    public void insertNewElement(String selector) {
+        if(selector.equals("jobApplicants_btn")) {
+
+            jobApplicantController.insert(new JobApplicant(
+                    map.get("NAME").getText(),
+                    map.get("SURNAME").getText(),
+                    Integer.parseInt(map.get("AGE").getText()),
+                    map.get("EMAIL").getText(),
+                    map.get("PHONE").getText(),
+                    map.get("EDUCATION").getText(),
+                    jobCategoryController.getByRole(map.get("JOB_CATEGORY").getText()),
+                    Boolean.parseBoolean(map.get("WORKS").getText())
+            ));
+            return;
+        }
+        if(selector.equals("companies_btn")) {
+            companyController.insert(new Company(
+                    map.get("NAME").getText(),
+                    map.get("EMAIL").getText(),
+                    map.get("COUNTRY").getText(),
+                    map.get("PHONE").getText(),
+                    map.get("ADDRESS").getText()
+            ));
+            return;
         }
 
         jobPostingController.insert(new JobPosting(
+                companyController.getByName(map.get("COMPANY").getText()),
+                map.get("TITLE").getText(),
+                map.get("DESCRIPTION").getText(),
+                jobCategoryController.getByRole(map.get("JOB_CATEGORY").getText()),
+                map.get("SALARY").getText().equals("") ? 0 : Integer.parseInt(map.get("SALARY").getText()),
+                Boolean.parseBoolean(map.get("FULL_TIME").getText())
+        ));
+    }
+
+    public void updateElement(String selector) {
+        if(selector.equals("jobApplicants_btn")) {
+
+            jobApplicantController.update(new JobApplicant(
+                    Integer.parseInt(map.get("ID").getText()),
+                    map.get("NAME").getText(),
+                    map.get("SURNAME").getText(),
+                    Integer.parseInt(map.get("AGE").getText()),
+                    map.get("EMAIL").getText(),
+                    map.get("PHONE").getText(),
+                    map.get("EDUCATION").getText(),
+                    jobCategoryController.getByRole(map.get("JOB_CATEGORY").getText()),
+                    Boolean.parseBoolean(map.get("WORKS").getText())
+            ));
+            return;
+        }
+        if(selector.equals("companies_btn")) {
+            companyController.update(new Company(
+                    Integer.parseInt(map.get("ID").getText()),
+                    map.get("NAME").getText(),
+                    map.get("EMAIL").getText(),
+                    map.get("COUNTRY").getText(),
+                    map.get("PHONE").getText(),
+                    map.get("ADDRESS").getText()
+            ));
+            return;
+        }
+
+        jobPostingController.update(new JobPosting(
+                Integer.parseInt(map.get("ID").getText()),
                 companyController.getByName(map.get("COMPANY").getText()),
                 map.get("TITLE").getText(),
                 map.get("DESCRIPTION").getText(),
@@ -104,5 +165,28 @@ public class FormComponent extends JPanel {
         ));
     }
 
+    public void deleteElement(String selector) {
+        if(selector.equals("jobApplicants_btn")) {
+            jobApplicantController.delete(Integer.parseInt(map.get("ID").getText()));
+        }
+        if(selector.equals("companies_btn")) {
+            companyController.delete(Integer.parseInt(map.get("ID").getText()));
+        }
+        if(selector.equals("jobPostings_btn")) {
+            jobPostingController.delete(Integer.parseInt(map.get("ID").getText()));
+        }
+    }
 
+    public void findElement(String selector) {
+//        if(selector.equals("jobApplicants_btn")) {
+//            int id = Integer.parseInt(map.get("ID").getText());
+//            form.setupRows(selector, id);
+//        }
+//        if(selector.equals("companies_btn")) {
+////            companyController.delete(Integer.parseInt(map.get("ID").getText()));
+//        }
+//        if(selector.equals("jobPostings_btn")) {
+//            jobApplicantController.getApplicantsViaJobPosting(jobPostingController.getById(Integer.parseInt(map.get("ID").getText())));
+//        }
+    }
 }

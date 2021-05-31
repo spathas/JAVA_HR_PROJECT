@@ -2,13 +2,13 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.Normalizer;
 
 public class FormComponent_buttons extends JPanel implements ActionListener {
 
     ContentComponent content;
     FormComponent form;
 
+    JButton findButton = new JButton();
     JButton deleteButton = new JButton("DELETE");
     JButton updateButton = new JButton("UPDATE");
     JButton cancelButton = new JButton("CANCEL");
@@ -33,10 +33,12 @@ public class FormComponent_buttons extends JPanel implements ActionListener {
             setupDeleteButton();
             setUpdateButton();
             setupCancelButton();
+            setupFindButton();
 
             this.add(updateButton);
             this.add(deleteButton);
             this.add(cancelButton);
+            this.add(findButton);
         }
     }
 
@@ -44,29 +46,29 @@ public class FormComponent_buttons extends JPanel implements ActionListener {
         deleteButton.setFont(new Font(null, Font.BOLD, 18));
         deleteButton.setBackground(Color.RED);
         deleteButton.setForeground(Color.WHITE);
-        deleteButton.setBorder(BorderFactory.createLineBorder(Color.BLUE));
+        deleteButton.setBorder(BorderFactory.createLineBorder(Color.RED));
         deleteButton.setFocusable(false);
         deleteButton.setPreferredSize(new Dimension(150, 50));
 
-//        deleteButton.addActionListener(this);
+        deleteButton.addActionListener(this);
     }
 
     private void setUpdateButton() {
         updateButton.setFont(new Font(null, Font.BOLD, 18));
         updateButton.setBackground(Color.YELLOW.darker());
         updateButton.setForeground(Color.WHITE);
-        updateButton.setBorder(BorderFactory.createLineBorder(Color.BLUE));
+        updateButton.setBorder(BorderFactory.createLineBorder(Color.YELLOW.darker()));
         updateButton.setFocusable(false);
         updateButton.setPreferredSize(new Dimension(150, 50));
 
-//        updateButton.addActionListener(this);
+        updateButton.addActionListener(this);
     }
 
     private void setupCancelButton() {
         cancelButton.setFont(new Font(null, Font.BOLD, 18));
         cancelButton.setBackground(Color.GRAY);
         cancelButton.setForeground(Color.WHITE);
-        cancelButton.setBorder(BorderFactory.createLineBorder(Color.BLUE));
+        cancelButton.setBorder(BorderFactory.createLineBorder(Color.GRAY));
         cancelButton.setFocusable(false);
         cancelButton.setPreferredSize(new Dimension(150, 50));
 
@@ -77,11 +79,29 @@ public class FormComponent_buttons extends JPanel implements ActionListener {
         submitButton.setFont(new Font(null, Font.BOLD, 18));
         submitButton.setBackground(Color.GREEN.darker());
         submitButton.setForeground(Color.WHITE);
-        submitButton.setBorder(BorderFactory.createLineBorder(Color.BLUE));
+        submitButton.setBorder(BorderFactory.createLineBorder(Color.GREEN.darker()));
         submitButton.setFocusable(false);
         submitButton.setPreferredSize(new Dimension(150, 50));
 
         submitButton.addActionListener(this);
+    }
+
+
+
+    private void setupFindButton() {
+        //Setup Image Icon
+        Image image = new ImageIcon("public/images/share.png").getImage();
+        ImageIcon icon = new ImageIcon(image.getScaledInstance(40, 40,  java.awt.Image.SCALE_SMOOTH));
+        findButton.setIcon(icon);
+
+        findButton.setFont(new Font(null, Font.BOLD, 18));
+        findButton.setBackground(Color.lightGray);
+        findButton.setForeground(Color.BLACK);
+        findButton.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+        findButton.setFocusable(false);
+        findButton.setPreferredSize(new Dimension(50, 50));
+
+//        findButton.addActionListener(this);
     }
 
     @Override
@@ -89,8 +109,33 @@ public class FormComponent_buttons extends JPanel implements ActionListener {
         if(e.getSource() == cancelButton) {
             content.addItems();
         }
+
         if(e.getSource() == submitButton) {
-            form.insertNewElement();
+            form.insertNewElement(content.getSelector());
+            //Refresh data in content component.
+            content.refreshObjects();
+            content.addItems();
+        }
+
+        if(e.getSource() == updateButton) {
+            form.updateElement(content.getSelector());
+            //Refresh data in content component.
+            content.refreshObjects();
+            content.addItems();
+        }
+
+        if(e.getSource() == deleteButton) {
+            form.deleteElement(content.getSelector());
+            //Refresh data in content component.
+            content.refreshObjects();
+            content.addItems();
+        }
+
+        if(e.getSource() == findButton) {
+            form.findElement(content.getSelector());
+            //Refresh data in content component.
+            content.refreshObjects();
+            content.addItems();
         }
     }
 }

@@ -68,4 +68,40 @@ public class ContentComponent_data extends JPanel {
         }
         return map.size() + 1; // + 1 because of reference row.
     }
+
+    public int setupRows(String selector, int id) {
+        // Add if or switch there /////////////////////////////////////////////////////
+        if(selector.equals("jobApplicants_btn")) {
+            HashMap<Integer, JobApplicant> map = jobApplicantController.getAll();
+
+            for(int key : map.keySet()) {
+                HashMap<String,String> obj = map.get(key).getMap();
+                ContentComponent_data__element element = new ContentComponent_data__element(this.content, 1, map.size(), key);
+                element.setupRows(obj);
+                this.add(element);
+            }
+            return map.size() + 1; // + 1 because of reference row.
+        }
+        if(selector.equals("companies_btn")) {
+            HashMap<Integer, Company> map = companyController.getAll();
+
+            for(int key : map.keySet()) {
+                HashMap<String,String> obj = map.get(key).getMap();
+                ContentComponent_data__element element = new ContentComponent_data__element(this.content, 1, map.size(), key);
+                element.setupRows(obj);
+                this.add(element);
+            }
+            return map.size() + 1; // + 1 because of reference row.
+        }
+
+        HashMap<Integer, JobPosting> map = jobPostingController.getAll();
+
+        for(int key : map.keySet()) {
+            HashMap<String,String> obj = map.get(key).getMap();
+            ContentComponent_data__element element = new ContentComponent_data__element(this.content, 1, map.size(), key);
+            element.setupRows(obj);
+            this.add(element);
+        }
+        return map.size() + 1; // + 1 because of reference row.
+    }
 }

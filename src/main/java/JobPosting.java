@@ -21,6 +21,16 @@ public class JobPosting {
         this.fullTime = fullTime;
     }
 
+    public JobPosting(int id, Company company, String title, String description, JobCategory jobCategory, int salary, boolean fullTime) {
+        this.id = id;
+        this.company = company;
+        this.title = title;
+        this.description = description;
+        this.jobCategory = jobCategory;
+        this.salary = salary;
+        this.fullTime = fullTime;
+    }
+
     public JobPosting(HashMap<String, String> map) {
         this.id = Integer.parseInt(map.get("ID"));
         this.company = (companyController.getById(Integer.parseInt(map.get("COMPANY"))) != null)

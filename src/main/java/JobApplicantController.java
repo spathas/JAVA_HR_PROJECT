@@ -49,8 +49,6 @@ public class JobApplicantController implements FactoryHandler {
         } catch (SQLException | ClassNotFoundException e) {
             System.out.println("Table JobApplicant or current jobApplicant not found");
         }
-
-        getById(jobApplicantId);
     }
 
     public void update(JobApplicant jobApplicant) {

@@ -8,45 +8,38 @@ public class ContentComponent_menu extends JPanel implements ActionListener {
     ContentComponent content;
 
     // search bar and btn
-    JLabel searchBarLabel = new JLabel("  Search: ");
-    JTextField searchBarTextField = new JTextField();
+    JLabel titleLabel = new JLabel();
     JButton newBtn = new JButton("New element");
 
     public ContentComponent_menu(ContentComponent content) {
         this.content = content;
-        setupSearchBar();
+        setupTitle();
         setupButton();
         this.setLayout(null);
-        this.setBackground(Color.lightGray);
+        this.setBackground(Color.BLUE);
         this.setPreferredSize(new Dimension(0,100));
         this.setVisible(true);
 
-        this.add(searchBarLabel);
-        this.add(searchBarTextField);
+        this.add(titleLabel);
         this.add(newBtn);
     }
 
-    private void setupSearchBar() {
+    private void setupTitle() {
         //Label
-        searchBarLabel.setFont(new Font(null, Font.BOLD, 18));
-        searchBarLabel.setBackground(Color.BLUE);
-        searchBarLabel.setForeground(Color.WHITE);
-        searchBarLabel.setOpaque(true);
-        searchBarLabel.setBounds(50,10,100,80);
+        titleLabel.setText("Job Postings");
+        if(content.getSelector().equals("jobApplicants_btn")) titleLabel.setText("Job Applicants");
+        if(content.getSelector().equals("companies_btn")) titleLabel.setText("Companies");
 
-        //Text
-        searchBarTextField.setFont(new Font(null, Font.BOLD, 18));
-        searchBarTextField.setBackground(Color.BLUE);
-        searchBarTextField.setForeground(Color.WHITE);
-        searchBarTextField.setOpaque(true);
-        searchBarTextField.setBounds(150,10,400,80);
-        searchBarTextField.setBorder(BorderFactory.createLineBorder(Color.BLUE));
-        searchBarTextField.setCaretColor(Color.WHITE);
+        titleLabel.setFont(new Font(null, Font.BOLD, 32));
+        titleLabel.setBackground(Color.BLUE);
+        titleLabel.setForeground(Color.WHITE);
+        titleLabel.setOpaque(true);
+        titleLabel.setBounds(50,10,300,80);
     }
 
     private void setupButton() {
         newBtn.setFont(new Font(null, Font.BOLD, 18));
-        newBtn.setBackground(Color.BLUE);
+        newBtn.setBackground(Color.GREEN.darker());
         newBtn.setForeground(Color.WHITE);
         newBtn.setFocusable(false);
         newBtn.setBounds(800,10,200,80);

@@ -6,8 +6,6 @@ public class ContentComponent extends JPanel {
 
     private String selector = "jobPostings_btn";
 
-    ContentComponent_menu menu = new ContentComponent_menu(this);
-
     private ContentComponent_data data = new ContentComponent_data(this,  "jobPostings_btn");
     public ContentComponent_data jobApplicantsView = new ContentComponent_data(this, "jobApplicants_btn");
     public ContentComponent_data jobPostingsView = new ContentComponent_data(this, "jobPostings_btn");
@@ -28,6 +26,22 @@ public class ContentComponent extends JPanel {
         return selector;
     }
 
+    public void refreshObjects() {
+        switch (this.getSelector()) {
+            case "jobApplicants_btn":
+                this.jobApplicantsView = new ContentComponent_data(this, "jobApplicants_btn");
+                break;
+            case "companies_btn":
+                this.companiesView = new ContentComponent_data(this, "companies_btn");
+                break;
+            case "jobPostings_btn":
+                this.jobPostingsView = new ContentComponent_data(this, "jobPostings_btn");
+                break;
+            default:
+                break;
+        }
+    }
+
     public void addItems() {
         this.removeAll();
 
@@ -37,7 +51,7 @@ public class ContentComponent extends JPanel {
             default -> this.data = jobPostingsView;
         }
         this.add(data, BorderLayout.CENTER);
-        this.add(menu, BorderLayout.NORTH);
+        this.add( new ContentComponent_menu(this), BorderLayout.NORTH);
         this.validate();
         this.repaint();
     }

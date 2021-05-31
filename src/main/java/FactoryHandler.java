@@ -72,7 +72,7 @@ public interface FactoryHandler {
         server.executeInsertQuery(query);
 
         server.connectionClose();
-        System.out.println("Insert 1 row");
+        System.out.println("Delete 1 row");
         System.out.println("");
     }
 

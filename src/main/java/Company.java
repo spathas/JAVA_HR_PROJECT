@@ -25,6 +25,15 @@ public class Company {
         this.address = address;
     }
 
+    public Company(int id, String name, String email, String country, String phone, String address) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.country = country;
+        this.phone = phone;
+        this.address = address;
+    }
+
     public Company(HashMap<String, String> map) {
         this.id = Integer.parseInt(map.get("ID"));
         this.name = map.get("NAME");

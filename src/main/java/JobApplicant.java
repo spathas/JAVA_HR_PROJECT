@@ -24,6 +24,18 @@ public class JobApplicant {
         this.works = works;
     }
 
+    public JobApplicant(int id, String name, String surname, int age, String email, String phone, String education, JobCategory jobCategory, boolean works) {
+        this.id = id;
+        this.name = name;
+        this.surname = surname;
+        this.age = age;
+        this.email = email;
+        this.phone = phone;
+        this.education = education;
+        this.jobCategory = jobCategory;
+        this.works = works;
+    }
+
     public JobApplicant(HashMap<String, String> map) {
         this.id = Integer.parseInt(map.get("ID"));
         this.name = map.get("NAME");
