@@ -14,7 +14,8 @@ public class MainClass {
         CompanyController companyController = new CompanyController();
         JobPostingController jobPostingController = new JobPostingController();
         JobCategoryController jobCategoryController = new JobCategoryController();
-//
+
+        // RESET DATABASE DATA WITH MOCK DATA
 //        try{
 //            jobCategoryController.mockData();
 //
@@ -28,6 +29,7 @@ public class MainClass {
 //            //Handle errors for JDBC
 //            se.printStackTrace();
 //        }
+//
 //        System.out.println(jobPostingController.getAll());
 
         MainFrameComponent frame = new MainFrameComponent();

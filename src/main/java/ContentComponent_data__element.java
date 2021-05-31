@@ -9,10 +9,11 @@ import java.util.TreeSet;
 
 public class ContentComponent_data__element extends JButton implements ActionListener {
 
+
     ContentComponent content;
     int id;
 
-    public ContentComponent_data__element(ContentComponent content, int rows, int columns, int id) {
+    public ContentComponent_data__element(ContentComponent content, int id) {
         this.content = content;
         this.id = id;
 
@@ -20,8 +21,9 @@ public class ContentComponent_data__element extends JButton implements ActionLis
         this.setOpaque(true);
         this.setForeground(Color.WHITE);
         this.setBackground(Color.BLUE);
-        this.setLayout(new GridLayout(rows,columns,20,20));
-        this.setBorder(new EmptyBorder(10,5,10,5));
+
+        this.setLayout(new GridBagLayout());
+
         this.setFocusable(false);
         this.addActionListener(this);
         this.revalidate();
@@ -31,21 +33,40 @@ public class ContentComponent_data__element extends JButton implements ActionLis
     public void setupRows(HashMap<String,String> obj) {
         SortedSet<String> keySet = new TreeSet<>(obj.keySet());
 
+        int count = 0;
         for (String objKey : keySet) {
-            JLabel label = new JLabel(obj.get(objKey));
-            label.setBorder(new EmptyBorder(10,10,10,10));
-            label.setSize(10,10);
+
+            // Css code to wrap the text content.
+            JLabel label = new JLabel(String.format("<html><body style=\"text-align: justify;  text-justify: inter-word;\">%s</body></html>", obj.get(objKey)));
+            label.setBorder(new EmptyBorder(10, 10, 10, 10));
+            label.setSize(10, 10);
             label.setOpaque(true);
             label.setForeground(Color.WHITE);
             label.setBackground(Color.BLUE);
 
-            this.add(label);
+            //Setup layout constraints
+            GridBagConstraints gc = new GridBagConstraints();
+            gc.fill = GridBagConstraints.BOTH;
+            gc.gridx = count;
+            gc.gridy = 0;
+            gc.weightx = 0.1;
+            gc.weighty = 0.1;
+            // Set a bigger space for description component.
+            if(objKey.equals("DESCRIPTION")) {
+                gc.weightx = 0.7;
+                label.setFont(new Font(null,Font.BOLD,10));
+            }
+
+            this.add(label, gc);
+
+            count++;
         }
     }
 
     public void setupColumns(HashMap<String, String> map) {
         SortedSet<String> keySet = new TreeSet<>(map.keySet());
 
+        int count = 0;
         for(String key : keySet) {
             JLabel label = new JLabel(key);
             label.setBorder(new EmptyBorder(10,10,10,10));
@@ -54,7 +75,18 @@ public class ContentComponent_data__element extends JButton implements ActionLis
             label.setForeground(Color.WHITE);
             label.setBackground(Color.BLUE);
 
-            this.add(label);
+            //Setup layout constraints
+            GridBagConstraints gc = new GridBagConstraints();
+            gc.fill = GridBagConstraints.CENTER;
+            gc.gridx = count;
+            gc.gridy = 1;
+            gc.weightx = 0.1;
+            gc.weighty = 0.1;
+            // Set a bigger space for description component.
+            if(key.equals("DESCRIPTION")) gc.weightx = 1;
+
+            this.add(label, gc);
+            count++;
         }
     }
 

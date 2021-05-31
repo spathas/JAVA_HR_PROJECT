@@ -75,9 +75,10 @@ public class FormComponent extends JPanel {
 
                 // Init placeholders
                 String value = map.get(label);
-                if(label.equals("COMPANY")) value = "Insert the name of company (p.x. Software House Company)";
-                else if(label.equals("JOB_CATEGORY")) value = "Insert the role of category (p.x. Developer)";
-                else if(value.contains("NOT NULL")) value = "required";
+                if(label.equals("COMPANY")) value = "Insert the name of company (e.g Software House Company)";
+                else if(label.equals("JOB_CATEGORY")) value = "Insert the role of category (e.g Developer)";
+                else if(value.contains("NOT NULL")) value = "Required";
+                else if(value.contains("BOOLEAN")) value = "Accepted values only TRUE of FALSE";
                 else value = "";
 
                 FromComponent_element el = new FromComponent_element(label, value);

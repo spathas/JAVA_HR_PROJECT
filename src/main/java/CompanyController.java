@@ -14,7 +14,7 @@ public class CompanyController implements FactoryHandler {
 
     public CompanyController() {
         companyTable.put("ID", "INTEGER auto_increment PRIMARY KEY");
-        companyTable.put("NAME", "varchar(50) NOT NULL UNIQUE");
+        companyTable.put("NAME", "VARCHAR(50) NOT NULL UNIQUE");
         companyTable.put("EMAIL", "VARCHAR(50) NOT NULL UNIQUE");
         companyTable.put("COUNTRY", "VARCHAR(20) NOT NULL");
         companyTable.put("PHONE", "VARCHAR(20)");

@@ -4,20 +4,26 @@ import java.awt.*;
 
 public class ContentComponent extends JPanel {
 
+    /////// VARIABLES - OBJECTS //////////////////
     private String selector = "jobPostings_btn";
+    private int pageJobApplicants = 1;
+    private int pageCompanies = 1;
+    private int pageJobPostings = 1;
 
-    private ContentComponent_data data = new ContentComponent_data(this,  "jobPostings_btn");
-    public ContentComponent_data jobApplicantsView = new ContentComponent_data(this, "jobApplicants_btn");
-    public ContentComponent_data jobPostingsView = new ContentComponent_data(this, "jobPostings_btn");
-    public ContentComponent_data companiesView = new ContentComponent_data(this, "companies_btn");
+    private ContentComponent_data data = new ContentComponent_data(this,  "jobPostings_btn", this.pageJobPostings);
+    public ContentComponent_data jobApplicantsView = new ContentComponent_data(this, "jobApplicants_btn", this.pageJobApplicants);
+    public ContentComponent_data companiesView = new ContentComponent_data(this, "companies_btn", this.pageCompanies);
+    public ContentComponent_data jobPostingsView = new ContentComponent_data(this, "jobPostings_btn", this.pageJobPostings);
 
 
+    /////// CONSTRUCTORS ///////////////////
     public ContentComponent() {
         this.setLayout(new BorderLayout(0,5));
         this.setBackground(Color.white);
         addItems();
     }
 
+    ///////// GETTERS - SETTERS //////////////////////
     public void setSelector(String selector) {
         this.selector = selector;
     }
@@ -26,16 +32,40 @@ public class ContentComponent extends JPanel {
         return selector;
     }
 
+    public void incrementPage() {
+        switch (this.getSelector()) {
+            case "jobApplicants_btn" -> this.pageJobApplicants += 1;
+            case "companies_btn" -> this.pageCompanies += 1;
+            default -> this.pageJobPostings += 1;
+        };
+    }
+
+    public void decrementPage() {
+        switch (this.getSelector()) {
+            case "jobApplicants_btn" -> {
+                if(this.pageJobApplicants > 1) this.pageJobApplicants -= 1;
+            }
+            case "companies_btn" -> {
+                if(this.pageCompanies > 1) this.pageCompanies -= 1;
+            }
+            default -> {
+                if(this.pageJobPostings > 1) this.pageJobPostings -= 1;
+            }
+        };
+        addItems();
+    }
+
+    ///////// Content Elements Handlers ////////////
     public void refreshObjects() {
         switch (this.getSelector()) {
             case "jobApplicants_btn":
-                this.jobApplicantsView = new ContentComponent_data(this, "jobApplicants_btn");
+                this.jobApplicantsView = new ContentComponent_data(this, "jobApplicants_btn", this.pageJobApplicants);
                 break;
             case "companies_btn":
-                this.companiesView = new ContentComponent_data(this, "companies_btn");
+                this.companiesView = new ContentComponent_data(this, "companies_btn", this.pageCompanies);
                 break;
             case "jobPostings_btn":
-                this.jobPostingsView = new ContentComponent_data(this, "jobPostings_btn");
+                this.jobPostingsView = new ContentComponent_data(this, "jobPostings_btn", this.pageJobPostings);
                 break;
             default:
                 break;
@@ -75,7 +105,13 @@ public class ContentComponent extends JPanel {
     }
 
     // Return all applicants per posting map
-    public void findRelationships(String selectorColumns, int id) {
+    public void findRelationships(String selectorScope, int id) {
+        int page = switch (this.getSelector()) {
+            case "jobApplicants_btn" -> this.pageJobApplicants;
+            case "companies_btn" -> this.pageCompanies;
+            default -> this.pageJobPostings;
+        };
+
         this.removeAll();
 
         // !!! IMPORTANT !!!
@@ -83,15 +119,13 @@ public class ContentComponent extends JPanel {
         // because when we search from e.g company screen for jobPostings through this company
         // we have to swap screen view (to jobPosting view). It is not so sense but it works well.
         // Sorry :D
-        String selectorRows = this.selector;
-        this.selector = selectorColumns;
-        this.data = new ContentComponent_data(this, selectorColumns, selectorRows, id);
+        String selectorCurrent = this.selector;
+        this.selector = selectorScope;
+        this.data = new ContentComponent_data(this, selectorScope, selectorCurrent, page, id);
 
         this.add(data, BorderLayout.CENTER);
         this.add( new ContentComponent_menu(this), BorderLayout.NORTH);
         this.validate();
         this.repaint();
     }
-
-
 }
