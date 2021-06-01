@@ -10,27 +10,6 @@ public class MainClass {
     static final String PASS = "spathas1";
 
     public static void main(String[] args) {
-        JobApplicantController jobApplicantController = new JobApplicantController();
-        CompanyController companyController = new CompanyController();
-        JobPostingController jobPostingController = new JobPostingController();
-        JobCategoryController jobCategoryController = new JobCategoryController();
-
-        // RESET DATABASE DATA WITH MOCK DATA
-//        try{
-//            jobCategoryController.mockData();
-//
-//            companyController.mockData();
-//
-//            jobPostingController.mockData();
-//
-//            jobApplicantController.mockData();
-//
-//        } catch (Exception se) {
-//            //Handle errors for JDBC
-//            se.printStackTrace();
-//        }
-//
-//        System.out.println(jobPostingController.getAll());
 
         MainFrameComponent frame = new MainFrameComponent();
     }

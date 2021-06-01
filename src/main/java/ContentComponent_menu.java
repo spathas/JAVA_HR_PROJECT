@@ -78,6 +78,7 @@ public class ContentComponent_menu extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == newBtn) {
             content.addFormNew();
+
         }
         if(e.getSource() == pageBackward_btn) {
             content.decrementPage();

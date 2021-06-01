@@ -108,6 +108,8 @@ public class FormComponent_buttons extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == cancelButton) {
             content.addItems();
+
+            content.menu.resetAll_btn.setBackground(Color.RED);
         }
 
         if(e.getSource() == submitButton) {
@@ -115,6 +117,8 @@ public class FormComponent_buttons extends JPanel implements ActionListener {
             //Refresh data in content component.
             content.refreshObjects();
             content.addItems();
+
+            content.menu.resetAll_btn.setBackground(Color.RED);
         }
 
         if(e.getSource() == updateButton) {
@@ -122,6 +126,8 @@ public class FormComponent_buttons extends JPanel implements ActionListener {
             //Refresh data in content component.
             content.refreshObjects();
             content.addItems();
+
+            content.menu.resetAll_btn.setBackground(Color.RED);
         }
 
         if(e.getSource() == deleteButton) {
@@ -129,6 +135,8 @@ public class FormComponent_buttons extends JPanel implements ActionListener {
             //Refresh data in content component.
             content.refreshObjects();
             content.addItems();
+
+            content.menu.resetAll_btn.setBackground(Color.RED);
         }
 
         if(e.getSource() == findButton) {

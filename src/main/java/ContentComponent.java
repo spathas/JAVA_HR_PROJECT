@@ -10,6 +10,8 @@ public class ContentComponent extends JPanel {
     private int pageCompanies = 1;
     private int pageJobPostings = 1;
 
+    public SideMenuComponent menu;
+
     private ContentComponent_data data = new ContentComponent_data(this,  "jobPostings_btn", this.pageJobPostings);
     public ContentComponent_data jobApplicantsView = new ContentComponent_data(this, "jobApplicants_btn", this.pageJobApplicants);
     public ContentComponent_data companiesView = new ContentComponent_data(this, "companies_btn", this.pageCompanies);
@@ -30,6 +32,10 @@ public class ContentComponent extends JPanel {
 
     public String getSelector() {
         return selector;
+    }
+
+    public void setMenu(SideMenuComponent menu) {
+        this.menu = menu;
     }
 
     public void incrementPage() {
