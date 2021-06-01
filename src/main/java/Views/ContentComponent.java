@@ -4,6 +4,7 @@ import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
 
+// Content panel with all data and views of applicant
 public class ContentComponent extends JPanel {
 
     /////// VARIABLES - OBJECTS //////////////////

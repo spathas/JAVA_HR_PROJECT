@@ -9,8 +9,8 @@ import java.util.HashMap;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
+// Generate every element of the data panel
 public class ContentComponent_data__element extends JButton implements ActionListener {
-
 
     ContentComponent content;
     int id;

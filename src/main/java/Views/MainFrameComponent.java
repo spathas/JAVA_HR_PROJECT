@@ -3,6 +3,7 @@ package Views;
 import javax.swing.*;
 import java.awt.*;
 
+// The main frame of application.
 public class MainFrameComponent extends JFrame {
 
     ContentComponent content = new ContentComponent();

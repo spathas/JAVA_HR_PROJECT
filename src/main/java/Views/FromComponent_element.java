@@ -3,6 +3,7 @@ package Views;
 import javax.swing.*;
 import java.awt.*;
 
+// Generate every element in form data panel.
 public class FromComponent_element extends JPanel {
 
     JLabel label = new JLabel();

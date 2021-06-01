@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.HashMap;
 
-public class JobCategoryController {
+public class JobCategoryController implements FactoryHandler {
 
     private final HashMap<String, String> JobCategoryTable = new HashMap<>();
 

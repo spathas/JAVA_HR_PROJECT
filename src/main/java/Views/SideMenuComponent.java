@@ -10,6 +10,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+// Side menu with 4 buttons in  left side of the application view
 public class SideMenuComponent extends JPanel implements ActionListener {
 
     ContentComponent content;

@@ -11,6 +11,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.*;
 
+// Data manipulation view
+// Generate the panel of application which display data.
 public class ContentComponent_data extends JPanel {
 
     ContentComponent content;

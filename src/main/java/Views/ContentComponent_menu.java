@@ -5,6 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+// Generate the menu of the data panel
 public class ContentComponent_menu extends JPanel implements ActionListener {
 
     ContentComponent content;

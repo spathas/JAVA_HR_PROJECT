@@ -14,8 +14,7 @@ import java.util.HashMap;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
-
-
+// Generate the form which we can insert a new entity in application
 public class FormComponent extends JPanel {
 
     HashMap<String, JTextField> map = new HashMap<>();
@@ -171,11 +170,11 @@ public class FormComponent extends JPanel {
 
             if (!map.get("EMAIL").getText().contains("@") || !map.get("EMAIL").getText().contains("."))
 
-            if (validationErrorMessage != "") {
-                JOptionPane.showMessageDialog(this, validationErrorMessage, "Validation Error", JOptionPane.ERROR_MESSAGE);
-                new Exception(validationErrorMessage);
-                content.addFormNew();
-            }
+                if (validationErrorMessage != "") {
+                    JOptionPane.showMessageDialog(this, validationErrorMessage, "Validation Error", JOptionPane.ERROR_MESSAGE);
+                    new Exception(validationErrorMessage);
+                    content.addFormNew();
+                }
 
             ///////// INSERT OBJECT ////////////////////
             companyController.insert(new Company(
@@ -229,6 +228,44 @@ public class FormComponent extends JPanel {
     public void updateElement(String selector) {
         if(selector.equals("jobApplicants_btn")) {
 
+            ////////// VALIDATION CONSTRAINTS ///////////
+            String validationErrorMessage = "";
+
+            try {
+                jobCategoryController.getByRole(map.get("JOB_CATEGORY").getText());
+            } catch (NullPointerException | NumberFormatException ex) {
+                validationErrorMessage += "Validation Error: Job category role is wrong or unsetted.\n";
+            }
+
+            try {
+                Integer.parseInt(map.get("AGE").getText());
+            } catch (NullPointerException | NumberFormatException ex) {
+                validationErrorMessage += "Validation Error: Age must have 3 numeric character.\n";
+            }
+
+            try {
+                Integer.parseInt(map.get("PHONE").getText());
+            } catch (NullPointerException | NumberFormatException ex) {
+                validationErrorMessage += "Validation Error: Phone must have numeric characters.\n";
+            }
+
+            if(map.get("PHONE").getText().length() != 10) validationErrorMessage += "Validation Error: Phone must have 10 characters.\n";
+
+            if (!map.get("EMAIL").getText().contains("@") || !map.get("EMAIL").getText().contains("."))
+                validationErrorMessage += "Validation Error: Email is wrong.\n";
+
+            if (!map.get("WORKS").getText().toLowerCase().contains("true"))
+                if (!map.get("WORKS").getText().toLowerCase().contains("false"))
+                    if (map.get("WORKS").getText().toLowerCase().length() == 5)
+                        validationErrorMessage += "Validation Error: Works can get values [true / false] only.\n";
+
+            if (validationErrorMessage != "") {
+                JOptionPane.showMessageDialog(this, validationErrorMessage, "Validation Error", JOptionPane.ERROR_MESSAGE);
+                new Exception(validationErrorMessage);
+                content.addFormNew();
+            }
+
+            ///////// INSERT OBJECT ////////////////////
             jobApplicantController.update(new JobApplicant(
                     Integer.parseInt(map.get("ID").getText()),
                     map.get("NAME").getText(),
@@ -243,6 +280,26 @@ public class FormComponent extends JPanel {
             return;
         }
         if(selector.equals("companies_btn")) {
+            ////////// VALIDATION CONSTRAINTS ///////////
+            String validationErrorMessage = "";
+
+            try {
+                Integer.parseInt(map.get("PHONE").getText());
+            } catch (NullPointerException | NumberFormatException ex) {
+                validationErrorMessage += "Validation Error: Phone must have numeric characters.\n";
+            }
+
+            if(map.get("PHONE").getText().length() != 10) validationErrorMessage += "Validation Error: Phone must have 10 characters.\n";
+
+            if (!map.get("EMAIL").getText().contains("@") || !map.get("EMAIL").getText().contains("."))
+
+                if (validationErrorMessage != "") {
+                    JOptionPane.showMessageDialog(this, validationErrorMessage, "Validation Error", JOptionPane.ERROR_MESSAGE);
+                    new Exception(validationErrorMessage);
+                    content.addFormNew();
+                }
+
+            ///////// INSERT OBJECT ////////////////////
             companyController.update(new Company(
                     Integer.parseInt(map.get("ID").getText()),
                     map.get("NAME").getText(),
@@ -254,6 +311,33 @@ public class FormComponent extends JPanel {
             return;
         }
 
+        ////////// VALIDATION CONSTRAINTS ///////////
+        String validationErrorMessage = "";
+
+        try {
+            companyController.getByName(map.get("COMPANY").getText());
+        } catch (NullPointerException | NumberFormatException ex) {
+            validationErrorMessage += "Validation Error: Company name is wrong or unsetted.\n";
+        }
+
+        try {
+            jobCategoryController.getByRole(map.get("JOB_CATEGORY").getText());
+        } catch (NullPointerException | NumberFormatException ex) {
+            validationErrorMessage += "Validation Error: Job category role is wrong or unsetted.\n";
+        }
+
+        if (!map.get("FULL_TIME").getText().toLowerCase().contains("true"))
+            if (!map.get("FULL_TIME").getText().toLowerCase().contains("false"))
+                if (map.get("FULL_TIME").getText().toLowerCase().length() == 5)
+                    validationErrorMessage += "Validation Error: Full_Time can get values [true / false] only.\n";
+
+        if (validationErrorMessage != "") {
+            JOptionPane.showMessageDialog(this, validationErrorMessage, "Validation Error", JOptionPane.ERROR_MESSAGE);
+            new Exception(validationErrorMessage);
+            content.addFormNew();
+        }
+
+        ///////// INSERT OBJECT ////////////////////
         jobPostingController.update(new JobPosting(
                 Integer.parseInt(map.get("ID").getText()),
                 companyController.getByName(map.get("COMPANY").getText()),

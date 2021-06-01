@@ -5,6 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+// Generate the buttons (Handlers) of the form data
 public class FormComponent_buttons extends JPanel implements ActionListener {
 
     ContentComponent content;
