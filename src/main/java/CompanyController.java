@@ -34,7 +34,7 @@ public class CompanyController implements FactoryHandler {
         try {
             FactoryHandler.insert("company", userData);
         } catch (SQLException | ClassNotFoundException e) {
-            System.out.println("Table company not found or your company data are wrong");
+            e.printStackTrace();
         }
     }
 
@@ -43,7 +43,7 @@ public class CompanyController implements FactoryHandler {
             Company company = getById(companyId);
             FactoryHandler.deleteRowById("company", Integer.toString(company.getId()));
         } catch (SQLException | ClassNotFoundException e) {
-            System.out.println("Table JobApplicant or current jobApplicant not found");
+            e.printStackTrace();
         }
     }
 
@@ -51,8 +51,8 @@ public class CompanyController implements FactoryHandler {
         int id = company.getId();
         try {
             FactoryHandler.update("company", id, company.getMap());
-        } catch (SQLException | ClassNotFoundException sqlError) {
-            System.out.println("Table user not found or your filter is wrong!");
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
         }
     }
 
@@ -62,8 +62,8 @@ public class CompanyController implements FactoryHandler {
         HashMap<Integer, HashMap<String, String>> map = null;
         try {
             map = FactoryHandler.getAll("company", this.companyTable, "");
-        } catch (SQLException sqlError) {
-            sqlError.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
         } catch (ClassNotFoundException notFoundException) {
             System.out.println("Table company not found");
         }
@@ -82,8 +82,8 @@ public class CompanyController implements FactoryHandler {
             return new Company(
                     FactoryHandler.getFiltering("company", this.companyTable, "ID", Integer.toString(companyID))
             );
-        } catch (SQLException | ClassNotFoundException sqlError) {
-            System.out.println("Table company not found or your filter is wrong!");
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
         }
         return null;
     }
@@ -93,8 +93,8 @@ public class CompanyController implements FactoryHandler {
             return new Company(
                     FactoryHandler.getFiltering("company", this.companyTable, "NAME", "'"+companyName+"'")
             );
-        } catch (SQLException | ClassNotFoundException sqlError) {
-            System.out.println("Table company not found or your filter is wrong!");
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
         }
         return null;
     }
@@ -102,8 +102,8 @@ public class CompanyController implements FactoryHandler {
     public void drop() {
         try {
             FactoryHandler.drop("company");
-        } catch (SQLException | ClassNotFoundException sqlError) {
-            System.out.println("Table company not found");
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
         }
     }
 

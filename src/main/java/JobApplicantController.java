@@ -17,7 +17,7 @@ public class JobApplicantController implements FactoryHandler {
         jobApplicantTable.put("SURNAME", "VARCHAR2(50) NOT NULL");
         jobApplicantTable.put("AGE", "VARCHAR2(3) NOT NULL");
         jobApplicantTable.put("EMAIL", "VARCHAR2(50) NOT NULL UNIQUE");
-        jobApplicantTable.put("PHONE", "VARCHAR2(20) UNIQUE");
+        jobApplicantTable.put("PHONE", "VARCHAR2(10) UNIQUE");
         jobApplicantTable.put("EDUCATION", "VARCHAR2(50)");
         jobApplicantTable.put("JOB_CATEGORY", "VARCHAR2(50)");
         jobApplicantTable.put("WORKS", "BOOLEAN");
@@ -37,7 +37,7 @@ public class JobApplicantController implements FactoryHandler {
         try {
             FactoryHandler.insert("JobApplicant", jobApplicantData);
         } catch (SQLException | ClassNotFoundException e) {
-            System.out.println("Table JobApplicant or current jobApplicant not found");
+            System.out.println("Table JobApplicant or Applicant data are wrong!");
         }
 
     }

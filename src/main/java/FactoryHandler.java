@@ -130,8 +130,8 @@ public interface FactoryHandler {
     static HashMap<String, String> getFiltering(String tableName, HashMap<String, String> table, String filterColumn, String filterValue)
             throws SQLException, ClassNotFoundException {
 
-        HashMap<Integer, HashMap<String, String>> objectsMap = new HashMap<>();
         HashMap<String, String> values = new HashMap<>();
+
         server.connectionOpen();
 
         //Query

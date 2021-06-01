@@ -7,7 +7,6 @@ import java.util.TreeSet;
 public class FormComponent extends JPanel {
 
     HashMap<String, JTextField> map = new HashMap<>();
-
     ContentComponent content;
 
     JobPostingController jobPostingController = new JobPostingController();
@@ -91,9 +90,47 @@ public class FormComponent extends JPanel {
         return keySet.size(); // We don't use + 1 here because ID row never user so we have this result -> [size -1 +1 = size]!
     }
 
-    public void insertNewElement(String selector) {
+    public void insertNewElement(String selector)  {
         if(selector.equals("jobApplicants_btn")) {
 
+            ////////// VALIDATION CONSTRAINTS ///////////
+            String validationErrorMessage = "";
+
+            try {
+                jobCategoryController.getByRole(map.get("JOB_CATEGORY").getText());
+            } catch (NullPointerException | NumberFormatException ex) {
+                validationErrorMessage += "Validation Error: Job category role is wrong or unsetted.\n";
+            }
+
+            try {
+                Integer.parseInt(map.get("AGE").getText());
+            } catch (NullPointerException | NumberFormatException ex) {
+                validationErrorMessage += "Validation Error: Age must have 3 numeric character.\n";
+            }
+
+            try {
+                Integer.parseInt(map.get("PHONE").getText());
+            } catch (NullPointerException | NumberFormatException ex) {
+                validationErrorMessage += "Validation Error: Phone must have numeric characters.\n";
+            }
+
+            if(map.get("PHONE").getText().length() != 10) validationErrorMessage += "Validation Error: Phone must have 10 characters.\n";
+
+            if (!map.get("EMAIL").getText().contains("@") || !map.get("EMAIL").getText().contains("."))
+                validationErrorMessage += "Validation Error: Email is wrong.\n";
+
+            if (!map.get("WORKS").getText().toLowerCase().contains("true"))
+                if (!map.get("WORKS").getText().toLowerCase().contains("false"))
+                    if (map.get("WORKS").getText().toLowerCase().length() == 5)
+                        validationErrorMessage += "Validation Error: Works can get values [true / false] only.\n";
+
+            if (validationErrorMessage != "") {
+                JOptionPane.showMessageDialog(this, validationErrorMessage, "Validation Error", JOptionPane.ERROR_MESSAGE);
+                new Exception(validationErrorMessage);
+                content.addFormNew();
+            }
+
+            ///////// INSERT OBJECT ////////////////////
             jobApplicantController.insert(new JobApplicant(
                     map.get("NAME").getText(),
                     map.get("SURNAME").getText(),
@@ -103,10 +140,32 @@ public class FormComponent extends JPanel {
                     map.get("EDUCATION").getText(),
                     jobCategoryController.getByRole(map.get("JOB_CATEGORY").getText()),
                     Boolean.parseBoolean(map.get("WORKS").getText())
-            ));
+                ));
+
             return;
         }
         if(selector.equals("companies_btn")) {
+
+            ////////// VALIDATION CONSTRAINTS ///////////
+            String validationErrorMessage = "";
+
+            try {
+                Integer.parseInt(map.get("PHONE").getText());
+            } catch (NullPointerException | NumberFormatException ex) {
+                validationErrorMessage += "Validation Error: Phone must have numeric characters.\n";
+            }
+
+            if(map.get("PHONE").getText().length() != 10) validationErrorMessage += "Validation Error: Phone must have 10 characters.\n";
+
+            if (!map.get("EMAIL").getText().contains("@") || !map.get("EMAIL").getText().contains("."))
+
+            if (validationErrorMessage != "") {
+                JOptionPane.showMessageDialog(this, validationErrorMessage, "Validation Error", JOptionPane.ERROR_MESSAGE);
+                new Exception(validationErrorMessage);
+                content.addFormNew();
+            }
+
+            ///////// INSERT OBJECT ////////////////////
             companyController.insert(new Company(
                     map.get("NAME").getText(),
                     map.get("EMAIL").getText(),
@@ -117,6 +176,33 @@ public class FormComponent extends JPanel {
             return;
         }
 
+        ////////// VALIDATION CONSTRAINTS ///////////
+        String validationErrorMessage = "";
+
+        try {
+            companyController.getByName(map.get("COMPANY").getText());
+        } catch (NullPointerException | NumberFormatException ex) {
+            validationErrorMessage += "Validation Error: Company name is wrong or unsetted.\n";
+        }
+
+        try {
+            jobCategoryController.getByRole(map.get("JOB_CATEGORY").getText());
+        } catch (NullPointerException | NumberFormatException ex) {
+            validationErrorMessage += "Validation Error: Job category role is wrong or unsetted.\n";
+        }
+
+        if (!map.get("FULL_TIME").getText().toLowerCase().contains("true"))
+            if (!map.get("FULL_TIME").getText().toLowerCase().contains("false"))
+                if (map.get("FULL_TIME").getText().toLowerCase().length() == 5)
+                    validationErrorMessage += "Validation Error: Full_Time can get values [true / false] only.\n";
+
+        if (validationErrorMessage != "") {
+            JOptionPane.showMessageDialog(this, validationErrorMessage, "Validation Error", JOptionPane.ERROR_MESSAGE);
+            new Exception(validationErrorMessage);
+            content.addFormNew();
+        }
+
+        ///////// INSERT OBJECT ////////////////////
         jobPostingController.insert(new JobPosting(
                 companyController.getByName(map.get("COMPANY").getText()),
                 map.get("TITLE").getText(),
@@ -125,6 +211,7 @@ public class FormComponent extends JPanel {
                 map.get("SALARY").getText().equals("") ? 0 : Integer.parseInt(map.get("SALARY").getText()),
                 Boolean.parseBoolean(map.get("FULL_TIME").getText())
         ));
+
     }
 
     public void updateElement(String selector) {
