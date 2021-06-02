@@ -7,6 +7,7 @@ import Controllers.JobPostingController;
 import Models.Company;
 import Models.JobApplicant;
 import Models.JobPosting;
+import src.IncorrectInputException;
 
 import javax.swing.*;
 import java.awt.*;
@@ -130,15 +131,19 @@ public class FormComponent extends JPanel {
             if (!map.get("EMAIL").getText().contains("@") || !map.get("EMAIL").getText().contains("."))
                 validationErrorMessage += "Validation Error: Email is wrong.\n";
 
-            if (!map.get("WORKS").getText().toLowerCase().contains("true"))
-                if (!map.get("WORKS").getText().toLowerCase().contains("false"))
-                    if (map.get("WORKS").getText().toLowerCase().length() == 5)
-                        validationErrorMessage += "Validation Error: Works can get values [true / false] only.\n";
+            if (map.get("WORKS").getText().length() != 5)
+                if (!map.get("WORKS").getText().toLowerCase().contains("true") || !map.get("WORKS").getText().toLowerCase().contains("false"))
+                    validationErrorMessage += "Validation Error: Works can get values [true / false] only.\n";
+
+            if(map.get("NAME").getText().length() == 0)
+                validationErrorMessage += "Validation Error: Name can not be empty.\n";
+
+            if(map.get("SURNAME").getText().length() == 0)
+                validationErrorMessage += "Validation Error: Surname can not be empty.\n";
 
             if (validationErrorMessage != "") {
                 JOptionPane.showMessageDialog(this, validationErrorMessage, "Validation Error", JOptionPane.ERROR_MESSAGE);
-                new Exception(validationErrorMessage);
-                content.addFormNew();
+                throw new IncorrectInputException(validationErrorMessage);
             }
 
             ///////// INSERT OBJECT ////////////////////
@@ -170,11 +175,13 @@ public class FormComponent extends JPanel {
 
             if (!map.get("EMAIL").getText().contains("@") || !map.get("EMAIL").getText().contains("."))
 
-                if (validationErrorMessage != "") {
-                    JOptionPane.showMessageDialog(this, validationErrorMessage, "Validation Error", JOptionPane.ERROR_MESSAGE);
-                    new Exception(validationErrorMessage);
-                    content.addFormNew();
-                }
+                if(map.get("NAME").getText().length() == 0)
+                    validationErrorMessage += "Validation Error: Name can not be empty.\n";
+
+            if (validationErrorMessage != "") {
+                JOptionPane.showMessageDialog(this, validationErrorMessage, "Validation Error", JOptionPane.ERROR_MESSAGE);
+                throw new IncorrectInputException(validationErrorMessage);
+            }
 
             ///////// INSERT OBJECT ////////////////////
             companyController.insert(new Company(
@@ -202,15 +209,19 @@ public class FormComponent extends JPanel {
             validationErrorMessage += "Validation Error: Job category role is wrong or unsetted.\n";
         }
 
-        if (!map.get("FULL_TIME").getText().toLowerCase().contains("true"))
-            if (!map.get("FULL_TIME").getText().toLowerCase().contains("false"))
-                if (map.get("FULL_TIME").getText().toLowerCase().length() == 5)
-                    validationErrorMessage += "Validation Error: Full_Time can get values [true / false] only.\n";
+        if (map.get("FULL_TIME").getText().length() != 5)
+            if (!map.get("FULL_TIME").getText().toLowerCase().contains("true") || !map.get("FULL_TIME").getText().toLowerCase().contains("false"))
+                validationErrorMessage += "Validation Error: Full_Time can get values [true / false] only.\n";
 
-        if (validationErrorMessage != "") {
+        if(map.get("DESCRIPTION").getText().length() == 0)
+            validationErrorMessage += "Validation Error: Description can not be empty.\n";
+
+        if(map.get("TITLE").getText().length() == 0)
+            validationErrorMessage += "Validation Error: Title can not be empty.\n";
+
+        if (!validationErrorMessage.equals("")) {
             JOptionPane.showMessageDialog(this, validationErrorMessage, "Validation Error", JOptionPane.ERROR_MESSAGE);
-            new Exception(validationErrorMessage);
-            content.addFormNew();
+            throw new IncorrectInputException(validationErrorMessage);
         }
 
         ///////// INSERT OBJECT ////////////////////
@@ -254,15 +265,19 @@ public class FormComponent extends JPanel {
             if (!map.get("EMAIL").getText().contains("@") || !map.get("EMAIL").getText().contains("."))
                 validationErrorMessage += "Validation Error: Email is wrong.\n";
 
-            if (!map.get("WORKS").getText().toLowerCase().contains("true"))
-                if (!map.get("WORKS").getText().toLowerCase().contains("false"))
-                    if (map.get("WORKS").getText().toLowerCase().length() == 5)
+            if (map.get("WORKS").getText().length() != 5)
+                if (!map.get("WORKS").getText().toLowerCase().contains("true") || !map.get("WORKS").getText().toLowerCase().contains("false"))
                         validationErrorMessage += "Validation Error: Works can get values [true / false] only.\n";
+
+            if(map.get("NAME").getText().length() == 0)
+                validationErrorMessage += "Validation Error: Name can not be empty.\n";
+
+            if(map.get("SURNAME").getText().length() == 0)
+                validationErrorMessage += "Validation Error: Surname can not be empty.\n";
 
             if (validationErrorMessage != "") {
                 JOptionPane.showMessageDialog(this, validationErrorMessage, "Validation Error", JOptionPane.ERROR_MESSAGE);
-                new Exception(validationErrorMessage);
-                content.addFormNew();
+                throw new IncorrectInputException(validationErrorMessage);
             }
 
             ///////// INSERT OBJECT ////////////////////
@@ -293,11 +308,13 @@ public class FormComponent extends JPanel {
 
             if (!map.get("EMAIL").getText().contains("@") || !map.get("EMAIL").getText().contains("."))
 
-                if (validationErrorMessage != "") {
-                    JOptionPane.showMessageDialog(this, validationErrorMessage, "Validation Error", JOptionPane.ERROR_MESSAGE);
-                    new Exception(validationErrorMessage);
-                    content.addFormNew();
-                }
+            if(map.get("NAME").getText().length() == 0)
+                validationErrorMessage += "Validation Error: Name can not be empty.\n";
+
+            if (validationErrorMessage != "") {
+                JOptionPane.showMessageDialog(this, validationErrorMessage, "Validation Error", JOptionPane.ERROR_MESSAGE);
+                throw new IncorrectInputException(validationErrorMessage);
+            }
 
             ///////// INSERT OBJECT ////////////////////
             companyController.update(new Company(
@@ -326,15 +343,19 @@ public class FormComponent extends JPanel {
             validationErrorMessage += "Validation Error: Job category role is wrong or unsetted.\n";
         }
 
-        if (!map.get("FULL_TIME").getText().toLowerCase().contains("true"))
-            if (!map.get("FULL_TIME").getText().toLowerCase().contains("false"))
-                if (map.get("FULL_TIME").getText().toLowerCase().length() == 5)
-                    validationErrorMessage += "Validation Error: Full_Time can get values [true / false] only.\n";
+        if (map.get("FULL_TIME").getText().length() != 5)
+            if (!map.get("FULL_TIME").getText().toLowerCase().contains("true") || !map.get("FULL_TIME").getText().toLowerCase().contains("false"))
+                validationErrorMessage += "Validation Error: Full_Time can get values [true / false] only.\n";
+
+        if(map.get("DESCRIPTION").getText().length() == 0)
+            validationErrorMessage += "Validation Error: Description can not be empty.\n";
+
+        if(map.get("TITLE").getText().length() == 0)
+            validationErrorMessage += "Validation Error: Title can not be empty.\n";
 
         if (validationErrorMessage != "") {
             JOptionPane.showMessageDialog(this, validationErrorMessage, "Validation Error", JOptionPane.ERROR_MESSAGE);
-            new Exception(validationErrorMessage);
-            content.addFormNew();
+            throw new IncorrectInputException(validationErrorMessage);
         }
 
         ///////// INSERT OBJECT ////////////////////
